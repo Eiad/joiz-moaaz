@@ -1,0 +1,2660 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category - Jojiz</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Fallback for image loading errors */
+        .product-image img.error,
+        .product-image img[src=""],
+        .product-image img:not([src]) {
+            display: none;
+        }
+        
+        .product-image img.error + .placeholder-image,
+        .product-image img[src=""] + .placeholder-image,
+        .product-image img:not([src]) + .placeholder-image,
+        .product-image:not(:has(img:not(.error))) .placeholder-image {
+            display: flex;
+        }
+        
+        .placeholder-image {
+            display: flex;
+            width: 100%;
+            height: 200px;
+            background-color: #f5f5f5;
+            justify-content: center;
+            align-items: center;
+            color: #999;
+            font-size: 2rem;
+        }
+        
+        /* Fix for image loading in quick view modal */
+        .quick-view-modal .main-image img.error,
+        .quick-view-modal .main-image img[src=""],
+        .quick-view-modal .main-image img:not([src]) {
+            display: none;
+        }
+        
+        .quick-view-modal .main-image .placeholder-image {
+            height: 300px;
+        }
+        
+        .quick-view-modal .thumbnail img.error,
+        .quick-view-modal .thumbnail img[src=""],
+        .quick-view-modal .thumbnail img:not([src]) {
+            display: none;
+        }
+        
+        .quick-view-modal .thumbnail .placeholder-image {
+            height: 80px;
+            font-size: 1rem;
+        }
+        
+        /* Cart and Wishlist Badges */
+        .cart, .wishlist {
+            position: relative;
+        }
+        
+        .cart-badge, .wishlist-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #e91e63;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+        
+        /* Active state for wishlist button */
+        .add-to-wishlist-btn.active {
+            color: #e91e63;
+        }
+        
+        /* Notification styles */
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            width: 300px;
+        }
+        
+        .notification {
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            padding: 15px;
+            transform: translateX(100%);
+            opacity: 0;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .notification.success {
+            border-right: 4px solid #4CAF50;
+        }
+        
+        .notification.error {
+            border-right: 4px solid #F44336;
+        }
+        
+        .notification.info {
+            border-right: 4px solid #2196F3;
+        }
+        
+        .notification.warning {
+            border-right: 4px solid #FF9800;
+        }
+        
+        .notification .message {
+            flex: 1;
+        }
+        
+        .notification .close-notification {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 0;
+            margin-right: 10px;
+        }
+        
+        .notification .close-notification:hover {
+            color: #333;
+        }
+        
+        /* Cart Modal Styles */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: none;
+        }
+        
+        .cart-modal.active {
+            display: block;
+        }
+        
+        .cart-modal .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .cart-modal .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .cart-modal .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #999;
+            z-index: 1;
+        }
+        
+        .cart-modal .close-modal:hover {
+            color: #333;
+        }
+        
+        .cart-modal .modal-body {
+            padding: 20px;
+            max-height: calc(80vh - 40px);
+            overflow-y: auto;
+        }
+        
+        .cart-modal .modal-title {
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+        
+        .cart-modal .cart-items {
+            margin-bottom: 20px;
+        }
+        
+        .cart-modal .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-modal .item-image {
+            width: 80px;
+            height: 80px;
+            margin-right: 15px;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        
+        .cart-modal .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cart-modal .item-details {
+            flex: 1;
+        }
+        
+        .cart-modal .item-name {
+            margin: 0 0 5px;
+            font-size: 16px;
+        }
+        
+        .cart-modal .item-price {
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #e91e63;
+        }
+        
+        .cart-modal .item-quantity {
+            display: flex;
+            align-items: center;
+        }
+        
+        .cart-modal .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background-color: #f5f5f5;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .cart-modal .quantity-input {
+            width: 40px;
+            height: 30px;
+            margin: 0 5px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .cart-modal .remove-item-btn {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        
+        .cart-modal .remove-item-btn:hover {
+            color: #e91e63;
+        }
+        
+        .cart-modal .cart-summary {
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .cart-modal .cart-total {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .cart-modal .cart-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .cart-modal .checkout-btn,
+        .cart-modal .continue-shopping-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .cart-modal .checkout-btn {
+            background-color: #e91e63;
+            color: white;
+        }
+        
+        .cart-modal .continue-shopping-btn {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .cart-modal .empty-cart {
+            text-align: center;
+            padding: 30px 0;
+            color: #999;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="top-header">
+            <div class="container">
+                <div class="backend-info">
+                    <div class="welcome">
+                        <span>BACKEND.WELCOME</span>
+                        <div class="user-auth-section">
+                            <a href="login.html" class="login-register auth-link">BACKEND.LOGIN/ BACKEND.REGISTER</a>
+                            <div class="user-info">
+                                <span class="username">مرحبا، <span class="user-name"></span></span>
+                                <a href="#" class="logout-btn">تسجيل الخروج</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-section">
+                        <a href="#" class="lang-switch">تغيير اللغة</a>
+                        <a href="#" class="cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>0.00EGP</span>
+                        </a>
+                        <a href="#" class="wishlist">
+                            <i class="fas fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hotline">
+                    <span>BACKEND.HOTLINE 24/7</span>
+                    <a href="tel:01067300073">01067300073</a>
+                </div>
+            </div>
+        </div>
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/jojiz.png" alt="Jojiz Logo">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#" class="lang-toggle">ar <img src="images/language.svg" alt="Language" class="lang-icon"></a></li>
+                        <li><a href="#">المتجر</a></li>
+                        <li><a href="index.html">الصفحة الرئيسية</a></li>
+                    </ul>
+                </nav>
+                <div class="search-bar">
+                    <form action="#" method="get">
+                        <input type="text" placeholder="بحث" class="search-input">
+                        <button type="submit" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                    <div class="language-dropdown">
+                        <span>اللغة</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div class="mobile-cart">
+                    <a href="#" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb Section -->
+    <section class="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb-list">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="#">المتجر</a></li>
+                <li class="category-name">الفئة</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Category Products Section -->
+    <section class="category-products">
+        <div class="container">
+            <h1 class="category-title">منتجات الفئة</h1>
+            
+            <div class="category-filters">
+                <div class="filter-group">
+                    <label for="sort-by">ترتيب حسب:</label>
+                    <select id="sort-by" class="sort-select">
+                        <option value="createdAt:desc">الأحدث</option>
+                        <option value="createdAt:asc">الأقدم</option>
+                        <option value="product_price:asc">السعر: من الأقل إلى الأعلى</option>
+                        <option value="product_price:desc">السعر: من الأعلى إلى الأقل</option>
+                        <option value="product_name:asc">الاسم: أ-ي</option>
+                        <option value="product_name:desc">الاسم: ي-أ</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="products-grid">
+                <!-- Products will be loaded here -->
+            </div>
+            
+            <div class="pagination">
+                <!-- Pagination will be generated dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html">الصفحة الرئيسية</a></li>
+                        <li><a href="#">المتجر</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
+                        <li><a href="terms.html">الشروط والأحكام</a></li>
+                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>اتصل بنا</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-home"></i> octuber</a></li>
+                        <li><a href="tel:01067300073"><i class="fas fa-phone"></i> 01067300073</a></li>
+                        <li><a href="mailto:jojiz@jojiz.com"><i class="fas fa-envelope"></i> jojiz@jojiz.com</a></li>
+                    </ul>
+                    <div class="social-links">
+                        <!-- Social media links will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>حقوق الطبع والنشر © 2025 Jojiz. جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="#" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Quick View Modal -->
+    <div class="quick-view-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="close-modal"><i class="fas fa-times"></i></button>
+            <div class="modal-body">
+                <div class="loading">جاري التحميل...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/language.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Define API_BASE_URL for use in scripts
+            const API_BASE_URL = 'https://adminjojiz.jojiz.net';
+            window.API_BASE_URL = API_BASE_URL; // Make it globally available
+            
+            console.log('Document ready, initializing...');
+            
+            // Initialize local cart and favorites
+            initLocalCart();
+            initLocalFavorites();
+            
+            // Check if API is accessible
+            checkApiAccess(API_BASE_URL).then(isAccessible => {
+                if (!isAccessible) {
+                    console.warn('API is not accessible. Using fallback data.');
+                    // Show a notification to the user
+                    showNotification('عذراً، لا يمكن الوصول إلى الخادم حالياً. سيتم عرض بيانات محلية.', 'warning');
+                }
+            });
+            
+            // Get category ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoryId = urlParams.get('id');
+            
+            if (categoryId) {
+                console.log('Category ID found in URL:', categoryId);
+                // Load category details
+                loadCategoryDetails(categoryId);
+                
+                // Load products for this category
+                loadCategoryProducts(categoryId);
+            } else {
+                console.warn('No category ID found in URL, redirecting to home page');
+                // Redirect to home page or show error
+                window.location.href = 'index.html';
+            }
+            
+            // Initialize cart
+            if (window.CartService) {
+                window.CartService.init();
+                console.log('Cart initialized on page load:', window.CartService.getCart());
+                window.CartService.updateCartUI();
+            } else {
+                console.error('CartService not available');
+            }
+            
+            // Check if user is logged in
+            if (window.AuthService.isLoggedIn()) {
+                // Get current user
+                const user = window.AuthService.getCurrentUser();
+                
+                // Show user info
+                $('.user-info').show();
+                $('.auth-link').hide();
+                $('.user-name').text(user.username);
+                
+                // Handle logout
+                $('.logout-btn').click(function(e) {
+                    e.preventDefault();
+                    window.AuthService.logout();
+                    // Reload page
+                    window.location.reload();
+                });
+            } else {
+                // Show login/register link
+                $('.user-info').hide();
+                $('.auth-link').show();
+                
+                // Handle login/register link
+                $('.login-register').click(function(e) {
+                    e.preventDefault();
+                    // For demo purposes, just log in the user
+                    window.AuthService.login('زائر', 'password');
+                    // Reload page
+                    window.location.reload();
+                });
+            }
+            
+            // Handle image errors
+            $('img').on('error', function() {
+                $(this).addClass('error');
+            });
+            
+            // Load site settings first
+            loadSiteSettings().then(() => {
+                // Load social media links
+                loadSocialMediaLinks();
+            });
+            
+            // Handle sort change
+            $('#sort-by').on('change', function() {
+                const sortValue = $(this).val();
+                loadCategoryProducts(categoryId, { sort: sortValue });
+            });
+            
+            // Make product items clickable to navigate to product detail page
+            $(document).on('click', '.product-item', function(e) {
+                // Only navigate if the click wasn't on one of the action buttons
+                if (!$(e.target).closest('.product-actions a').length) {
+                    const productId = $(this).data('id');
+                    window.location.href = `product.html?id=${productId}`;
+                }
+            });
+            
+            // Set cursor style to indicate clickable items
+            $(document).on('mouseenter', '.product-item', function() {
+                $(this).css('cursor', 'pointer');
+            });
+            
+            // Handle close modal button click
+            $('.close-modal, .modal-overlay').click(function() {
+                closeQuickViewModal();
+            });
+            
+            // Add click handler for cart icon
+            $('.cart-icon, .cart').off('click').on('click', function(e) {
+                e.preventDefault();
+                console.log('Cart icon clicked');
+                openCartModal();
+            });
+            
+            // Handle quick view button click
+            $(document).on('click', '.quick-view-btn', function(e) {
+                e.preventDefault();
+                const productId = $(this).data('product-id');
+                openQuickViewModal(productId);
+            });
+            
+            // Handle add to cart button in quick view modal
+            $(document).on('click', '.quick-view-modal .add-to-cart-btn', function() {
+                const productId = $(this).data('product-id');
+                const quantity = parseInt($('.quick-view-modal .quantity-input').val()) || 1;
+                console.log('Quick view add to cart button clicked for product:', productId, 'quantity:', quantity);
+                addToLocalCart(productId, quantity);
+            });
+            
+            // Handle add to wishlist button in quick view modal
+            $(document).on('click', '.quick-view-modal .add-to-wishlist-btn', function() {
+                const productId = $(this).data('product-id');
+                toggleLocalFavorite(productId);
+            });
+            
+            // Handle quantity buttons in quick view modal
+            $(document).on('click', '.quick-view-modal .quantity-btn.minus', function() {
+                const input = $('.quick-view-modal .quantity-input');
+                const value = parseInt(input.val()) - 1;
+                if (value < 1) return;
+                input.val(value);
+            });
+            
+            $(document).on('click', '.quick-view-modal .quantity-btn.plus', function() {
+                const input = $('.quick-view-modal .quantity-input');
+                const value = parseInt(input.val()) + 1;
+                input.val(value);
+            });
+        });
+        
+        // Function to load category details
+        async function loadCategoryDetails(categoryId) {
+            try {
+                // Check if API is accessible
+                const apiAccessible = await checkApiAccess(API_BASE_URL);
+                if (!apiAccessible) {
+                    console.warn('API is not accessible. Using fallback category name.');
+                    $('.category-name').text('فئة المنتجات');
+                    $('.category-title').text('منتجات');
+                    document.title = `فئة المنتجات - Jojiz`;
+                    return;
+                }
+                
+                // Get current language
+                const currentLang = window.getCurrentLanguage ? window.getCurrentLanguage() : $('html').attr('lang') || 'ar';
+                
+                console.log('Loading category details for ID:', categoryId);
+                
+                // Try to fetch category details directly first
+                try {
+                    // Check if it's a documentId format
+                    let directUrl;
+                    if (categoryId.includes('_') || categoryId.length > 10) {
+                        // It's likely a documentId, use a filter
+                        directUrl = `${API_BASE_URL}/api/categories?filters[documentId][$eq]=${categoryId}&locale=${currentLang}`;
+                    } else {
+                        // Use the regular endpoint
+                        directUrl = `${API_BASE_URL}/api/categories/${categoryId}?locale=${currentLang}`;
+                    }
+                    
+                    console.log('Fetching category details:', directUrl);
+                    
+                    const response = await fetch(directUrl);
+                    const data = await response.json();
+                    
+                    console.log('Category details response:', data);
+                    
+                    // Handle different response formats
+                    if (categoryId.includes('_') || categoryId.length > 10) {
+                        // We used the filter endpoint, check for array response
+                        if (data.data && Array.isArray(data.data) && data.data.length > 0) {
+                            const category = data.data[0];
+                            const categoryName = category.attributes?.name || 'فئة';
+                            
+                            // Update page title
+                            document.title = `${categoryName} - ${window.siteSettings?.name || 'Jojiz'}`;
+                            
+                            // Update breadcrumb and category title
+                            $('.category-name').text(categoryName);
+                            $('.category-title').text(categoryName);
+                            return;
+                        }
+                    } else if (data.data && data.data.attributes) {
+                        // We have a direct match from the regular endpoint
+                        const categoryName = data.data.attributes.name || 'فئة';
+                        
+                        // Update page title
+                        document.title = `${categoryName} - ${window.siteSettings?.name || 'Jojiz'}`;
+                        
+                        // Update breadcrumb and category title
+                        $('.category-name').text(categoryName);
+                        $('.category-title').text(categoryName);
+                        return;
+                    }
+                    
+                    // If we get here, we didn't find the category with the direct approach
+                    // Try alternative endpoints
+                    
+                    // Try the categories endpoint without filters
+                    console.log('Trying categories endpoint without filters');
+                    const allCategoriesResponse = await fetch(`${API_BASE_URL}/api/categories?locale=${currentLang}`);
+                    const allCategoriesData = await allCategoriesResponse.json();
+                    
+                    if (allCategoriesData.data && Array.isArray(allCategoriesData.data)) {
+                        // Look for a matching category
+                        const matchingCategory = allCategoriesData.data.find(cat => {
+                            const catId = cat.id?.toString();
+                            const catDocId = cat.attributes?.documentId;
+                            return catId === categoryId || catDocId === categoryId;
+                        });
+                        
+                        if (matchingCategory) {
+                            const categoryName = matchingCategory.attributes?.name || 'فئة';
+                            
+                            // Update page title
+                            document.title = `${categoryName} - ${window.siteSettings?.name || 'Jojiz'}`;
+                            
+                            // Update breadcrumb and category title
+                            $('.category-name').text(categoryName);
+                            $('.category-title').text(categoryName);
+                            return;
+                        }
+                    }
+                    
+                    // If we still can't find the category, try the direct API
+                    console.log('Trying direct API for category');
+                    const directApiResponse = await fetch(`${API_BASE_URL}/categories/${categoryId}`);
+                    const directApiData = await directApiResponse.json();
+                    
+                    if (directApiData.success && directApiData.data) {
+                        const categoryName = directApiData.data.name || 'فئة';
+                        
+                        // Update page title
+                        document.title = `${categoryName} - ${window.siteSettings?.name || 'Jojiz'}`;
+                        
+                        // Update breadcrumb and category title
+                        $('.category-name').text(categoryName);
+                        $('.category-title').text(categoryName);
+                        return;
+                    }
+                    
+                    // If we get here, we didn't find the category
+                    throw new Error('Category not found in direct fetch');
+                    
+                } catch (directError) {
+                    console.error('Error in direct category fetch:', directError);
+                    
+                    // Try the list approach as fallback
+                    try {
+                        const result = await ContentService.getCategories();
+                        
+                        if (result.success && result.data) {
+                            // Find the category with the matching ID
+                            const category = result.data.find(cat => {
+                                // Check both documentId and regular id
+                                return (cat.documentId && cat.documentId === categoryId) || 
+                                       (cat.id && cat.id.toString() === categoryId);
+                            });
+                            
+                            if (category) {
+                                // Update page title
+                                document.title = `${category.name || category.attributes?.name} - ${window.siteSettings?.name || 'Jojiz'}`;
+                                
+                                // Update breadcrumb and category title
+                                const categoryName = category.attributes?.name || category.name;
+                                $('.category-name').text(categoryName);
+                                $('.category-title').text(categoryName);
+                                return;
+                            }
+                        }
+                    } catch (listError) {
+                        console.error('Error in list category fetch:', listError);
+                    }
+                    
+                    // If we get here, we couldn't find the category
+                    // Just use a default category name
+                    console.error('Category not found:', categoryId);
+                    // Show a generic category name
+                    $('.category-name').text('فئة');
+                    $('.category-title').text('منتجات');
+                }
+            } catch (error) {
+                console.error('Error in loadCategoryDetails:', error);
+                // Show a generic category name
+                $('.category-name').text('فئة');
+                $('.category-title').text('منتجات');
+            }
+        }
+        
+        // Function to load products for a category
+        async function loadCategoryProducts(categoryId) {
+            try {
+                console.log('=== CATEGORY PRODUCTS DEBUG ===');
+                console.log('Loading products for category ID:', categoryId);
+                
+                // Try different API endpoint structures to get products by category
+                let response, data;
+                let apiAccessible = true;
+                
+                try {
+                    // Check if API is accessible
+                    apiAccessible = await checkApiAccess(API_BASE_URL);
+                    console.log('API accessible:', apiAccessible);
+                    
+                    if (!apiAccessible) {
+                        console.warn('API is not accessible, using fallback products');
+                        throw new Error('API is not accessible');
+                    }
+                    
+                    // First try with direct category ID filter
+                    console.log('Trying with category id filter');
+                    const url1 = `${API_BASE_URL}/api/products?filters[category][id][$eq]=${categoryId}&populate=*`;
+                    console.log('URL 1:', url1);
+                    response = await fetch(url1, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'Access-Control-Allow-Origin': '*'
+                        },
+                        mode: 'cors',
+                        cache: 'no-cache'
+                    });
+                    data = await response.json();
+                    console.log('Category products response (by id):', data);
+                    console.log('Products found (by id):', data.data ? data.data.length : 0);
+                    
+                    // If no products found, try with documentId
+                    if (!data.data || data.data.length === 0) {
+                        console.log('Trying with category documentId filter');
+                        const url2 = `${API_BASE_URL}/api/products?filters[category][documentId][$eq]=${categoryId}&populate=*`;
+                        console.log('URL 2:', url2);
+                        response = await fetch(url2, {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json',
+                                'Access-Control-Allow-Origin': '*'
+                            },
+                            mode: 'cors',
+                            cache: 'no-cache'
+                        });
+                        data = await response.json();
+                        console.log('Category products response (by documentId):', data);
+                        console.log('Products found (by documentId):', data.data ? data.data.length : 0);
+                    }
+                    
+                    // If still no products, try fetching all products and filter client-side
+                    if (!data.data || data.data.length === 0) {
+                        console.log('Fetching all products and filtering by category');
+                        const url3 = `${API_BASE_URL}/api/products?populate=*`;
+                        console.log('URL 3:', url3);
+                        response = await fetch(url3, {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json',
+                                'Access-Control-Allow-Origin': '*'
+                            },
+                            mode: 'cors',
+                            cache: 'no-cache'
+                        });
+                        data = await response.json();
+                        console.log('All products response:', data);
+                        console.log('Total products found:', data.data ? data.data.length : 0);
+                        
+                        if (data.data && Array.isArray(data.data) && data.data.length > 0) {
+                            // Filter products by category
+                            const filteredProducts = data.data.filter(item => {
+                                const attrs = item.attributes || {};
+                                const category = attrs.category?.data;
+                                
+                                // Check if category matches by id or documentId
+                                if (category) {
+                                    const catId = category.id?.toString();
+                                    const catDocId = category.attributes?.documentId;
+                                    
+                                    return catId === categoryId || catDocId === categoryId;
+                                }
+                                
+                                return false;
+                            });
+                            
+                            // If we found products, use them
+                            if (filteredProducts.length > 0) {
+                                console.log('Found filtered products:', filteredProducts.length);
+                                data.data = filteredProducts;
+                            }
+                        }
+                    }
+                    
+                    // Try one more approach - direct API endpoint
+                    if (!data.data || data.data.length === 0) {
+                        console.log('Trying direct API endpoint');
+                        // Use the correct API endpoint format that was working previously
+                        response = await fetch(`${API_BASE_URL}/api/products?locale=ar&filters[category][documentId][$eq]=${categoryId}&pagination[page]=1&pagination[pageSize]=12&sort=createdAt:desc&populate=*`, {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json',
+                                'Access-Control-Allow-Origin': '*'
+                            },
+                            mode: 'cors',
+                            cache: 'no-cache'
+                        });
+                        data = await response.json();
+                        console.log('Direct API response:', data);
+                    }
+                    
+                    // Try the API endpoint that was working before
+                    if (!data.data || data.data.length === 0) {
+                        console.log('Trying API endpoint from api.js');
+                        const url5 = `${API_BASE_URL}/api/products?locale=ar&filters[category][documentId][$eq]=${categoryId}&pagination[page]=1&pagination[pageSize]=12&sort=createdAt:desc&populate=*`;
+                        console.log('URL 5:', url5);
+                        response = await fetch(url5, {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json',
+                                'Access-Control-Allow-Origin': '*'
+                            },
+                            mode: 'cors',
+                            cache: 'no-cache'
+                        });
+                        data = await response.json();
+                        console.log('API endpoint from api.js response:', data);
+                        console.log('Products found (api.js endpoint):', data.data ? data.data.length : 0);
+                    }
+                    
+                    // Try one more approach - direct API call without filters
+                    if (!data.data || data.data.length === 0) {
+                        console.log('Trying direct API call without filters');
+                        const url6 = `${API_BASE_URL}/products/category/${categoryId}`;
+                        console.log('URL 6:', url6);
+                        try {
+                            response = await fetch(url6, {
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Accept': 'application/json',
+                                    'Access-Control-Allow-Origin': '*'
+                                },
+                                mode: 'cors',
+                                cache: 'no-cache'
+                            });
+                            data = await response.json();
+                            console.log('Direct API call response:', data);
+                            console.log('Products found (direct API call):', data.data ? data.data.length : 0);
+                        } catch (directError) {
+                            console.error('Error in direct API call:', directError);
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error fetching products:', error);
+                    apiAccessible = false;
+                }
+                
+                let products = [];
+                
+                if (apiAccessible) {
+                    // Handle the response based on the API structure
+                    if (data && data.data && Array.isArray(data.data)) {
+                        console.log('Processing API response data:', data.data.length, 'products found');
+                        // Process the data from the Strapi API structure
+                        products = data.data.map(item => {
+                            // Log the raw item for debugging
+                            console.log('Raw product item:', item);
+                            
+                            // Handle both direct properties and attributes structure
+                            const attrs = item.attributes || item;
+                            
+                            // Log the product structure to debug
+                            console.log('Product name:', attrs.product_name || 'No name found');
+                            console.log('Product price:', attrs.product_price || 'No price found');
+                            console.log('Product image:', attrs.product_image || 'No image found');
+                            
+                            // Extract image URL with better error handling
+                            let imageUrl = '';
+                            if (attrs.product_image) {
+                                if (attrs.product_image.data && attrs.product_image.data.attributes) {
+                                    // New Strapi structure with data.attributes
+                                    imageUrl = attrs.product_image.data.attributes.url;
+                                    if (!imageUrl.startsWith('http')) {
+                                        imageUrl = API_BASE_URL + imageUrl;
+                                    }
+                                    console.log('Image URL (data.attributes):', imageUrl);
+                                } else if (attrs.product_image.data && attrs.product_image.data.url) {
+                                    // New Strapi structure with data.url
+                                    imageUrl = attrs.product_image.data.url;
+                                    if (!imageUrl.startsWith('http')) {
+                                        imageUrl = API_BASE_URL + imageUrl;
+                                    }
+                                    console.log('Image URL (data.url):', imageUrl);
+                                } else if (attrs.product_image.url) {
+                                    // Direct URL structure
+                                    imageUrl = attrs.product_image.url;
+                                    if (!imageUrl.startsWith('http')) {
+                                        imageUrl = API_BASE_URL + imageUrl;
+                                    }
+                                    console.log('Image URL (direct url):', imageUrl);
+                                } else if (typeof attrs.product_image === 'object' && attrs.product_image.url) {
+                                    // Direct object with URL
+                                    imageUrl = attrs.product_image.url;
+                                    if (!imageUrl.startsWith('http')) {
+                                        imageUrl = API_BASE_URL + imageUrl;
+                                    }
+                                    console.log('Image URL (object url):', imageUrl);
+                                } else if (typeof attrs.product_image === 'string') {
+                                    // Direct string URL
+                                    imageUrl = attrs.product_image.startsWith('http') ? 
+                                        attrs.product_image : API_BASE_URL + attrs.product_image;
+                                    console.log('Image URL (string):', imageUrl);
+                                }
+                            }
+                            
+                            console.log('Extracted image URL:', imageUrl);
+                            
+                            // Process product media if available
+                            const productMedia = [];
+                            if (attrs.product_media) {
+                                if (Array.isArray(attrs.product_media)) {
+                                    // Direct array of media
+                                    attrs.product_media.forEach(media => {
+                                        if (media.url) {
+                                            let mediaUrl = media.url;
+                                            if (!mediaUrl.startsWith('http')) {
+                                                mediaUrl = API_BASE_URL + mediaUrl;
+                                            }
+                                            productMedia.push(mediaUrl);
+                                        }
+                                    });
+                                } else if (attrs.product_media.data) {
+                                    // Strapi structure with data
+                                    const mediaData = Array.isArray(attrs.product_media.data) ? 
+                                        attrs.product_media.data : [attrs.product_media.data];
+                                    
+                                    mediaData.forEach(media => {
+                                        if (media.attributes && media.attributes.url) {
+                                            let mediaUrl = media.attributes.url;
+                                            if (!mediaUrl.startsWith('http')) {
+                                                mediaUrl = API_BASE_URL + mediaUrl;
+                                            }
+                                            productMedia.push(mediaUrl);
+                                        } else if (media.url) {
+                                            let mediaUrl = media.url;
+                                            if (!mediaUrl.startsWith('http')) {
+                                                mediaUrl = API_BASE_URL + mediaUrl;
+                                            }
+                                            productMedia.push(mediaUrl);
+                                        }
+                                    });
+                                }
+                            }
+                            
+                            console.log('Extracted media URLs:', productMedia);
+                            
+                            // Combine main image with media images
+                            const allImages = imageUrl ? [imageUrl, ...productMedia] : productMedia;
+                            
+                            // Get product ID
+                            const productId = attrs.documentId || item.id || item.documentId;
+                            console.log('Product ID:', productId);
+                            
+                            return {
+                                _id: productId,
+                                name: attrs.product_name || 'منتج بدون اسم',
+                                price: attrs.product_price || 0,
+                                description: attrs.product_description || '',
+                                images: allImages.length > 0 ? allImages : []
+                            };
+                        });
+                    } else if (data && data.success && data.data) {
+                        // Handle the direct API response format
+                        console.log('Processing direct API response data');
+                        products = data.data;
+                    } else {
+                        console.warn('No valid data structure found in API response');
+                    }
+                }
+                
+                const productsContainer = $('.products-grid');
+                
+                // Clear container
+                productsContainer.empty();
+                
+                if (products.length === 0) {
+                    console.log('No products found, trying alternative approaches');
+                    
+                    if (apiAccessible) {
+                        // Try one last approach - fetch products directly from a different endpoint
+                        try {
+                            console.log('Trying alternative API endpoint');
+                            // Use the correct API endpoint format
+                            const altUrl = `${API_BASE_URL}/api/products?locale=ar&populate=*&pagination[page]=1&pagination[pageSize]=12&sort=createdAt:desc`;
+                            console.log('Alternative URL:', altUrl);
+                            const altResponse = await fetch(altUrl, {
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Accept': 'application/json',
+                                    'Access-Control-Allow-Origin': '*'
+                                },
+                                mode: 'cors',
+                                cache: 'no-cache'
+                            });
+                            const altData = await altResponse.json();
+                            console.log('Alternative API response:', altData);
+                            console.log('Products found in alternative API:', altData.data ? altData.data.length : 0);
+                            
+                            if (altData.data && Array.isArray(altData.data) && altData.data.length > 0) {
+                                console.log('Found products in alternative API:', altData.data.length);
+                                // Just show all products if we can't filter by category
+                                products = altData.data.map(item => {
+                                    const attrs = item.attributes || {};
+                                    console.log('Alt product name:', attrs.product_name || 'No name found');
+                                    
+                                    // Extract image URL with better error handling
+                                    let imageUrl = '';
+                                    if (attrs.product_image) {
+                                        if (attrs.product_image.data && attrs.product_image.data.attributes) {
+                                            // New Strapi structure
+                                            imageUrl = attrs.product_image.data.attributes.url;
+                                            if (!imageUrl.startsWith('http')) {
+                                                imageUrl = API_BASE_URL + imageUrl;
+                                            }
+                                        } else if (attrs.product_image.data && attrs.product_image.data.url) {
+                                            // New Strapi structure with data.url
+                                            imageUrl = attrs.product_image.data.url;
+                                            if (!imageUrl.startsWith('http')) {
+                                                imageUrl = API_BASE_URL + imageUrl;
+                                            }
+                                        } else if (attrs.product_image.url) {
+                                            // Direct URL structure
+                                            imageUrl = attrs.product_image.url;
+                                            if (!imageUrl.startsWith('http')) {
+                                                imageUrl = API_BASE_URL + imageUrl;
+                                            }
+                                        } else if (typeof attrs.product_image === 'object' && attrs.product_image.url) {
+                                            // Direct object with URL
+                                            imageUrl = attrs.product_image.url;
+                                            if (!imageUrl.startsWith('http')) {
+                                                imageUrl = API_BASE_URL + imageUrl;
+                                            }
+                                        } else if (typeof attrs.product_image === 'string') {
+                                            // Direct string URL
+                                            imageUrl = attrs.product_image.startsWith('http') ? 
+                                                attrs.product_image : API_BASE_URL + attrs.product_image;
+                                        }
+                                    }
+                                    console.log('Alt product image URL:', imageUrl);
+                                    
+                                    return {
+                                        _id: attrs.documentId || item.id,
+                                        name: attrs.product_name || 'منتج بدون اسم',
+                                        price: attrs.product_price || 0,
+                                        description: attrs.product_description || '',
+                                        images: imageUrl ? [imageUrl] : []
+                                    };
+                                });
+                            }
+                        } catch (altError) {
+                            console.error('Error fetching alternative products:', altError);
+                        }
+                    } else {
+                        // Use fallback products if API is not accessible
+                        console.log('Using fallback products');
+                        products = getFallbackProducts();
+                        console.log('Fallback products:', products.length);
+                    }
+                }
+                
+                // If still no products, show the no products message
+                if (products.length === 0) {
+                    console.warn('No products found after all attempts, showing empty message');
+                    productsContainer.html('<div class="no-products">لا توجد منتجات في هذه الفئة</div>');
+                    return;
+                }
+                
+                console.log('Final processed products:', products.length);
+                console.log('First product example:', products[0]);
+                
+                // Store products in global array for reference
+                window.allProducts = products;
+                
+                // Add products to container
+                console.log('Adding products to container');
+                products.forEach((product, index) => {
+                    const productId = product._id || product.id || product.documentId;
+                    console.log(`Adding product ${index + 1}/${products.length} with ID: ${productId}`);
+                    
+                    const productHTML = `
+                        <div class="product-item" data-id="${productId}">
+                            <div class="product-image">
+                                ${product.images && product.images.length > 0 ? 
+                                    `<img src="${product.images[0]}" alt="${product.name}" onerror="console.log('Image load error for: ${product.name}');">
+                                    <div class="placeholder-image" style="display:none;"><i class="fas fa-image"></i></div>` : 
+                                    `<div class="placeholder-image"><i class="fas fa-image"></i></div>`
+                                }
+                                <div class="product-actions">
+                                    <button class="quick-view-btn" data-product-id="${productId}"><i class="fas fa-eye"></i></button>
+                                    <button class="add-to-cart-btn" data-product-id="${productId}"><i class="fas fa-shopping-cart"></i></button>
+                                    <button class="add-to-wishlist-btn" data-product-id="${productId}"><i class="fas fa-heart"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-details">
+                                <h3 class="product-name"><a href="product.html?id=${productId}">${product.name}</a></h3>
+                                <div class="product-price">${formatPrice(product.price)}</div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    productsContainer.append(productHTML);
+                });
+                
+                console.log('Products added to container, adding event handlers');
+                
+                // Add event handlers for product actions
+                $('.add-to-cart-btn').off('click').on('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const productId = $(this).data('product-id');
+                    console.log('Add to cart button clicked for product:', productId);
+                    addToLocalCart(productId, 1);
+                });
+                
+                $('.add-to-wishlist-btn').on('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const productId = $(this).data('product-id');
+                    toggleLocalFavorite(productId);
+                });
+                
+                // Update favorite buttons to show active state
+                updateFavoriteButtons();
+                
+                // Handle image errors
+                $('.product-image img').on('error', function() {
+                    console.log('Image failed to load, showing placeholder');
+                    $(this).hide();
+                    $(this).siblings('.placeholder-image').show();
+                });
+                
+                // Make product item clickable to go to product page
+                $('.product-item').on('click', function() {
+                    const productId = $(this).data('id');
+                    window.location.href = `product.html?id=${productId}`;
+                });
+                
+                console.log('Product loading complete');
+            } catch (error) {
+                console.error('Error loading products:', error);
+                $('.products-grid').html('<div class="error-products">عذراً، حدث خطأ أثناء تحميل المنتجات. يرجى المحاولة مرة أخرى لاحقاً.</div>');
+            }
+        }
+        
+        // Function to generate pagination
+        function generatePagination(pagination, options) {
+            const paginationContainer = $('.pagination');
+            paginationContainer.empty();
+            
+            const { page, pageSize, total, pageCount } = pagination;
+            
+            if (pageCount <= 1) {
+                return; // No pagination needed
+            }
+            
+            let paginationHTML = '<ul class="pagination-list">';
+            
+            // Previous button
+            if (page > 1) {
+                paginationHTML += `<li><a href="#" data-page="${page - 1}" class="pagination-link prev"><i class="fas fa-chevron-right"></i></a></li>`;
+            } else {
+                paginationHTML += `<li><span class="pagination-link disabled"><i class="fas fa-chevron-right"></i></span></li>`;
+            }
+            
+            // Page numbers
+            const maxPages = 5; // Maximum number of page links to show
+            let startPage = Math.max(1, page - Math.floor(maxPages / 2));
+            let endPage = Math.min(pageCount, startPage + maxPages - 1);
+            
+            if (endPage - startPage + 1 < maxPages) {
+                startPage = Math.max(1, endPage - maxPages + 1);
+            }
+            
+            // First page
+            if (startPage > 1) {
+                paginationHTML += `<li><a href="#" data-page="1" class="pagination-link">1</a></li>`;
+                if (startPage > 2) {
+                    paginationHTML += `<li><span class="pagination-ellipsis">...</span></li>`;
+                }
+            }
+            
+            // Page numbers
+            for (let i = startPage; i <= endPage; i++) {
+                if (i === page) {
+                    paginationHTML += `<li><span class="pagination-link current">${i}</span></li>`;
+                } else {
+                    paginationHTML += `<li><a href="#" data-page="${i}" class="pagination-link">${i}</a></li>`;
+                }
+            }
+            
+            // Last page
+            if (endPage < pageCount) {
+                if (endPage < pageCount - 1) {
+                    paginationHTML += `<li><span class="pagination-ellipsis">...</span></li>`;
+                }
+                paginationHTML += `<li><a href="#" data-page="${pageCount}" class="pagination-link">${pageCount}</a></li>`;
+            }
+            
+            // Next button
+            if (page < pageCount) {
+                paginationHTML += `<li><a href="#" data-page="${page + 1}" class="pagination-link next"><i class="fas fa-chevron-left"></i></a></li>`;
+            } else {
+                paginationHTML += `<li><span class="pagination-link disabled"><i class="fas fa-chevron-left"></i></span></li>`;
+            }
+            
+            paginationHTML += '</ul>';
+            
+            paginationContainer.html(paginationHTML);
+            
+            // Add event listeners to pagination links
+            $('.pagination-link').not('.disabled').on('click', function(e) {
+                e.preventDefault();
+                const newPage = $(this).data('page');
+                const categoryId = new URLSearchParams(window.location.search).get('id');
+                loadCategoryProducts(categoryId, { ...options, page: newPage });
+                
+                // Scroll to top of products
+                $('html, body').animate({
+                    scrollTop: $('.category-products').offset().top - 100
+                }, 500);
+            });
+        }
+        
+        // Function to open quick view modal
+        async function openQuickViewModal(productId) {
+            try {
+                // Show loading state
+                if (!$('.quick-view-modal').length) {
+                    // Create modal if it doesn't exist
+                    $('body').append(`
+                        <div class="quick-view-modal">
+                            <div class="modal-overlay"></div>
+                            <div class="modal-content">
+                                <button class="close-modal"><i class="fas fa-times"></i></button>
+                                <div class="modal-body">
+                                    <div class="loading">جاري التحميل...</div>
+                                </div>
+                            </div>
+                        </div>
+                    `);
+                    
+                    // Handle close modal
+                    $('.quick-view-modal .close-modal, .quick-view-modal .modal-overlay').on('click', function() {
+                        closeQuickViewModal();
+                    });
+                } else {
+                    // Show loading state
+                    $('.quick-view-modal .modal-body').html('<div class="loading">جاري التحميل...</div>');
+                }
+                
+                // Show modal
+                $('.quick-view-modal').addClass('active');
+                
+                // Try to fetch product details using different API endpoints
+                let product = null;
+                
+                // First try with documentId
+                try {
+                    const response = await fetch(`${API_BASE_URL}/api/products?filters[documentId][$eq]=${productId}&populate=*&locale=ar`);
+                    const data = await response.json();
+                    
+                    console.log('Quick view product response (by documentId):', data);
+                    
+                    if (data.data && Array.isArray(data.data) && data.data.length > 0) {
+                        // New API structure
+                        const item = data.data[0];
+                        // Log the raw item for debugging
+                        console.log('Quick view raw product item:', item);
+                        
+                        // Handle both direct properties and attributes structure
+                        const attrs = item.attributes || item;
+                        
+                        // Log the product structure to debug
+                        console.log('Quick view product name:', attrs.product_name || 'No name found');
+                        console.log('Quick view product price:', attrs.product_price || 'No price found');
+                        console.log('Quick view product image:', attrs.product_image || 'No image found');
+                        
+                        // Extract image URL with better error handling
+                        let imageUrl = '';
+                        if (attrs.product_image) {
+                            if (attrs.product_image.data && attrs.product_image.data.attributes) {
+                                // New Strapi structure with data.attributes
+                                imageUrl = attrs.product_image.data.attributes.url;
+                                if (!imageUrl.startsWith('http')) {
+                                    imageUrl = API_BASE_URL + imageUrl;
+                                }
+                                console.log('Image URL (data.attributes):', imageUrl);
+                            } else if (attrs.product_image.data && attrs.product_image.data.url) {
+                                // New Strapi structure with data.url
+                                imageUrl = attrs.product_image.data.url;
+                                if (!imageUrl.startsWith('http')) {
+                                    imageUrl = API_BASE_URL + imageUrl;
+                                }
+                                console.log('Image URL (data.url):', imageUrl);
+                            } else if (attrs.product_image.url) {
+                                // Direct URL structure
+                                imageUrl = attrs.product_image.url;
+                                if (!imageUrl.startsWith('http')) {
+                                    imageUrl = API_BASE_URL + imageUrl;
+                                }
+                                console.log('Image URL (direct url):', imageUrl);
+                            } else if (typeof attrs.product_image === 'object' && attrs.product_image.url) {
+                                // Direct object with URL
+                                imageUrl = attrs.product_image.url;
+                                if (!imageUrl.startsWith('http')) {
+                                    imageUrl = API_BASE_URL + imageUrl;
+                                }
+                                console.log('Image URL (object url):', imageUrl);
+                            } else if (typeof attrs.product_image === 'string') {
+                                // Direct string URL
+                                imageUrl = attrs.product_image.startsWith('http') ? 
+                                    attrs.product_image : API_BASE_URL + attrs.product_image;
+                                console.log('Image URL (string):', imageUrl);
+                            }
+                        }
+                        
+                        console.log('Quick view extracted image URL:', imageUrl);
+                        
+                        // Process product media if available
+                        const productMedia = [];
+                        if (attrs.product_media) {
+                            if (Array.isArray(attrs.product_media)) {
+                                // Direct array of media
+                                attrs.product_media.forEach(media => {
+                                    if (media.url) {
+                                        let mediaUrl = media.url;
+                                        if (!mediaUrl.startsWith('http')) {
+                                            mediaUrl = API_BASE_URL + mediaUrl;
+                                        }
+                                        productMedia.push(mediaUrl);
+                                    }
+                                });
+                            } else if (attrs.product_media.data) {
+                                // Strapi structure with data
+                                const mediaData = Array.isArray(attrs.product_media.data) ? 
+                                    attrs.product_media.data : [attrs.product_media.data];
+                                
+                                mediaData.forEach(media => {
+                                    if (media.attributes && media.attributes.url) {
+                                        let mediaUrl = media.attributes.url;
+                                        if (!mediaUrl.startsWith('http')) {
+                                            mediaUrl = API_BASE_URL + mediaUrl;
+                                        }
+                                        productMedia.push(mediaUrl);
+                                    } else if (media.url) {
+                                        let mediaUrl = media.url;
+                                        if (!mediaUrl.startsWith('http')) {
+                                            mediaUrl = API_BASE_URL + mediaUrl;
+                                        }
+                                        productMedia.push(mediaUrl);
+                                    }
+                                });
+                            }
+                        }
+                        
+                        console.log('Quick view extracted media URLs:', productMedia);
+                        
+                        // Combine main image with media images
+                        const allImages = imageUrl ? [imageUrl, ...productMedia] : productMedia;
+                        
+                        // Get product ID
+                        const productId = attrs.documentId || item.id || item.documentId;
+                        console.log('Quick view product ID:', productId);
+                        
+                        product = {
+                            _id: productId,
+                            name: attrs.product_name || 'منتج بدون اسم',
+                            price: parseFloat(attrs.product_price) || 0,
+                            description: attrs.product_description || 'لا يوجد وصف متاح لهذا المنتج.',
+                            images: allImages.length > 0 ? allImages : []
+                        };
+                    }
+                } catch (error) {
+                    console.error('Error fetching product by documentId:', error);
+                }
+                
+                // If product not found, try by ID
+                if (!product) {
+                    try {
+                        const response = await fetch(`${API_BASE_URL}/api/products/${productId}?populate=*&locale=ar`);
+                        const data = await response.json();
+                        
+                        console.log('Quick view product response (by ID):', data);
+                        
+                        if (data.data) {
+                            const item = data.data;
+                            // Log the raw item for debugging
+                            console.log('Quick view raw product item (by ID):', item);
+                            
+                            // Handle both direct properties and attributes structure
+                            const attrs = item.attributes || item;
+                            
+                            // Log the product structure to debug
+                            console.log('Quick view product name (by ID):', attrs.product_name || 'No name found');
+                            console.log('Quick view product price (by ID):', attrs.product_price || 'No price found');
+                            console.log('Quick view product image (by ID):', attrs.product_image || 'No image found');
+                            
+                            // Extract image URL with better error handling
+                            let imageUrl = '';
+                            if (attrs.product_image) {
+                                if (attrs.product_image.data && attrs.product_image.data.attributes) {
+                                    // New Strapi structure with data.attributes
+                                    imageUrl = API_BASE_URL + attrs.product_image.data.attributes.url;
+                                } else if (attrs.product_image.data && attrs.product_image.data.url) {
+                                    // New Strapi structure with data.url
+                                    imageUrl = API_BASE_URL + attrs.product_image.data.url;
+                                } else if (attrs.product_image.url) {
+                                    // Direct URL structure
+                                    imageUrl = API_BASE_URL + attrs.product_image.url;
+                                } else if (typeof attrs.product_image === 'object' && attrs.product_image.url) {
+                                    // Direct object with URL
+                                    imageUrl = API_BASE_URL + attrs.product_image.url;
+                                } else if (typeof attrs.product_image === 'string') {
+                                    // Direct string URL
+                                    imageUrl = attrs.product_image.startsWith('http') ? 
+                                        attrs.product_image : API_BASE_URL + attrs.product_image;
+                                }
+                            }
+                            
+                            console.log('Quick view extracted image URL (by ID):', imageUrl);
+                            
+                            // Process product media if available
+                            const productMedia = [];
+                            if (attrs.product_media) {
+                                if (Array.isArray(attrs.product_media)) {
+                                    // Direct array of media
+                                    attrs.product_media.forEach(media => {
+                                        if (media.url) {
+                                            let mediaUrl = media.url;
+                                            if (!mediaUrl.startsWith('http')) {
+                                                mediaUrl = API_BASE_URL + mediaUrl;
+                                            }
+                                            productMedia.push(mediaUrl);
+                                        }
+                                    });
+                                } else if (attrs.product_media.data) {
+                                    // Strapi structure with data
+                                    const mediaData = Array.isArray(attrs.product_media.data) ? 
+                                        attrs.product_media.data : [attrs.product_media.data];
+                                    
+                                    mediaData.forEach(media => {
+                                        if (media.attributes && media.attributes.url) {
+                                            let mediaUrl = media.attributes.url;
+                                            if (!mediaUrl.startsWith('http')) {
+                                                mediaUrl = API_BASE_URL + mediaUrl;
+                                            }
+                                            productMedia.push(mediaUrl);
+                                        } else if (media.url) {
+                                            let mediaUrl = media.url;
+                                            if (!mediaUrl.startsWith('http')) {
+                                                mediaUrl = API_BASE_URL + mediaUrl;
+                                            }
+                                            productMedia.push(mediaUrl);
+                                        }
+                                    });
+                                }
+                            }
+                            
+                            console.log('Quick view extracted media URLs (by ID):', productMedia);
+                            
+                            // Combine main image with media images
+                            const allImages = imageUrl ? [imageUrl, ...productMedia] : productMedia;
+                            
+                            // Get product ID
+                            const productId = attrs.documentId || item.id || item.documentId;
+                            console.log('Quick view product ID (by ID):', productId);
+                            
+                            product = {
+                                _id: productId,
+                                name: attrs.product_name || 'منتج بدون اسم',
+                                price: parseFloat(attrs.product_price) || 0,
+                                description: attrs.product_description || 'لا يوجد وصف متاح لهذا المنتج.',
+                                images: allImages.length > 0 ? allImages : []
+                            };
+                        }
+                    } catch (error) {
+                        console.error('Error fetching product by ID:', error);
+                    }
+                }
+                
+                // If product still not found, try the direct API
+                if (!product) {
+                    try {
+                        const response = await fetch(`${API_BASE_URL}/api/products?locale=ar&populate=*&pagination[page]=1&pagination[pageSize]=12`);
+                        const data = await response.json();
+                        
+                        console.log('Quick view product response (all products):', data);
+                        
+                        if (data.data && Array.isArray(data.data)) {
+                            // Find the product with the matching ID
+                            const matchingProduct = data.data.find(item => {
+                                const itemId = item.id?.toString();
+                                const itemDocId = item.attributes?.documentId;
+                                return itemId === productId || itemDocId === productId;
+                            });
+                            
+                            if (matchingProduct) {
+                                // Log the raw item for debugging
+                                console.log('Quick view raw product item (all products):', matchingProduct);
+                                
+                                // Handle both direct properties and attributes structure
+                                const attrs = matchingProduct.attributes || matchingProduct;
+                                
+                                // Log the product structure to debug
+                                console.log('Quick view product name (all products):', attrs.product_name || 'No name found');
+                                console.log('Quick view product price (all products):', attrs.product_price || 'No price found');
+                                console.log('Quick view product image (all products):', attrs.product_image || 'No image found');
+                                
+                                // Extract image URL with better error handling
+                                let imageUrl = '';
+                                if (attrs.product_image) {
+                                    if (attrs.product_image.data && attrs.product_image.data.attributes) {
+                                        // New Strapi structure with data.attributes
+                                        imageUrl = API_BASE_URL + attrs.product_image.data.attributes.url;
+                                    } else if (attrs.product_image.data && attrs.product_image.data.url) {
+                                        // New Strapi structure with data.url
+                                        imageUrl = API_BASE_URL + attrs.product_image.data.url;
+                                    } else if (attrs.product_image.url) {
+                                        // Direct URL structure
+                                        imageUrl = API_BASE_URL + attrs.product_image.url;
+                                    } else if (typeof attrs.product_image === 'object' && attrs.product_image.url) {
+                                        // Direct object with URL
+                                        imageUrl = API_BASE_URL + attrs.product_image.url;
+                                    } else if (typeof attrs.product_image === 'string') {
+                                        // Direct string URL
+                                        imageUrl = attrs.product_image.startsWith('http') ? 
+                                            attrs.product_image : API_BASE_URL + attrs.product_image;
+                                    }
+                                }
+                                
+                                console.log('Quick view extracted image URL (all products):', imageUrl);
+                                
+                                // Process product media if available
+                                const productMedia = [];
+                                if (attrs.product_media) {
+                                    if (Array.isArray(attrs.product_media)) {
+                                        // Direct array of media
+                                        attrs.product_media.forEach(media => {
+                                            if (media.url) {
+                                                let mediaUrl = media.url;
+                                                if (!mediaUrl.startsWith('http')) {
+                                                    mediaUrl = API_BASE_URL + mediaUrl;
+                                                }
+                                                productMedia.push(mediaUrl);
+                                            }
+                                        });
+                                    } else if (attrs.product_media.data) {
+                                        // Strapi structure with data
+                                        const mediaData = Array.isArray(attrs.product_media.data) ? 
+                                            attrs.product_media.data : [attrs.product_media.data];
+                                        
+                                        mediaData.forEach(media => {
+                                            if (media.attributes && media.attributes.url) {
+                                                let mediaUrl = media.attributes.url;
+                                                if (!mediaUrl.startsWith('http')) {
+                                                    mediaUrl = API_BASE_URL + mediaUrl;
+                                                }
+                                                productMedia.push(mediaUrl);
+                                            } else if (media.url) {
+                                                let mediaUrl = media.url;
+                                                if (!mediaUrl.startsWith('http')) {
+                                                    mediaUrl = API_BASE_URL + mediaUrl;
+                                                }
+                                                productMedia.push(mediaUrl);
+                                            }
+                                        });
+                                    }
+                                }
+                                
+                                console.log('Quick view extracted media URLs (all products):', productMedia);
+                                
+                                // Combine main image with media images
+                                const allImages = imageUrl ? [imageUrl, ...productMedia] : productMedia;
+                                
+                                // Get product ID
+                                const productId = attrs.documentId || matchingProduct.id || matchingProduct.documentId;
+                                console.log('Quick view product ID (all products):', productId);
+                                
+                                product = {
+                                    _id: productId,
+                                    name: attrs.product_name || 'منتج بدون اسم',
+                                    price: parseFloat(attrs.product_price) || 0,
+                                    description: attrs.product_description || 'لا يوجد وصف متاح لهذا المنتج.',
+                                    images: allImages.length > 0 ? allImages : []
+                                };
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Error fetching product from all products:', error);
+                    }
+                }
+                
+                if (product) {
+                    console.log('Final product data for quick view:', product);
+                    
+                    // Update modal content
+                    const modalContent = `
+                        <div class="product-quick-view">
+                            <div class="product-images">
+                                <div class="main-image">
+                                    ${product.images && product.images.length > 0 ? 
+                                        `<img src="${product.images[0]}" alt="${product.name}" onerror="$(this).hide(); $(this).siblings('.placeholder-image').show(); console.log('Quick view image load error for: ${product.name}');">
+                                        <div class="placeholder-image" style="display:none;"><i class="fas fa-image"></i></div>` : 
+                                        `<div class="placeholder-image"><i class="fas fa-image"></i></div>`
+                                    }
+                                </div>
+                                ${product.images && product.images.length > 1 ? 
+                                    `<div class="thumbnail-images">
+                                        ${product.images.map((image, index) => 
+                                            `<div class="thumbnail ${index === 0 ? 'active' : ''}">
+                                                <img src="${image}" alt="${product.name}" onerror="$(this).hide(); $(this).siblings('.placeholder-image').show(); console.log('Thumbnail image load error');">
+                                                <div class="placeholder-image" style="display:none;"><i class="fas fa-image"></i></div>
+                                            </div>`
+                                        ).join('')}
+                                    </div>` : 
+                                    ''
+                                }
+                            </div>
+                            <div class="product-info">
+                                <h2 class="product-name">${product.name}</h2>
+                                <div class="product-price">${formatPrice(product.price)}</div>
+                                <div class="product-description">${product.description || 'لا يوجد وصف متاح لهذا المنتج.'}</div>
+                                <div class="product-actions">
+                                    <div class="quantity-selector">
+                                        <label>الكمية:</label>
+                                        <div class="quantity-input-group">
+                                            <button class="quantity-btn minus"><i class="fas fa-minus"></i></button>
+                                            <input type="number" class="quantity-input" value="1" min="1">
+                                            <button class="quantity-btn plus"><i class="fas fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="action-buttons">
+                                        <button class="add-to-cart-btn" data-product-id="${product._id}">إضافة إلى السلة</button>
+                                        <button class="add-to-wishlist-btn" data-product-id="${product._id}"><i class="fas fa-heart"></i></button>
+                                    </div>
+                                    <a href="product.html?id=${product._id}" class="view-details-btn">عرض التفاصيل</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Update modal body
+                    $('.quick-view-modal .modal-body').html(modalContent);
+                    
+                    // Handle thumbnail click
+                    $('.quick-view-modal .thumbnail').on('click', function() {
+                        const imageUrl = $(this).find('img').attr('src');
+                        $('.quick-view-modal .main-image img').attr('src', imageUrl).show();
+                        $('.quick-view-modal .main-image .placeholder-image').hide();
+                        $('.quick-view-modal .thumbnail').removeClass('active');
+                        $(this).addClass('active');
+                    });
+                    
+                    // Handle quantity buttons
+                    $('.quick-view-modal .quantity-btn.minus').on('click', function() {
+                        const input = $('.quick-view-modal .quantity-input');
+                        const value = parseInt(input.val()) - 1;
+                        if (value < 1) return;
+                        input.val(value);
+                    });
+                    
+                    $('.quick-view-modal .quantity-btn.plus').on('click', function() {
+                        const input = $('.quick-view-modal .quantity-input');
+                        const value = parseInt(input.val()) + 1;
+                        input.val(value);
+                    });
+                    
+                    // Handle add to cart button
+                    $('.quick-view-modal .add-to-cart-btn').on('click', function() {
+                        const quantity = parseInt($('.quick-view-modal .quantity-input').val()) || 1;
+                        console.log('Quick view modal add to cart button clicked for product:', product._id, 'quantity:', quantity);
+                        addToLocalCart(product._id, quantity);
+                    });
+                    
+                    // Handle add to wishlist button
+                    $('.quick-view-modal .add-to-wishlist-btn').on('click', function() {
+                        toggleLocalFavorite(product._id);
+                    });
+                } else {
+                    // Show error
+                    $('.quick-view-modal .modal-body').html(`
+                        <div class="error">
+                            <p>عذراً، حدث خطأ أثناء تحميل تفاصيل المنتج.</p>
+                            <button class="close-modal-btn">إغلاق</button>
+                        </div>
+                    `);
+                    
+                    // Handle close button
+                    $('.quick-view-modal .close-modal-btn').on('click', function() {
+                        closeQuickViewModal();
+                    });
+                }
+            } catch (error) {
+                console.error('Error in openQuickViewModal:', error);
+                
+                // Show error
+                $('.quick-view-modal .modal-body').html(`
+                    <div class="error">
+                        <p>عذراً، حدث خطأ أثناء تحميل تفاصيل المنتج.</p>
+                        <button class="close-modal-btn">إغلاق</button>
+                    </div>
+                `);
+                
+                // Handle close button
+                $('.quick-view-modal .close-modal-btn').on('click', function() {
+                    closeQuickViewModal();
+                });
+            }
+        }
+        
+        // Function to close quick view modal
+        function closeQuickViewModal() {
+            $('.quick-view-modal').removeClass('active');
+        }
+        
+        // Function to add product to cart
+        async function addToCart(productId, quantity = 1) {
+            console.log('Adding product to cart:', productId, 'quantity:', quantity);
+            
+            // Use the CartService to add the item
+            const result = await CartService.addItem(productId, quantity);
+            console.log('Add to cart result:', result);
+            
+            if (result.success) {
+                // Show success message
+                showNotification('تمت إضافة المنتج إلى السلة بنجاح', 'success');
+                
+                // Update cart UI
+                CartService.updateCartUI();
+            } else {
+                // Show error message
+                showNotification(result.message || 'حدث خطأ أثناء إضافة المنتج إلى السلة', 'error');
+            }
+        }
+        
+        // Function to add product to wishlist
+        function addToWishlist(productId) {
+            // Here you would implement the actual wishlist functionality
+            // For now, we'll just show a notification
+            showNotification('تمت إضافة المنتج إلى المفضلة', 'success');
+        }
+        
+        // Local Cart Functions
+        function initLocalCart() {
+            if (!localStorage.getItem('localCart')) {
+                localStorage.setItem('localCart', JSON.stringify({
+                    items: [],
+                    total: 0
+                }));
+            }
+            updateCartBadge();
+        }
+        
+        function getLocalCart() {
+            return JSON.parse(localStorage.getItem('localCart')) || { items: [], total: 0 };
+        }
+        
+        function saveLocalCart(cart) {
+            localStorage.setItem('localCart', JSON.stringify(cart));
+            updateCartBadge();
+            
+            // Update cart modal if it's open
+            if ($('.cart-modal').hasClass('active')) {
+                updateCartItems();
+            }
+        }
+        
+        function updateCartBadge() {
+            const cart = getLocalCart();
+            const itemCount = cart.items.reduce((total, item) => total + item.quantity, 0);
+            
+            // Update cart count in header
+            $('.cart span').text(formatPrice(cart.total));
+            
+            // Add badge if there are items
+            if (itemCount > 0) {
+                if ($('.cart-badge').length === 0) {
+                    $('.cart').append(`<span class="cart-badge">${itemCount}</span>`);
+                } else {
+                    $('.cart-badge').text(itemCount);
+                }
+            } else {
+                $('.cart-badge').remove();
+            }
+        }
+        
+        function addToLocalCart(productId, quantity = 1) {
+            try {
+                console.log('Adding product to local cart:', productId, 'quantity:', quantity);
+                const cart = getLocalCart();
+                console.log('Current cart before adding:', cart);
+                
+                // Find product in products array
+                const products = window.allProducts || [];
+                const product = products.find(p => (p._id === productId || p.id === productId || p.documentId === productId));
+                
+                if (!product) {
+                    console.warn('Product not found in local products array:', productId);
+                    // Try to find in DOM
+                    const productName = $(`.product-item[data-id="${productId}"] .product-name`).text() || 'منتج';
+                    const productPrice = parseFloat($(`.product-item[data-id="${productId}"] .product-price`).text().replace(/[^\d.-]/g, '')) || 0;
+                    const productImage = $(`.product-item[data-id="${productId}"] .product-image img`).attr('src') || '';
+                    
+                    console.log('Product info from DOM:', {
+                        name: productName,
+                        price: productPrice,
+                        image: productImage
+                    });
+                    
+                    // Add to cart
+                    const existingItem = cart.items.find(item => item.productId === productId);
+                    
+                    if (existingItem) {
+                        console.log('Product already in cart, updating quantity from', existingItem.quantity, 'to', existingItem.quantity + quantity);
+                        existingItem.quantity += quantity;
+                    } else {
+                        console.log('Adding new product to cart');
+                        cart.items.push({
+                            productId: productId,
+                            name: productName,
+                            price: productPrice,
+                            image: productImage,
+                            quantity: quantity
+                        });
+                    }
+                } else {
+                    console.log('Product found in products array:', product);
+                    // Add to cart
+                    const existingItem = cart.items.find(item => item.productId === productId);
+                    
+                    if (existingItem) {
+                        console.log('Product already in cart, updating quantity from', existingItem.quantity, 'to', existingItem.quantity + quantity);
+                        existingItem.quantity += quantity;
+                    } else {
+                        console.log('Adding new product to cart');
+                        cart.items.push({
+                            productId: productId,
+                            name: product.name,
+                            price: product.price,
+                            image: product.images && product.images.length > 0 ? product.images[0] : '',
+                            quantity: quantity
+                        });
+                    }
+                }
+                
+                // Recalculate total
+                cart.total = cart.items.reduce((total, item) => total + (item.price * item.quantity), 0);
+                console.log('New cart total:', cart.total);
+                
+                // Save cart
+                console.log('Saving updated cart:', cart);
+                saveLocalCart(cart);
+                
+                // Show notification
+                showNotification('تمت إضافة المنتج إلى السلة بنجاح', 'success');
+                
+                return { success: true };
+            } catch (error) {
+                console.error('Error adding to local cart:', error);
+                showNotification('حدث خطأ أثناء إضافة المنتج إلى السلة', 'error');
+                return { success: false, message: error.message };
+            }
+        }
+        
+        function removeFromLocalCart(productId) {
+            const cart = getLocalCart();
+            
+            // Remove item
+            cart.items = cart.items.filter(item => item.productId !== productId);
+            
+            // Recalculate total
+            cart.total = cart.items.reduce((total, item) => total + (item.price * item.quantity), 0);
+            
+            // Save cart
+            saveLocalCart(cart);
+            
+            // Show notification
+            showNotification('تمت إزالة المنتج من السلة بنجاح', 'success');
+            
+            return { success: true };
+        }
+        
+        function updateLocalCartQuantity(productId, quantity) {
+            const cart = getLocalCart();
+            
+            // Find item
+            const item = cart.items.find(item => item.productId === productId);
+            
+            if (item) {
+                item.quantity = quantity;
+                
+                // Recalculate total
+                cart.total = cart.items.reduce((total, item) => total + (item.price * item.quantity), 0);
+                
+                // Save cart
+                saveLocalCart(cart);
+                
+                return { success: true };
+            }
+            
+            return { success: false, message: 'المنتج غير موجود في السلة' };
+        }
+        
+        // Local Favorites Functions
+        function initLocalFavorites() {
+            if (!localStorage.getItem('localFavorites')) {
+                localStorage.setItem('localFavorites', JSON.stringify([]));
+            }
+            updateFavoriteButtons();
+        }
+        
+        function getLocalFavorites() {
+            return JSON.parse(localStorage.getItem('localFavorites')) || [];
+        }
+        
+        function saveLocalFavorites(favorites) {
+            localStorage.setItem('localFavorites', JSON.stringify(favorites));
+            updateFavoriteButtons();
+        }
+        
+        function updateFavoriteButtons() {
+            const favorites = getLocalFavorites();
+            
+            // Update all wishlist buttons
+            $('.add-to-wishlist-btn').each(function() {
+                const productId = $(this).data('product-id');
+                if (favorites.includes(productId)) {
+                    $(this).addClass('active');
+                    $(this).find('i').removeClass('fa-heart').addClass('fa-heart-broken');
+                } else {
+                    $(this).removeClass('active');
+                    $(this).find('i').removeClass('fa-heart-broken').addClass('fa-heart');
+                }
+            });
+            
+            // Add badge to wishlist icon in header if there are favorites
+            if (favorites.length > 0) {
+                if ($('.wishlist-badge').length === 0) {
+                    $('.wishlist').append(`<span class="wishlist-badge">${favorites.length}</span>`);
+                } else {
+                    $('.wishlist-badge').text(favorites.length);
+                }
+            } else {
+                $('.wishlist-badge').remove();
+            }
+        }
+        
+        function toggleLocalFavorite(productId) {
+            const favorites = getLocalFavorites();
+            
+            // Check if product is already in favorites
+            const index = favorites.indexOf(productId);
+            
+            if (index === -1) {
+                // Add to favorites
+                favorites.push(productId);
+                showNotification('تمت إضافة المنتج إلى المفضلة', 'success');
+            } else {
+                // Remove from favorites
+                favorites.splice(index, 1);
+                showNotification('تمت إزالة المنتج من المفضلة', 'success');
+            }
+            
+            // Save favorites
+            saveLocalFavorites(favorites);
+            
+            return { success: true };
+        }
+        
+        // Define CartService with local implementation
+        window.CartService = window.CartService || {
+            init: initLocalCart,
+            getCart: getLocalCart,
+            addItem: addToLocalCart,
+            removeItem: removeFromLocalCart,
+            updateQuantity: updateLocalCartQuantity,
+            updateCartUI: updateCartBadge
+        };
+        
+        // Local Auth Service
+        if (!window.AuthService) {
+            window.AuthService = {
+                isLoggedIn: function() {
+                    return localStorage.getItem('localUser') !== null;
+                },
+                getCurrentUser: function() {
+                    return JSON.parse(localStorage.getItem('localUser')) || null;
+                },
+                login: function(username, password) {
+                    // Simple mock login
+                    localStorage.setItem('localUser', JSON.stringify({
+                        username: username,
+                        email: username + '@example.com'
+                    }));
+                    return { success: true };
+                },
+                logout: function() {
+                    localStorage.removeItem('localUser');
+                    return { success: true };
+                }
+            };
+        }
+        
+        // Fallback ContentService
+        if (!window.ContentService) {
+            window.ContentService = {
+                getCategories: async function() {
+                    try {
+                        const response = await fetch(`${API_BASE_URL}/api/categories?populate=*&locale=ar`);
+                        const data = await response.json();
+                        
+                        if (data && data.data) {
+                            const categories = data.data.map(item => {
+                                const attrs = item.attributes || {};
+                                return {
+                                    id: item.id,
+                                    documentId: attrs.documentId || '',
+                                    name: attrs.name || 'فئة',
+                                    description: attrs.description || '',
+                                    image: attrs.image?.data?.attributes?.url ? API_BASE_URL + attrs.image.data.attributes.url : ''
+                                };
+                            });
+                            
+                            return { success: true, data: categories };
+                        }
+                        
+                        return { success: false, message: 'No categories found' };
+                    } catch (error) {
+                        console.error('Error fetching categories:', error);
+                        return { success: false, message: error.message };
+                    }
+                }
+            };
+        }
+        
+        // Store all products for reference
+        window.allProducts = [];
+        
+        // Helper function to format price
+        function formatPrice(price) {
+            if (!price) return 'السعر عند الطلب';
+            
+            // Ensure price is a number
+            const numPrice = parseFloat(price);
+            if (isNaN(numPrice)) return 'السعر عند الطلب';
+            
+            return numPrice.toLocaleString('ar-EG', {
+                style: 'currency',
+                currency: 'EGP',
+                minimumFractionDigits: 2
+            });
+        }
+        
+        // Function to check API access
+        async function checkApiAccess(apiUrl) {
+            try {
+                // Try a simple request to check if API is accessible
+                const response = await fetch(`${apiUrl}/api/health-check`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'Access-Control-Allow-Origin': '*'
+                    },
+                    mode: 'cors',
+                    cache: 'no-cache'
+                });
+                
+                return response.ok;
+            } catch (error) {
+                console.error('API access check failed:', error);
+                return false;
+            }
+        }
+        
+        // Function to get fallback products (if API is not accessible)
+        function getFallbackProducts() {
+            console.log('Generating fallback products');
+            return [
+                {
+                    _id: 'fallback1',
+                    name: 'فستان أنيق للأطفال',
+                    price: 250,
+                    description: 'فستان أنيق للأطفال مناسب للمناسبات الخاصة',
+                    images: ['img/placeholder.jpg']
+                },
+                {
+                    _id: 'fallback2',
+                    name: 'فستان سواريه للأطفال',
+                    price: 350,
+                    description: 'فستان سواريه للأطفال بتصميم فاخر',
+                    images: ['img/placeholder.jpg']
+                },
+                {
+                    _id: 'fallback3',
+                    name: 'فستان أميرات للأطفال',
+                    price: 450,
+                    description: 'فستان أميرات للأطفال بألوان زاهية',
+                    images: ['img/placeholder.jpg']
+                },
+                {
+                    _id: 'fallback4',
+                    name: 'فستان حفلات للأطفال',
+                    price: 400,
+                    description: 'فستان حفلات للأطفال بتصميم عصري',
+                    images: ['img/placeholder.jpg']
+                },
+                {
+                    _id: 'fallback5',
+                    name: 'فستان مناسبات للأطفال',
+                    price: 300,
+                    description: 'فستان مناسبات للأطفال بألوان متنوعة',
+                    images: ['img/placeholder.jpg']
+                },
+                {
+                    _id: 'fallback6',
+                    name: 'فستان كاجوال للأطفال',
+                    price: 200,
+                    description: 'فستان كاجوال للأطفال مناسب للاستخدام اليومي',
+                    images: ['img/placeholder.jpg']
+                },
+                {
+                    _id: 'fallback7',
+                    name: 'فستان صيفي للأطفال',
+                    price: 180,
+                    description: 'فستان صيفي للأطفال خفيف ومريح',
+                    images: ['img/placeholder.jpg']
+                },
+                {
+                    _id: 'fallback8',
+                    name: 'فستان شتوي للأطفال',
+                    price: 280,
+                    description: 'فستان شتوي للأطفال دافئ ومريح',
+                    images: ['img/placeholder.jpg']
+                }
+            ];
+        }
+        
+        // Function to show notification
+        function showNotification(message, type = 'info') {
+            // Create notification element if it doesn't exist
+            if (!$('.notification-container').length) {
+                $('body').append('<div class="notification-container"></div>');
+            }
+            
+            // Create notification
+            const notification = $(`
+                <div class="notification ${type}">
+                    <span class="message">${message}</span>
+                    <button class="close-notification"><i class="fas fa-times"></i></button>
+                </div>
+            `);
+            
+            // Add notification to container
+            $('.notification-container').append(notification);
+            
+            // Show notification
+            setTimeout(() => {
+                notification.addClass('show');
+            }, 10);
+            
+            // Remove notification after 3 seconds
+            setTimeout(() => {
+                notification.removeClass('show');
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 3000);
+            
+            // Handle close button
+            notification.find('.close-notification').on('click', function() {
+                notification.removeClass('show');
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            });
+        }
+        
+        // Function to open cart modal
+        function openCartModal() {
+            console.log('Opening cart modal');
+            // Create cart modal if it doesn't exist
+            if (!$('.cart-modal').length) {
+                console.log('Creating cart modal');
+                createCartModal();
+            }
+            
+            // Update cart items
+            console.log('Updating cart items');
+            updateCartItems();
+            
+            // Show modal
+            $('.cart-modal').addClass('active');
+            console.log('Cart modal opened');
+        }
+        
+        // Function to create cart modal
+        function createCartModal() {
+            console.log('Creating cart modal');
+            
+            // Check if cart modal already exists
+            if ($('.cart-modal').length) {
+                console.log('Cart modal already exists, not creating a new one');
+                return;
+            }
+            
+            const cartModal = $(`
+                <div class="cart-modal">
+                    <div class="modal-overlay"></div>
+                    <div class="modal-content">
+                        <button class="close-modal"><i class="fas fa-times"></i></button>
+                        <div class="modal-body">
+                            <h2 class="modal-title">سلة التسوق</h2>
+                            <div class="cart-items">
+                                <!-- Cart items will be loaded here -->
+                            </div>
+                            <div class="cart-summary">
+                                <div class="cart-total">
+                                    <span>المجموع:</span>
+                                    <span class="total-amount">0.00 EGP</span>
+                                </div>
+                                <div class="cart-actions">
+                                    <button class="checkout-btn">إتمام الشراء</button>
+                                    <button class="continue-shopping-btn">مواصلة التسوق</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `);
+            
+            // Add to body
+            $('body').append(cartModal);
+            console.log('Cart modal added to body');
+            
+            // Handle close modal
+            cartModal.find('.close-modal, .modal-overlay, .continue-shopping-btn').on('click', function() {
+                console.log('Closing cart modal');
+                closeCartModal();
+            });
+            
+            // Handle checkout button
+            cartModal.find('.checkout-btn').on('click', function() {
+                console.log('Checkout button clicked');
+                closeCartModal();
+                openCheckoutModal();
+            });
+            
+            console.log('Cart modal created successfully');
+        }
+        
+        // Function to update cart items
+        function updateCartItems() {
+            console.log('Updating cart items in modal');
+            const cart = CartService.getCart();
+            console.log('Current cart:', cart);
+            
+            // Make sure the cart modal exists
+            if (!$('.cart-modal').length) {
+                console.log('Cart modal does not exist, creating it');
+                createCartModal();
+            }
+            
+            const cartItemsContainer = $('.cart-items');
+            if (cartItemsContainer.length === 0) {
+                console.error('Cart items container not found');
+                return;
+            }
+            
+            // Clear container
+            cartItemsContainer.empty();
+            
+            if (cart.items.length === 0) {
+                // Show empty cart message
+                console.log('Cart is empty');
+                cartItemsContainer.html('<div class="empty-cart">سلة التسوق فارغة</div>');
+                $('.cart-total .total-amount').text('0.00 EGP');
+                return;
+            }
+            
+            console.log('Adding', cart.items.length, 'items to cart modal');
+            
+            // Add items to container
+            cart.items.forEach((item, index) => {
+                console.log(`Adding item ${index + 1}:`, item);
+                const itemHTML = `
+                    <div class="cart-item" data-id="${item.productId}">
+                        <div class="item-image">
+                            ${item.image ? 
+                                `<img src="${item.image}" alt="${item.name}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'placeholder-image\\'><i class=\\'fas fa-tshirt\\'></i></div>';">` : 
+                                `<div class="placeholder-image"><i class="fas fa-tshirt"></i></div>`
+                            }
+                        </div>
+                        <div class="item-details">
+                            <h3 class="item-name">${item.name}</h3>
+                            <div class="item-price">${formatPrice(item.price)}</div>
+                            <div class="item-quantity">
+                                <button class="quantity-btn minus"><i class="fas fa-minus"></i></button>
+                                <input type="number" class="quantity-input" value="${item.quantity}" min="1">
+                                <button class="quantity-btn plus"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <button class="remove-item-btn"><i class="fas fa-trash"></i></button>
+                    </div>
+                `;
+                
+                cartItemsContainer.append(itemHTML);
+            });
+            
+            // Update total
+            $('.cart-total .total-amount').text(formatPrice(cart.total));
+            console.log('Cart total updated:', formatPrice(cart.total));
+            
+            // Handle quantity buttons
+            $('.cart-item .quantity-btn.minus').on('click', function() {
+                const input = $(this).siblings('.quantity-input');
+                const value = parseInt(input.val()) - 1;
+                if (value < 1) return;
+                
+                input.val(value);
+                
+                // Update quantity in cart
+                const productId = $(this).closest('.cart-item').data('id');
+                CartService.updateQuantity(productId, value);
+                
+                // Update total
+                $('.cart-total .total-amount').text(formatPrice(CartService.getCart().total));
+            });
+            
+            $('.cart-item .quantity-btn.plus').on('click', function() {
+                const input = $(this).siblings('.quantity-input');
+                const value = parseInt(input.val()) + 1;
+                
+                input.val(value);
+                
+                // Update quantity in cart
+                const productId = $(this).closest('.cart-item').data('id');
+                CartService.updateQuantity(productId, value);
+                
+                // Update total
+                $('.cart-total .total-amount').text(formatPrice(CartService.getCart().total));
+            });
+            
+            // Handle quantity input change
+            $('.cart-item .quantity-input').on('change', function() {
+                const value = parseInt($(this).val());
+                if (value < 1) {
+                    $(this).val(1);
+                    return;
+                }
+                
+                // Update quantity in cart
+                const productId = $(this).closest('.cart-item').data('id');
+                CartService.updateQuantity(productId, value);
+                
+                // Update total
+                $('.cart-total .total-amount').text(formatPrice(CartService.getCart().total));
+            });
+            
+            // Handle remove item button
+            $('.cart-item .remove-item-btn').on('click', function() {
+                const productId = $(this).closest('.cart-item').data('id');
+                
+                // Remove item from cart
+                CartService.removeItem(productId);
+                
+                // Update cart items
+                updateCartItems();
+            });
+            
+            console.log('Cart items updated successfully');
+        }
+        
+        // Function to close cart modal
+        function closeCartModal() {
+            console.log('Closing cart modal');
+            $('.cart-modal').removeClass('active');
+            console.log('Cart modal closed');
+        }
+        
+        // Function to open checkout modal
+        function openCheckoutModal() {
+            // Check if user is logged in
+            if (!window.AuthService.isLoggedIn()) {
+                // Show login modal
+                showNotification('يرجى تسجيل الدخول لإتمام عملية الشراء', 'info');
+                // Redirect to login page
+                window.location.href = 'login.html?redirect=checkout';
+                return;
+            }
+            
+            // Redirect to checkout page
+            window.location.href = 'checkout.html';
+        }
+        
+        // Fallback for loadSiteSettings
+        async function loadSiteSettings() {
+            if (window.siteSettings) {
+                return window.siteSettings;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/setting?populate=*&locale=ar`);
+                const data = await response.json();
+                
+                if (data && data.data) {
+                    const attrs = data.data.attributes || {};
+                    window.siteSettings = {
+                        name: attrs.site_name || 'Jojiz',
+                        description: attrs.site_description || '',
+                        logo: attrs.logo?.data?.attributes?.url ? API_BASE_URL + attrs.logo.data.attributes.url : '',
+                        phone: attrs.phone || '01067300073',
+                        email: attrs.email || 'jojiz@jojiz.com',
+                        address: attrs.address || 'octuber'
+                    };
+                    
+                    return window.siteSettings;
+                }
+                
+                // Fallback settings
+                window.siteSettings = {
+                    name: 'Jojiz',
+                    description: '',
+                    logo: '',
+                    phone: '01067300073',
+                    email: 'jojiz@jojiz.com',
+                    address: 'octuber'
+                };
+                
+                return window.siteSettings;
+            } catch (error) {
+                console.error('Error loading site settings:', error);
+                
+                // Fallback settings
+                window.siteSettings = {
+                    name: 'Jojiz',
+                    description: '',
+                    logo: '',
+                    phone: '01067300073',
+                    email: 'jojiz@jojiz.com',
+                    address: 'octuber'
+                };
+                
+                return window.siteSettings;
+            }
+        }
+        
+        // Fallback for loadSocialMediaLinks
+        async function loadSocialMediaLinks() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/social-media?locale=ar`);
+                const data = await response.json();
+                
+                if (data && data.data) {
+                    const socialLinks = data.data.map(item => {
+                        const attrs = item.attributes || {};
+                        return {
+                            name: attrs.name || '',
+                            url: attrs.url || '#',
+                            icon: attrs.icon || 'fa-globe'
+                        };
+                    });
+                    
+                    // Update social links in footer
+                    const socialLinksContainer = $('.social-links');
+                    socialLinksContainer.empty();
+                    
+                    socialLinks.forEach(link => {
+                        socialLinksContainer.append(`
+                            <a href="${link.url}" target="_blank" title="${link.name}">
+                                <i class="fab ${link.icon}"></i>
+                            </a>
+                        `);
+                    });
+                    
+                    return socialLinks;
+                }
+                
+                // Fallback social links
+                const fallbackLinks = [
+                    { name: 'Facebook', url: '#', icon: 'fa-facebook-f' },
+                    { name: 'Instagram', url: '#', icon: 'fa-instagram' },
+                    { name: 'Twitter', url: '#', icon: 'fa-twitter' }
+                ];
+                
+                // Update social links in footer
+                const socialLinksContainer = $('.social-links');
+                socialLinksContainer.empty();
+                
+                fallbackLinks.forEach(link => {
+                    socialLinksContainer.append(`
+                        <a href="${link.url}" target="_blank" title="${link.name}">
+                            <i class="fab ${link.icon}"></i>
+                        </a>
+                    `);
+                });
+                
+                return fallbackLinks;
+            } catch (error) {
+                console.error('Error loading social media links:', error);
+                
+                // Fallback social links
+                const fallbackLinks = [
+                    { name: 'Facebook', url: '#', icon: 'fa-facebook-f' },
+                    { name: 'Instagram', url: '#', icon: 'fa-instagram' },
+                    { name: 'Twitter', url: '#', icon: 'fa-twitter' }
+                ];
+                
+                // Update social links in footer
+                const socialLinksContainer = $('.social-links');
+                socialLinksContainer.empty();
+                
+                fallbackLinks.forEach(link => {
+                    socialLinksContainer.append(`
+                        <a href="${link.url}" target="_blank" title="${link.name}">
+                            <i class="fab ${link.icon}"></i>
+                        </a>
+                    `);
+                });
+                
+                return fallbackLinks;
+            }
+        }
+    </script>
+</body>
+</html> 

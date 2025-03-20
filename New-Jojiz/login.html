@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - Jojiz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .login-container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .login-btn {
+            background: #b83b5e;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .login-btn:hover {
+            background: #a02d4e;
+        }
+        
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .register-link a {
+            color: #b83b5e;
+            text-decoration: none;
+        }
+        
+        #registerForm {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="left-section">
+                <span class="hotline">HOTLINE 24/7</span>
+                <a href="tel:01067300073" class="phone">01067300073</a>
+            </div>
+            <div class="right-section">
+                <div class="cart">
+                    <span id="cart-total">0.00EGP</span>
+                    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                </div>
+                <div class="auth">
+                    <span>WELCOME</span>
+                    <a href="login.html" class="login-register" id="authLink">LOGIN/REGISTER</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="logo">
+                <a href="/">
+                    <img src="img/jojiz.png" alt="Jojiz Logo">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="lang-switch">ar<i class="fas fa-globe"></i></a>
+                <a href="products.html">المتجر</a>
+                <a href="index.html">الصفحة الرئيسية</a>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="بحث">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Form -->
+    <div class="login-container">
+        <h2 id="formTitle">Welcome Back</h2>
+        
+        <!-- Login Form -->
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="login-btn">LOGIN</button>
+            <div class="register-link">
+                <p>Don't have an account? <a href="#" id="showRegisterBtn">Create Account</a></p>
+            </div>
+        </form>
+        
+        <!-- Register Form -->
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="registerName">Name</label>
+                <input type="text" id="registerName" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="registerEmail">Email</label>
+                <input type="email" id="registerEmail" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">Password</label>
+                <input type="password" id="registerPassword" placeholder="Enter your password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+            </div>
+            <button type="submit" class="login-btn">CREATE ACCOUNT</button>
+            <div class="register-link">
+                <p>Already have an account? <a href="#" id="showLoginBtn">Login</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is already logged in
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            if (isLoggedIn) {
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            // Get form elements
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const showRegisterBtn = document.getElementById('showRegisterBtn');
+            const showLoginBtn = document.getElementById('showLoginBtn');
+            const formTitle = document.getElementById('formTitle');
+            
+            // Show register form
+            showRegisterBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+                formTitle.textContent = 'Create Account';
+            });
+            
+            // Show login form
+            showLoginBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                registerForm.style.display = 'none';
+                loginForm.style.display = 'block';
+                formTitle.textContent = 'Welcome Back';
+            });
+            
+            // Handle login form submission
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                // Get user data from localStorage
+                const userData = JSON.parse(localStorage.getItem('user_' + email));
+                
+                // Check if user exists and password matches
+                if (userData && userData.password === password) {
+                    // Set login status
+                    localStorage.setItem('isLoggedIn', 'true');
+                    localStorage.setItem('currentUser', email);
+                    
+                    // Redirect to home page
+                    alert('Login successful!');
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Invalid email or password!');
+                }
+            });
+            
+            // Handle register form submission
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('registerName').value;
+                const email = document.getElementById('registerEmail').value;
+                const password = document.getElementById('registerPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                // Validate passwords match
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match!');
+                    return;
+                }
+                
+                // Check if user already exists
+                if (localStorage.getItem('user_' + email)) {
+                    alert('An account with this email already exists!');
+                    return;
+                }
+                
+                // Store user data in localStorage
+                const userData = {
+                    name: name,
+                    email: email,
+                    password: password
+                };
+                
+                // Save user to localStorage
+                localStorage.setItem('user_' + email, JSON.stringify(userData));
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('currentUser', email);
+                
+                // Redirect to home page
+                alert('Account created successfully! You are now logged in.');
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html> 

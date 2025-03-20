@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إتمام الطلب - Jojiz</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Additional styles for checkout page */
+        .cart-item .item-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9f9;
+        }
+        
+        .cart-item .item-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Ensure the cart items container has proper spacing */
+        .cart-items {
+            margin-bottom: 20px;
+        }
+        
+        /* Style for empty cart message */
+        .empty-cart {
+            padding: 20px;
+            text-align: center;
+            color: #777;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="top-header">
+            <div class="container">
+                <div class="backend-info">
+                    <div class="welcome">
+                        <span>BACKEND.WELCOME</span>
+                        <div class="user-auth-section">
+                            <a href="login.html" class="login-register auth-link">BACKEND.LOGIN/ BACKEND.REGISTER</a>
+                            <div class="user-info">
+                                <span class="username">مرحبا، <span class="user-name">omar</span></span>
+                                <a href="#" class="logout-btn">تسجيل الخروج</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-section">
+                        <a href="#" class="lang-switch">تغيير اللغة</a>
+                        <a href="#" class="cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>0.00EGP</span>
+                        </a>
+                        <a href="#" class="wishlist">
+                            <i class="fas fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hotline">
+                    <span>BACKEND.HOTLINE 24/7</span>
+                    <a href="tel:01067300073">01067300073</a>
+                </div>
+            </div>
+        </div>
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/jojiz.png" alt="Jojiz Logo">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">الصفحة الرئيسية</a></li>
+                        <li><a href="category.html">المتجر</a></li>
+                        <li><a href="#" class="categories-toggle">الفئات</a></li>
+                    </ul>
+                </nav>
+                <div class="search-bar">
+                    <form action="search.html" method="get">
+                        <input type="text" name="q" placeholder="ابحث عن منتجات..." class="search-input">
+                        <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="checkout-page">
+        <div class="container">
+            <div class="page-title">
+                <h1>إتمام الطلب</h1>
+            </div>
+            
+            <div class="checkout-content">
+                <div class="checkout-form">
+                    <h2>معلومات الشحن</h2>
+                    <form id="checkout-form">
+                        <div class="form-group">
+                            <label for="name">الاسم الكامل</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">رقم الهاتف</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">العنوان</label>
+                            <textarea id="address" name="address" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">المدينة</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        
+                        <h2>طريقة الدفع</h2>
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <input type="radio" id="cash" name="payment-method" value="cash" checked>
+                                <label for="cash">الدفع عند الاستلام</label>
+                            </div>
+                            <div class="payment-method">
+                                <input type="radio" id="credit-card" name="payment-method" value="credit-card">
+                                <label for="credit-card">بطاقة ائتمان</label>
+                            </div>
+                        </div>
+                        
+                        <div class="credit-card-details" style="display: none;">
+                            <div class="form-group">
+                                <label for="card-number">رقم البطاقة</label>
+                                <input type="text" id="card-number" name="card-number">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="expiry">تاريخ الانتهاء</label>
+                                    <input type="text" id="expiry" name="expiry" placeholder="MM/YY">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" name="cvv">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="place-order-btn">تأكيد الطلب</button>
+                    </form>
+                </div>
+                
+                <div class="order-summary">
+                    <h2>ملخص الطلب</h2>
+                    <div class="cart-items">
+                        <!-- Cart items will be loaded here -->
+                    </div>
+                    <div class="summary-totals">
+                        <div class="summary-row">
+                            <span>المجموع الفرعي:</span>
+                            <span class="subtotal">0.00 ج.م</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>الشحن:</span>
+                            <span class="shipping">0.00 ج.م</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>الإجمالي:</span>
+                            <span class="total-amount">0.00 ج.م</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="images/jojiz.png" alt="Jojiz Logo">
+                    </div>
+                    <p class="footer-about">متجر متخصص في ملابس الأطفال بجودة عالية وأسعار مناسبة.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="category.html">المنتجات</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">خدمة العملاء</h3>
+                    <ul class="footer-links">
+                        <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                        <li><a href="shipping.html">سياسة الشحن</a></li>
+                        <li><a href="returns.html">سياسة الإرجاع</a></li>
+                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                        <li><a href="terms.html">الشروط والأحكام</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-title">اتصل بنا</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</li>
+                        <li><i class="fas fa-phone"></i> 01067300073</li>
+                        <li><i class="fas fa-envelope"></i> info@jojiz.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2023 Jojiz. جميع الحقوق محفوظة.</p>
+                <div class="payment-methods">
+                    <span>طرق الدفع المقبولة:</span>
+                    <img src="images/payment-methods.png" alt="Payment Methods">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/201067300073" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/api.js"></script>
+    <script>
+        // Format price function
+        function formatPrice(price) {
+            // Check if price is a valid number
+            if (isNaN(parseFloat(price))) {
+                return 'السعر عند الطلب';
+            }
+            
+            // Format the price with 2 decimal places and add currency symbol
+            return parseFloat(price).toFixed(2) + ' ج.م';
+        }
+        
+        $(document).ready(function() {
+            // Load cart items
+            loadCartItems();
+            
+            // Toggle credit card details
+            $('input[name="payment-method"]').on('change', function() {
+                if ($(this).val() === 'credit-card') {
+                    $('.credit-card-details').slideDown();
+                } else {
+                    $('.credit-card-details').slideUp();
+                }
+            });
+            
+            // Handle form submission
+            $('#checkout-form').on('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const name = $('#name').val();
+                const phone = $('#phone').val();
+                const address = $('#address').val();
+                const city = $('#city').val();
+                const paymentMethod = $('input[name="payment-method"]:checked').val();
+                
+                // Validate form
+                if (!name || !phone || !address || !city) {
+                    showNotification('يرجى ملء جميع الحقول المطلوبة', 'error');
+                    return;
+                }
+                
+                // Create shipping address
+                const shippingAddress = `${name}, ${phone}, ${address}, ${city}`;
+                
+                // Place order
+                placeOrder(paymentMethod, shippingAddress);
+            });
+            
+            // Function to load cart items
+            function loadCartItems() {
+                const cart = CartService.getCart();
+                const cartItemsContainer = $('.cart-items');
+                
+                console.log('Loading cart items...');
+                console.log('Cart:', cart);
+                
+                // Clear container
+                cartItemsContainer.empty();
+                
+                if (!cart || !cart.items || cart.items.length === 0) {
+                    console.log('Cart is empty');
+                    cartItemsContainer.html('<p class="empty-cart">سلة التسوق فارغة</p>');
+                    return;
+                }
+                
+                // Log cart items for debugging
+                console.log('Cart items:', cart.items);
+                
+                // Add items to container
+                cart.items.forEach(item => {
+                    // Process image URL to ensure it's valid
+                    let imageUrl = 'img/placeholder.png'; // Changed from images/placeholder.jpg to img/placeholder.png
+                    
+                    if (item.image) {
+                        console.log('Original item image:', item.image);
+                        
+                        // Check if the image URL is already absolute (starts with http or https)
+                        if (item.image.startsWith('http://') || item.image.startsWith('https://')) {
+                            imageUrl = item.image;
+                        } else if (item.image.startsWith('/')) {
+                            // If it starts with a slash, it's a root-relative path
+                            imageUrl = item.image;
+                        } else {
+                            // If it's a relative path, make sure it points to the right directory
+                            // Check if it already includes 'images/' or 'img/'
+                            if (item.image.includes('images/') || item.image.includes('img/')) {
+                                imageUrl = item.image;
+                            } else {
+                                // Try to determine if it should be in images/ or img/ directory
+                                imageUrl = 'img/' + item.image;
+                            }
+                        }
+                    }
+                    
+                    console.log('Processed image URL:', imageUrl);
+                    
+                    const itemHTML = `
+                        <div class="cart-item">
+                            <div class="item-image">
+                                <img src="${imageUrl}" alt="${item.name}" 
+                                     onerror="this.onerror=null; this.src='img/placeholder.png'; 
+                                             if(this.src.includes('img/placeholder.png')) this.src='images/placeholder.jpg';
+                                             if(this.src.includes('images/placeholder.jpg')) this.src='https://via.placeholder.com/100x100?text=No+Image';"
+                                     class="product-image">
+                            </div>
+                            <div class="item-details">
+                                <h3 class="item-name">${item.name}</h3>
+                                <div class="item-price">${formatPrice(item.price)}</div>
+                                <div class="item-quantity">الكمية: ${item.quantity}</div>
+                            </div>
+                            <div class="item-total">${formatPrice(item.price * item.quantity)}</div>
+                        </div>
+                    `;
+                    
+                    cartItemsContainer.append(itemHTML);
+                });
+                
+                // Update summary
+                updateOrderSummary();
+            }
+            
+            // Function to update order summary
+            function updateOrderSummary() {
+                const cart = CartService.getCart();
+                const shippingCost = 30; // Fixed shipping cost
+                
+                $('.subtotal').text(formatPrice(cart.total));
+                $('.shipping').text(formatPrice(shippingCost));
+                $('.total-amount').text(formatPrice(cart.total + shippingCost));
+            }
+            
+            // Function to place order
+            async function placeOrder(paymentMethod, shippingAddress) {
+                // Show loading
+                $('.place-order-btn').prop('disabled', true).text('جاري تنفيذ الطلب...');
+                
+                // Place order
+                const result = await CartService.createOrder(paymentMethod, shippingAddress);
+                
+                // Reset button
+                $('.place-order-btn').prop('disabled', false).text('تأكيد الطلب');
+                
+                if (result.success) {
+                    // Order placed successfully
+                    showNotification('تم تأكيد الطلب بنجاح', 'success');
+                    
+                    // Show order confirmation
+                    showOrderConfirmation(result.data);
+                } else {
+                    // Error placing order
+                    showNotification(result.message || 'حدث خطأ أثناء تأكيد الطلب', 'error');
+                }
+            }
+            
+            // Function to show order confirmation
+            function showOrderConfirmation(orderData) {
+                // Create confirmation modal
+                const confirmationModal = $(`
+                    <div class="confirmation-modal active">
+                        <div class="modal-overlay"></div>
+                        <div class="modal-content">
+                            <button class="close-modal"><i class="fas fa-times"></i></button>
+                            <div class="modal-body">
+                                <div class="confirmation-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <h2 class="modal-title">تم تأكيد الطلب بنجاح</h2>
+                                <p class="confirmation-message">شكراً لك على طلبك. سيتم التواصل معك قريباً لتأكيد الطلب.</p>
+                                <div class="order-details">
+                                    <div class="detail-row">
+                                        <span>رقم الطلب:</span>
+                                        <span>${orderData.id || orderData.documentId || 'غير متوفر'}</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span>المجموع:</span>
+                                        <span>${formatPrice(orderData.total || 0)}</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span>حالة الطلب:</span>
+                                        <span>${orderData.order_status === 'pending' ? 'قيد الانتظار' : orderData.order_status}</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span>طريقة الدفع:</span>
+                                        <span>${orderData.meta && orderData.meta.payment_method === 'cash' ? 'الدفع عند الاستلام' : 'بطاقة ائتمان'}</span>
+                                    </div>
+                                </div>
+                                <button class="continue-shopping-btn">مواصلة التسوق</button>
+                            </div>
+                        </div>
+                    </div>
+                `);
+                
+                // Add to body
+                $('body').append(confirmationModal);
+                
+                // Handle close modal
+                confirmationModal.find('.close-modal, .modal-overlay, .continue-shopping-btn').on('click', function() {
+                    confirmationModal.remove();
+                    window.location.href = 'index.html';
+                });
+            }
+            
+            // Function to show notification
+            function showNotification(message, type = 'info') {
+                const notification = $(`
+                    <div class="notification ${type}">
+                        <div class="notification-content">
+                            <i class="notification-icon fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'}"></i>
+                            <p class="notification-message">${message}</p>
+                        </div>
+                        <button class="notification-close"><i class="fas fa-times"></i></button>
+                    </div>
+                `);
+                
+                // Add to body
+                $('body').append(notification);
+                
+                // Show notification
+                setTimeout(() => {
+                    notification.addClass('active');
+                }, 10);
+                
+                // Auto hide after 5 seconds
+                setTimeout(() => {
+                    notification.removeClass('active');
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 300);
+                }, 5000);
+                
+                // Handle close button
+                notification.find('.notification-close').on('click', function() {
+                    notification.removeClass('active');
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 300);
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

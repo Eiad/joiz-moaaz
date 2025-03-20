@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jojiz - منتجات ملابس الأطفال</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="products.css">
+    <link rel="stylesheet" href="modal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="mobile-nav.css">
+</head>
+<body>
+    <!-- Mobile Navigation -->
+    <div class="mobile-header">
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <a href="/">
+                <img src="img/jojiz.png" alt="Jojiz Logo">
+            </a>
+        </div>
+    </div>
+    
+    <!-- Mobile Side Navigation -->
+    <div class="mobile-sidenav" id="mobileSidenav">
+        <div class="sidenav-header">
+            <button class="close-sidenav" id="closeSidenav">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sidenav-content">
+            <div class="sidenav-user">
+                <div class="user-info">
+                    <span>WELCOME</span>
+                    <a href="login.html" class="login-register" id="mobileAuthLink">LOGIN/REGISTER</a>
+                </div>
+            </div>
+            <div class="sidenav-links">
+                <a href="index.html" class="sidenav-link">
+                    <i class="fas fa-home"></i>
+                    <span>الصفحة الرئيسية</span>
+                </a>
+                <a href="products.html" class="sidenav-link">
+                    <i class="fas fa-store"></i>
+                    <span>المتجر</span>
+                </a>
+                
+                <a href="cart.html" class="sidenav-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>سلة التسوق</span>
+                </a>
+                <a href="#" class="sidenav-link lang-switch">
+                    <i class="fas fa-globe"></i>
+                    <span>تغيير اللغة</span>
+                </a>
+            </div>
+            <div class="sidenav-contact">
+                <p>HOTLINE 24/7</p>
+                <a href="tel:01067300073" class="phone">01067300073</a>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/201067300073" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Overlay for when sidenav is open -->
+    <div class="sidenav-overlay" id="sidenavOverlay"></div>
+    <!-- Top Navigation Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="left-section">
+                <span class="hotline">HOTLINE 24/7</span>
+                <a href="tel:01067300073" class="phone">01067300073</a>
+            </div>
+            <div class="right-section">
+                <div class="cart">
+                    <span id="cart-total">0.00EGP</span>
+                    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                </div>
+                <div class="auth">
+                    <span>WELCOME</span>
+                    <a href="login.html" class="login-register" id="authLink">LOGIN/REGISTER</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/jojiz.png" alt="Jojiz Logo">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="lang-switch">ar<i class="fas fa-globe"></i></a>
+                <a href="products.html" class="active">المتجر</a>
+                <a href="index.html">الصفحة الرئيسية</a>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="بحث">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+<!-- Page Header -->
+<div class="page-header">
+    <h1>منتجاتنا</h1>
+    <div class="breadcrumb">
+        <a href="index.html">الرئيسية</a>
+        <span>/</span>
+        <span>المتجر</span>
+    </div>
+</div>
+    <!-- Products Page Content -->
+    
+    <div class="products-page">
+        <!-- Move the filter toggle button here, before products-content -->
+            <div class="mobile-filter-toggle">
+                <button id="filterToggleBtn">
+                    <i class="fas fa-filter"></i>
+                    تصفية المنتجات
+                </button>
+            </div>
+        <div class="container">
+            
+            
+            <div class="products-content">
+                <!-- Sidebar Filters -->
+                <div class="filters-sidebar" id="filtersSidebar">
+                    <div class="filter-header">
+                        <h3 class="filter-title">خيارات التصفية</h3>
+                        <button class="close-filters" id="closeFilters">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <h3 class="filter-title">
+                            <i class="fas fa-filter"></i>
+                            الفلتر
+                        </h3>
+                        
+                        <!-- Category Filter -->
+                        <div class="filter-group">
+                            <h4 class="filter-group-title">الفئة</h4>
+                            <div class="filter-options">
+                                <div class="filter-option">
+                                    <input type="checkbox" id="category-1" name="category">
+                                    <label for="category-1">
+                                        <i class="fas fa-user"></i>
+                                        <span>(0)</span>
+                                    </label>
+                                </div>
+                                <div class="filter-option">
+                                    <input type="checkbox" id="category-2" name="category">
+                                    <label for="category-2">
+                                        <i class="fas fa-user-tie"></i>
+                                        <span>(0)</span>
+                                    </label>
+                                </div>
+                                <div class="filter-option">
+                                    <input type="checkbox" id="category-3" name="category">
+                                    <label for="category-3">
+                                        <i class="fas fa-baby"></i>
+                                        <span>(1)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Rating Filter -->
+                        <div class="filter-group">
+                            <h4 class="filter-group-title">التقييم</h4>
+                            <div class="filter-options">
+                                <div class="filter-option rating-option">
+                                    <input type="checkbox" id="rating-5" name="rating">
+                                    <label for="rating-5">
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span>(0)</span>
+                                    </label>
+                                </div>
+                                <div class="filter-option rating-option">
+                                    <input type="checkbox" id="rating-4" name="rating">
+                                    <label for="rating-4">
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span>(0)</span>
+                                    </label>
+                                </div>
+                                <div class="filter-option rating-option">
+                                    <input type="checkbox" id="rating-3" name="rating">
+                                    <label for="rating-3">
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span>(0)</span>
+                                    </label>
+                                </div>
+                                <div class="filter-option rating-option">
+                                    <input type="checkbox" id="rating-2" name="rating">
+                                    <label for="rating-2">
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span>(0)</span>
+                                    </label>
+                                </div>
+                                <div class="filter-option rating-option">
+                                    <input type="checkbox" id="rating-1" name="rating">
+                                    <label for="rating-1">
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span>(0)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Brands Filter -->
+                        <div class="filter-group">
+                            <h4 class="filter-group-title">العلامات التجارية</h4>
+                            <div class="filter-options">
+                                <div class="filter-option">
+                                    <input type="checkbox" id="brand-1" name="brand">
+                                    <label for="brand-1">Sail <span>(0)</span></label>
+                                </div>
+                                <div class="filter-option">
+                                    <input type="checkbox" id="brand-2" name="brand">
+                                    <label for="brand-2">Bata <span>(0)</span></label>
+                                </div>
+                                <div class="filter-option">
+                                    <input type="checkbox" id="brand-3" name="brand">
+                                    <label for="brand-3">Puma <span>(0)</span></label>
+                                </div>
+                                <div class="filter-option">
+                                    <input type="checkbox" id="brand-4" name="brand">
+                                    <label for="brand-4">Lacoste <span>(0)</span></label>
+                                </div>
+                                <div class="filter-option">
+                                    <input type="checkbox" id="brand-5" name="brand">
+                                    <label for="brand-5">B&G <span>(0)</span></label>
+                                </div>
+                                <div class="filter-option">
+                                    <input type="checkbox" id="brand-6" name="brand">
+                                    <label for="brand-6">Adidas <span>(0)</span></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Products Grid -->
+                <div class="products-grid-container">
+                    <div class="products-toolbar">
+                        <div class="products-count">عرض 1-12 من 36 منتج</div>
+                        <div class="products-sorting">
+                            <label for="sort-by">ترتيب حسب:</label>
+                            <select id="sort-by">
+                                <option value="popularity">الأكثر شعبية</option>
+                                <option value="price-low">السعر: من الأقل للأعلى</option>
+                                <option value="price-high">السعر: من الأعلى للأقل</option>
+                            </select>
+                        </div>
+                        <!-- <div class="view-options">
+                            <button class="grid-view active"><i class="fas fa-th-large"></i></button>
+                            <button class="list-view"><i class="fas fa-list"></i></button>
+                        </div> -->
+                    </div>
+                    
+                    <div class="products-grid">
+                        <!-- Product 1 -->
+                        <div class="product-card" data-category="3" data-rating="4" data-brand="Adidas">
+                            <div class="product-badge">جديد</div>
+                            <div class="product-image">
+                                <img src="img/product1.jpg" alt="فستان أطفال">
+                                <div class="product-actions">
+                                    <button class="action-btn" onclick="addToCart(event)">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </button>
+                                    <button class="action-btn product-view-btn" onclick="viewProduct(event)">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">فستان أطفال وردي</h3>
+                                <div class="product-price">
+                                    <span class="current-price">350 جنيه</span>
+                                    <span class="old-price">450 جنيه</span>
+                                </div>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div class="product-card" data-category="3" data-rating="4" data-brand="Adidas">
+                            <div class="product-image">
+                                <img src="img/product2.jpg" alt="فستان أطفال">
+                                <div class="product-actions">
+                                    <button class="action-btn" onclick="addToCart(event)">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </button>
+                                    <button class="action-btn product-view-btn" onclick="viewProduct(event)">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">فستان أطفال أزرق</h3>
+                                <div class="product-price">
+                                    <span class="current-price">400 جنيه</span>
+                                </div>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div class="product-card" data-category="3" data-rating="4" data-brand="Adidas">
+                            <div class="product-badge sale">خصم 20%</div>
+                            <div class="product-image">
+                                <img src="img/product3.jpg" alt="فستان أطفال">
+                                <div class="product-actions">
+                                    <button class="action-btn" onclick="addToCart(event)">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </button>
+                                    <button class="action-btn product-view-btn" onclick="viewProduct(event)">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">فستان أطفال أصفر</h3>
+                                <div class="product-price">
+                                    <span class="current-price">320 جنيه</span>
+                                    <span class="old-price">400 جنيه</span>
+                                </div>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 4 -->
+                        <div class="product-card" data-category="3" data-rating="4" data-brand="Adidas">
+                            <div class="product-image">
+                                <img src="img/product4.jpg" alt="فستان أطفال">
+                                <div class="product-actions">
+                                    <button class="action-btn" onclick="addToCart(event)">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </button>
+                                    <button class="action-btn product-view-btn" onclick="viewProduct(event)">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">فستان أطفال أبيض</h3>
+                                <div class="product-price">
+                                    <span class="current-price">380 جنيه</span>
+                                </div>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Add more products here (8 more to make 12 total) -->
+                        <!-- Product 5 -->
+                        <div class="product-card" data-category="3" data-rating="4" data-brand="Adidas">
+                            <div class="product-badge sale">خصم 15%</div>
+                            <div class="product-image">
+                                <img src="img/featured1.jpg" alt="فستان أطفال">
+                                <div class="product-actions">
+                                    <button class="action-btn" onclick="addToCart(event)">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </button>
+                                    <button class="action-btn product-view-btn" onclick="viewProduct(event)">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">فستان أطفال مطرز</h3>
+                                <div class="product-price">
+                                    <span class="current-price">450 جنيه</span>
+                                    <span class="old-price">530 جنيه</span>
+                                </div>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 6 -->
+                        <div class="product-card" data-category="3" data-rating="4" data-brand="Adidas">
+                            <div class="product-image">
+                                <img src="img/featured2.jpg" alt="طقم أطفال">
+                                <div class="product-actions">
+                                    <button class="action-btn" onclick="addToCart(event)">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </button>
+                                    <button class="action-btn product-view-btn" onclick="viewProduct(event)">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">طقم أطفال كاجوال</h3>
+                                <div class="product-price">
+                                    <span class="current-price">380 جنيه</span>
+                                </div>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Continue with more products -->
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#" class="next"><i class="fas fa-chevron-left"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Popup Modal - Same as in index.html -->
+    <div id="productModal" class="product-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="product-modal-container">
+                <div class="product-modal-image">
+                    <img id="modalProductImage" src="" alt="صورة المنتج">
+                </div>
+                <div class="product-modal-details">
+                    <h2 id="modalProductTitle"></h2>
+                    <div class="product-modal-price">
+                        <span id="modalCurrentPrice" class="current-price"></span>
+                        <span id="modalOldPrice" class="old-price"></span>
+                    </div>
+                    <div class="product-modal-rating">
+                        <span id="modalRatingStars"></span>
+                        <span id="modalRatingCount" class="rating-count"></span>
+                    </div>
+                    <div id="modalAvailability" class="product-availability"></div>
+                    <p id="modalDescription" class="product-description"></p>
+                    <div class="product-modal-actions">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" class="quantity-input">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart-btn">
+                            <i class="fas fa-shopping-cart"></i>
+                            إضافة إلى السلة
+                        </button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/201067300073" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <script src="mobile-nav.js"></script>
+    <script src="script.js"></script>
+    <script src="filter.js"></script>
+    <script>
+        // Check if user is logged in
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const currentUser = localStorage.getItem('currentUser');
+            const authLink = document.getElementById('authLink');
+            
+            if (isLoggedIn && currentUser) {
+                // User is logged in, update auth link
+                const userData = JSON.parse(localStorage.getItem('user_' + currentUser));
+                if (userData) {
+                    // Change LOGIN/REGISTER to LOGOUT
+                    authLink.textContent = 'LOGOUT (' + userData.name + ')';
+                    authLink.href = '#';
+                    authLink.onclick = function(e) {
+                        e.preventDefault();
+                        localStorage.removeItem('isLoggedIn');
+                        localStorage.removeItem('currentUser');
+                        window.location.reload();
+                    };
+                }
+            }
+        }
+        
+        // Run this when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            checkLoginStatus();
+        });
+        </script>
+</body>
+</html> 

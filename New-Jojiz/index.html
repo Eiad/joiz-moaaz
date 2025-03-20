@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jojiz - متجر ملابس الأطفال</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="modal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="mobile-nav.css">
+</head>
+<body>
+    <!-- Mobile Navigation -->
+    <div class="mobile-header">
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <a href="/">
+                <img src="img/jojiz.png" alt="Jojiz Logo">
+            </a>
+        </div>
+    </div>
+    
+    <!-- Mobile Side Navigation -->
+    <div class="mobile-sidenav" id="mobileSidenav">
+        <div class="sidenav-header">
+            <button class="close-sidenav" id="closeSidenav">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sidenav-content">
+            <div class="sidenav-user">
+                <div class="user-info">
+                    <span>WELCOME</span>
+                    <a href="login.html" class="login-register" id="mobileAuthLink">LOGIN/REGISTER</a>
+                </div>
+            </div>
+            <div class="sidenav-links">
+                <a href="index.html" class="sidenav-link">
+                    <i class="fas fa-home"></i>
+                    <span>الصفحة الرئيسية</span>
+                </a>
+                <a href="products.html" class="sidenav-link">
+                    <i class="fas fa-store"></i>
+                    <span>المتجر</span>
+                </a>
+                
+                <a href="cart.html" class="sidenav-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>سلة التسوق</span>
+                </a>
+                <a href="#" class="sidenav-link lang-switch">
+                    <i class="fas fa-globe"></i>
+                    <span>تغيير اللغة</span>
+                </a>
+            </div>
+            <div class="sidenav-contact">
+                <p>HOTLINE 24/7</p>
+                <a href="tel:01067300073" class="phone">01067300073</a>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/201067300073" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Overlay for when sidenav is open -->
+    <div class="sidenav-overlay" id="sidenavOverlay"></div>
+
+    <!-- Top Navigation Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="left-section">
+                <span class="hotline">HOTLINE 24/7</span>
+                <a href="tel:01067300073" class="phone">01067300073</a>
+            </div>
+            <div class="right-section">
+                <div class="cart">
+                    <span id="cart-total">0.00EGP</span>
+                    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                </div>
+                <div class="auth">
+                    <span>WELCOME</span>
+                    <a href="login.html" class="login-register" id="authLink">LOGIN/REGISTER</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="logo">
+                <a href="/">
+                    <img src="img/jojiz.png" alt="Jojiz Logo">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="lang-switch">ar<i class="fas fa-globe"></i></a>
+                <a href="products.html">المتجر</a>
+                <a href="index.html">الصفحة الرئيسية</a>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="بحث">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Slider -->
+    <div class="main-slider">
+        <div class="banner-carousel">
+            <!-- Banner slides will be loaded dynamically -->
+        </div>
+        
+        <!-- Slider Navigation -->
+        <div class="slider-nav">
+            <button class="prev-btn"><i class="fas fa-chevron-right"></i></button>
+            <div class="slider-dots">
+                <!-- Dots will be generated dynamically -->
+            </div>
+            <button class="next-btn"><i class="fas fa-chevron-left"></i></button>
+        </div>
+    </div>
+
+<!-- Features Section -->
+<section class="features">
+    <div class="container">
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="feature-text">
+                    <h4>الدعم الفني</h4>
+                    <p>مساعدة الخبراء في استكشاف الأخطاء وإصلاحها والاستفسارات.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <div class="feature-text">
+                    <h4>تتبع الطلبات والتحديثات</h4>
+                    <p>تتبع حالة طلبك بشكل مباشر في الوقت الفعلي.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-shipping-fast"></i>
+                </div>
+                <div class="feature-text">
+                    <h4>توصيل سريع</h4>
+                    <p>شحن سريع وموثوق إلى باب منزلك.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <div class="feature-text">
+                    <h4>دعم العملاء</h4>
+                    <p>اتصل بنا للحصول على دعم العملاء بسرعة وفعالية في أي وقت.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+<!-- Categories Section -->
+<section class="categories">
+    <div class="container">
+        <h2 class="section-title">الفئات</h2>
+        <div class="categories-grid">
+            <a href="category.html" class="category-item">
+                <div class="category-image">
+                    <img src="img/soiree-dress.jpg" alt="فساتين سواريه">
+                </div>
+                <!-- <div class="category-icon">
+                    <i class="fas fa-female"></i>
+                </div> -->
+                <h3 class="category-title">فساتين سواريه</h3>
+            </a>
+            
+            <a href="category.html" class="category-item">
+                <div class="category-image">
+                    <img src="img/cotton-dress.jpg" alt="فساتين قطن">
+                </div>
+                <!-- <div class="category-icon">
+                    <i class="fas fa-tshirt"></i>
+                </div> -->
+                <h3 class="category-title">فساتين قطن</h3>
+            </a>
+            
+            <a href="category.html" class="category-item">
+                <div class="category-image">
+                    <img src="img/eid-dress.jpg" alt="فساتين العيد">
+                </div>
+                <!-- <div class="category-icon">
+                    <i class="fas fa-gift"></i>
+                </div> -->
+                <h3 class="category-title">فساتين العيد</h3>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Popular Products Section -->
+<section class="popular-products">
+    <div class="container">
+        <h2 class="section-title">الأكثر رواجا</h2>
+        
+        <!-- Products Carousel -->
+        <div class="featured-carousel">
+            <!-- Products will be loaded dynamically -->
+        </div>
+        
+        <!-- View All Button -->
+        <div class="view-all-container">
+            <a href="products.html" class="view-all-btn">عرض جميع المنتجات</a>
+        </div>
+    </div>
+</section>
+
+<!-- Deal of the Month Section -->
+<section class="deal-of-month">
+    <div class="container">
+        <h2 class="section-title">عروض الشهر</h2>
+        
+        
+        
+        <!-- Deal Carousel Container -->
+        <div class="deal-carousel">
+            <!-- Deal Card 1 -->
+            <div class="deal-card">
+                <div class="deal-image">
+                    <img src="img/deal-product.jpg" alt="عرض الشهر">
+                    <div class="discount-badge">خصم 30%</div>
+                </div>
+                <h3 class="deal-title">فستان حفلات للأطفال - مجموعة الصيف</h3>
+                <div class="deal-price">
+                    <span class="current-price">299 جنيه</span>
+                    <span class="old-price">429 جنيه</span>
+                </div>
+                <div class="deal-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span class="rating-count">(42 تقييم)</span>
+                </div>
+                <p class="deal-description">
+                    فستان مميز للحفلات والمناسبات الخاصة، مصنوع من أجود أنواع الأقمشة لراحة طفلتك.
+                </p>
+                <div class="deal-features">
+                    <div class="feature"><i class="fas fa-check-circle"></i><span>خامة فاخرة</span></div>
+                    <div class="feature"><i class="fas fa-check-circle"></i><span>تصميم عصري</span></div>
+                    <div class="feature"><i class="fas fa-check-circle"></i><span>مريح للأطفال</span></div>
+                    <div class="feature"><i class="fas fa-check-circle"></i><span>متوفر بعدة ألوان</span></div>
+                </div>
+                <div class="deal-actions">
+                    <a href="cart.html" class="add-to-cart-btn" onclick="addToCartFromDeal(event, this)">
+                        <i class="fas fa-shopping-cart"></i>
+                        أضف إلى السلة
+                    </a>
+                   
+                </div>
+            </div>
+            
+            <!-- Deal Card 2 -->
+            <div class="deal-card">
+                <div class="deal-image">
+                    <img src="img/deal-product2.jpg" alt="عرض الشهر">
+                    <div class="discount-badge">خصم 25%</div>
+                </div>
+                <h3 class="deal-title">طقم ملابس أطفال - مجموعة الربيع</h3>
+                <div class="deal-price">
+                    <span class="current-price">350 جنيه</span>
+                    <span class="old-price">470 جنيه</span>
+                </div>
+                <div class="deal-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span class="rating-count">(28 تقييم)</span>
+                </div>
+                <p class="deal-description">
+                    طقم ملابس أنيق للأطفال، مناسب للمناسبات اليومية والخروجات. مصنوع من قطن 100%.
+                </p>
+                <div class="deal-features">
+                    <div class="feature"><i class="fas fa-check-circle"></i><span>قطن 100%</span></div>
+                    <div class="feature"><i class="fas fa-check-circle"></i><span>سهل الغسيل</span></div>
+                    <div class="feature"><i class="fas fa-check-circle"></i><span>مقاومة للتمزق</span></div>
+                    <div class="feature"><i class="fas fa-check-circle"></i><span>متوفر بعدة مقاسات</span></div>
+                </div>
+                <div class="deal-actions">
+                    <a href="cart.html" class="add-to-cart-btn" onclick="addToCartFromDeal(event, this)">
+                        <i class="fas fa-shopping-cart"></i>
+                        أضف إلى السلة
+                    </a>
+                    
+                </div>
+            </div>
+            
+            <!-- Deal Card 3 -->
+            <div class="deal-card">
+                <div class="deal-image">
+                    <img src="img/deal-product3.jpg" alt="عرض الشهر">
+                    <div class="discount-badge">خصم 40%</div>
+                </div>
+                <h3 class="deal-title">فستان سهرة للأطفال - مجموعة العيد</h3>
+                <div class="deal-price">
+                    <span class="current-price">399 جنيه</span>
+                    <span class="old-price">665 جنيه</span>
+                </div>
+                <div class="deal-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span class="rating-count">(56 تقييم)</span>
+                </div>
+                <p class="deal-description">
+                    فستان سهرة فاخر للمناسبات الخاصة والأعياد، مزين بتطريزات راقية وتصميم عصري.
+                </p>
+                <div class="deal-features">
+                    <div class="feature"><i class="fas fa-check-circle"></i><span>تطريز يدوي</span></div>
+                    <div class="feature"><i class="fas fa-check-circle"></i><span>قماش فاخر</span></div>
+                    <div class="feature"><i class="fas fa-check-circle"></i><span>تصميم حصري</span></div>
+                    <div class="feature"><i class="fas fa-check-circle"></i><span>مناسب للمناسبات</span></div>
+                </div>
+                <div class="deal-actions">
+                    <a href="cart.html" class="add-to-cart-btn" onclick="addToCartFromDeal(event, this)">
+                        <i class="fas fa-shopping-cart"></i>
+                        أضف إلى السلة
+                    </a>
+                   
+                </div>
+            </div>
+            
+           
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products Section -->
+<section class="featured-products">
+    <div class="container">
+        <h2 class="section-title">المنتجات المميزة</h2>
+        
+        <!-- Carousel Navigation -->
+        <!-- <div class="featured-carousel-nav">
+            <button class="featured-prev-btn"><i class="fas fa-chevron-right"></i></button>
+            <button class="featured-next-btn"><i class="fas fa-chevron-left"></i></button>
+        </div> -->
+        
+        <!-- Featured Products Carousel -->
+        <div class="featured-carousel">
+            <!-- Featured Product 1 -->
+            <div class="featured-card">
+                <div class="featured-badge">مميز</div>
+                <div class="featured-image">
+                    <img src="img/featured1.jpg" alt="منتج مميز">
+                    <div class="featured-actions">
+                        <button class="action-btn" onclick="addToCart(event)">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                        <button class="action-btn product-view-btn" onclick="viewProduct(event)">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="featured-info">
+                    <h3 class="featured-title">فستان أطفال مطرز</h3>
+                    <div class="featured-price">
+                        <span class="current-price">450 جنيه</span>
+                    </div>
+                    <div class="featured-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span class="rating-count">(38 تقييم)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Featured Product 2 -->
+            <div class="featured-card">
+                <div class="featured-badge sale">خصم 15%</div>
+                <div class="featured-image">
+                    <img src="img/featured2.jpg" alt="منتج مميز">
+                    <div class="featured-actions">
+                        <button class="action-btn" onclick="addToCart(event)">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                        <button class="action-btn product-view-btn" onclick="viewProduct(event)">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="featured-info">
+                    <h3 class="featured-title">طقم أطفال كاجوال</h3>
+                    <div class="featured-price">
+                        <span class="current-price">380 جنيه</span>
+                        <span class="old-price">450 جنيه</span>
+                    </div>
+                    <div class="featured-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span class="rating-count">(24 تقييم)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Featured Product 3 -->
+            <div class="featured-card">
+                <div class="featured-badge new">جديد</div>
+                <div class="featured-image">
+                    <img src="img/featured3.jpg" alt="منتج مميز">
+                    <div class="featured-actions">
+                        <button class="action-btn" onclick="addToCart(event)">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                        <button class="action-btn product-view-btn" onclick="viewProduct(event)">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="featured-info">
+                    <h3 class="featured-title">فستان أطفال للحفلات</h3>
+                    <div class="featured-price">
+                        <span class="current-price">520 جنيه</span>
+                    </div>
+                    <div class="featured-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span class="rating-count">(17 تقييم)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Featured Product 4 -->
+            <div class="featured-card">
+                <div class="featured-image">
+                    <img src="img/featured4.jpg" alt="منتج مميز">
+                    <div class="featured-actions">
+                        <button class="action-btn" onclick="addToCart(event)">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                        <button class="action-btn product-view-btn" onclick="viewProduct(event)">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="featured-info">
+                    <h3 class="featured-title">بدلة أطفال رسمية</h3>
+                    <div class="featured-price">
+                        <span class="current-price">490 جنيه</span>
+                    </div>
+                    <div class="featured-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span class="rating-count">(45 تقييم)</span>
+                    </div>
+                </div>
+            </div>
+            
+           
+        </div>
+        
+        <!-- View All Button -->
+        <!-- <div class="view-all-container">
+            <a href="#" class="view-all-btn">عرض جميع المنتجات المميزة</a>
+        </div> -->
+    </div>
+</section>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/201067300073" class="whatsapp-btn" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+
+
+<!-- Product Popup Modal -->
+<div id="productModal" class="product-modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="product-modal-container">
+            <div class="product-modal-image">
+                <img id="modalProductImage" src="" alt="صورة المنتج">
+            </div>
+            <div class="product-modal-details">
+                <h2 id="modalProductTitle"></h2>
+                <div class="product-modal-price">
+                    <span id="modalCurrentPrice" class="current-price"></span>
+                    <span id="modalOldPrice" class="old-price"></span>
+                </div>
+                <div class="product-modal-rating">
+                    <span id="modalRatingStars"></span>
+                    <span id="modalRatingCount" class="rating-count"></span>
+                </div>
+                <div id="modalAvailability" class="product-availability"></div>
+                <p id="modalDescription" class="product-description"></p>
+                <div class="product-modal-actions">
+                    <div class="quantity-selector">
+                        <button class="quantity-btn minus">-</button>
+                        <input type="number" value="1" min="1" class="quantity-input">
+                        <button class="quantity-btn plus">+</button>
+                    </div>
+                    <button class="add-to-cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        إضافة إلى السلة
+                    </button>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/banner.js"></script>
+<script src="js/popular-products.js"></script>
+<script src="script.js"></script>
+<script src="auth.js"></script>
+<script src="mobile-nav.js"></script>
+
+<script>
+// Check if user is logged in
+function checkLoginStatus() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const currentUser = localStorage.getItem('currentUser');
+    const authLink = document.getElementById('authLink');
+    
+    if (isLoggedIn && currentUser) {
+        // User is logged in, update auth link
+        const userData = JSON.parse(localStorage.getItem('user_' + currentUser));
+        if (userData) {
+            // Change LOGIN/REGISTER to LOGOUT
+            authLink.textContent = 'LOGOUT (' + userData.name + ')';
+            authLink.href = '#';
+            authLink.onclick = function(e) {
+                e.preventDefault();
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('currentUser');
+                window.location.reload();
+            };
+        }
+    }
+}
+
+// Run this when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    checkLoginStatus();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Force single column layout for carousels on mobile
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+      /* Single column layout for all carousels */
+      .featured-carousel,
+      .deal-carousel {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        overflow: visible !important;
+        white-space: normal !important;
+        width: 100% !important;
+      }
+      
+      /* Make cards take full width */
+      .featured-card,
+      .deal-card {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        margin: 0 !important;
+        flex: none !important;
+        scroll-snap-align: none !important;
+      }
+      
+      /* Make images and content fit properly */
+      .featured-card img,
+      .deal-card img {
+        width: 100% !important;
+        height: auto !important;
+      }
+      
+      /* Desktop layout - can be removed if you only want single column everywhere */
+      @media (min-width: 992px) {
+        .featured-carousel {
+          grid-template-columns: repeat(4, 1fr) !important;
+        }
+        
+        .deal-carousel {
+          grid-template-columns: repeat(3, 1fr) !important;
+        }
+      }
+    `;
+    document.head.appendChild(styleElement);
+    
+    // Disable any carousel functionality
+    const carousels = document.querySelectorAll('.featured-carousel, .deal-carousel');
+    carousels.forEach(carousel => {
+      // Remove any event listeners
+      const newCarousel = carousel.cloneNode(true);
+      carousel.parentNode.replaceChild(newCarousel, carousel);
+      
+      // Remove any inline styles
+      newCarousel.style = "";
+      Array.from(newCarousel.children).forEach(child => {
+        child.style = "";
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

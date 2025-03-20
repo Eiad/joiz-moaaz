@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Jojiz</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="top-header">
+            <div class="container">
+                <div class="backend-info">
+                    <div class="welcome">
+                        <span>BACKEND.WELCOME</span>
+                        <div class="user-auth-section">
+                            <a href="login.html" class="login-register auth-link">BACKEND.LOGIN/ BACKEND.REGISTER</a>
+                            <div class="user-info">
+                                <span class="username">مرحبا، <span class="user-name"></span></span>
+                                <a href="#" class="logout-btn">تسجيل الخروج</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-section">
+                        <a href="#" class="lang-switch">تغيير اللغة</a>
+                        <a href="#" class="cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>0.00EGP</span>
+                        </a>
+                        <a href="#" class="wishlist">
+                            <i class="fas fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hotline">
+                    <span>BACKEND.HOTLINE 24/7</span>
+                    <a href="tel:01067300073">01067300073</a>
+                </div>
+            </div>
+        </div>
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/jojiz.png" alt="Jojiz Logo">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#" class="lang-toggle">ar <img src="images/language.svg" alt="Language" class="lang-icon"></a></li>
+                        <li><a href="#">المتجر</a></li>
+                        <li><a href="index.html">الصفحة الرئيسية</a></li>
+                    </ul>
+                </nav>
+                <div class="search-bar">
+                    <form action="#" method="get">
+                        <input type="text" placeholder="بحث" class="search-input">
+                        <button type="submit" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                    <div class="language-dropdown">
+                        <span>اللغة</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div class="mobile-cart">
+                    <a href="#" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb Section -->
+    <section class="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb-list">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="#" class="category-link">الفئة</a></li>
+                <li class="product-name">المنتج</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Product Details Section -->
+    <section class="product-details">
+        <div class="container">
+            <div class="product-loading">
+                جاري تحميل المنتج...
+            </div>
+            
+            <div class="product-content" style="display: none;">
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <!-- Main product image will be here -->
+                    </div>
+                    <div class="thumbnail-images">
+                        <!-- Thumbnail images will be here -->
+                    </div>
+                </div>
+                
+                <div class="product-info">
+                    <h1 class="product-title">اسم المنتج</h1>
+                    <div class="product-meta">
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="product-category">
+                            الفئة: <a href="#" class="category-link">اسم الفئة</a>
+                        </div>
+                    </div>
+                    
+                    <div class="product-price">
+                        <span class="price">0.00 EGP</span>
+                    </div>
+                    
+                    <div class="product-description">
+                        <!-- Product description will be here -->
+                    </div>
+                    
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        
+                        <button class="add-to-cart-btn">
+                            <i class="fas fa-shopping-cart"></i>
+                            إضافة إلى السلة
+                        </button>
+                        
+                        <button class="add-to-wishlist-btn">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products Section -->
+    <section class="related-products">
+        <div class="container">
+            <h2 class="section-title">منتجات ذات صلة</h2>
+            <div class="products-grid">
+                <!-- Related products will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html">الصفحة الرئيسية</a></li>
+                        <li><a href="#">المتجر</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
+                        <li><a href="terms.html">الشروط والأحكام</a></li>
+                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>اتصل بنا</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-home"></i> octuber</a></li>
+                        <li><a href="tel:01067300073"><i class="fas fa-phone"></i> 01067300073</a></li>
+                        <li><a href="mailto:jojiz@jojiz.com"><i class="fas fa-envelope"></i> jojiz@jojiz.com</a></li>
+                    </ul>
+                    <div class="social-links">
+                        <!-- Social media links will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>حقوق الطبع والنشر © 2025 Jojiz. جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="#" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/language.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Define API_BASE_URL for use in scripts
+            const API_BASE_URL = 'https://adminjojiz.jojiz.net';
+            
+            // Get product ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            
+            if (productId) {
+                // Load product details
+                loadProductDetails(productId);
+            } else {
+                // Redirect to home page or show error
+                window.location.href = 'index.html';
+            }
+            
+            // Initialize cart
+            CartService.init();
+            CartService.updateCartUI();
+            
+            // Add click handler for cart icon
+            $('.cart-icon').on('click', function() {
+                openCartModal();
+            });
+            
+            // Add click handler for Add to Cart button
+            $(document).on('click', '.add-to-cart-btn', function() {
+                const quantity = parseInt($('#quantity').val()) || 1;
+                addToCart(productId, quantity);
+            });
+            
+            // Add click handler for Buy Now button
+            $(document).on('click', '.buy-now-btn', function() {
+                const quantity = parseInt($('#quantity').val()) || 1;
+                // Add to cart first
+                CartService.addItem(productId, quantity).then(result => {
+                    if (result.success) {
+                        // Proceed to checkout
+                        openCheckoutModal();
+                    } else {
+                        showNotification(result.message || 'حدث خطأ أثناء إضافة المنتج إلى السلة', 'error');
+                    }
+                });
+            });
+            
+            // Add click handler for Add to Wishlist button
+            $(document).on('click', '.add-to-wishlist-btn', function() {
+                addToWishlist(productId);
+            });
+            
+            // Handle quantity buttons
+            $(document).on('click', '.quantity-btn.minus', function() {
+                const input = $('#quantity');
+                const value = parseInt(input.val()) - 1;
+                if (value < 1) return;
+                input.val(value);
+            });
+            
+            $(document).on('click', '.quantity-btn.plus', function() {
+                const input = $('#quantity');
+                const value = parseInt(input.val()) + 1;
+                input.val(value);
+            });
+            
+            // Check if user is logged in
+            if (AuthService.isLoggedIn()) {
+                // Get current user
+                const user = AuthService.getCurrentUser();
+                
+                // Show user info
+                $('.user-info').show();
+                $('.auth-link').hide();
+                $('.user-name').text(user.username);
+                
+                // Handle logout
+                $('.logout-btn').click(function(e) {
+                    e.preventDefault();
+                    AuthService.logout();
+                });
+            } else {
+                // Show login/register link
+                $('.user-info').hide();
+                $('.auth-link').show();
+            }
+            
+            // Handle image errors
+            $('img').on('error', function() {
+                $(this).addClass('error');
+            });
+            
+            // Load site settings first
+            loadSiteSettings().then(() => {
+                // Load product details
+                loadProductDetails(productId);
+                loadSocialMediaLinks();
+            });
+            
+            // Handle quantity buttons
+            $('.quantity-btn.minus').on('click', function() {
+                const input = $('.quantity-input');
+                const value = parseInt(input.val()) - 1;
+                input.val(value < 1 ? 1 : value);
+            });
+            
+            $('.quantity-btn.plus').on('click', function() {
+                const input = $('.quantity-input');
+                const value = parseInt(input.val()) + 1;
+                input.val(value);
+            });
+            
+            // Handle add to cart button
+            $('.add-to-cart-btn').on('click', function() {
+                const quantity = parseInt($('.quantity-input').val());
+                const productId = $(this).data('product-id');
+                
+                // Add to cart
+                addToCart(productId, quantity);
+            });
+            
+            // Handle add to wishlist button
+            $('.add-to-wishlist-btn').on('click', function() {
+                const productId = $(this).data('product-id');
+                
+                // Add to wishlist
+                addToWishlist(productId);
+            });
+            
+            // Add click handler for cart icon
+            $('.cart, .cart-icon').on('click', function(e) {
+                e.preventDefault();
+                openCartModal();
+            });
+        });
+        
+        // Function to load product details
+        async function loadProductDetails(productId) {
+            try {
+                // Fetch product details
+                const result = await ContentService.getProductDetails(productId);
+                
+                console.log('Product details API response:', result);
+                
+                if (result.success && result.data) {
+                    const product = result.data;
+                    console.log('Processing product details:', product);
+                    
+                    // Extract product data
+                    const productName = product.product_name || 'منتج بدون اسم';
+                    const productDescription = product.product_description || '';
+                    const productPrice = product.product_price;
+                    
+                    // Store the document ID for future reference
+                    const documentId = product.documentId || product.id;
+                    
+                    // Set product IDs on buttons
+                    $('.add-to-cart-btn').data('product-id', documentId);
+                    $('.add-to-wishlist-btn').data('product-id', documentId);
+                    
+                    // Extract category
+                    let categoryId, categoryName;
+                    
+                    if (product.category) {
+                        // Direct category object
+                        categoryId = product.category.id || product.category.documentId;
+                        categoryName = product.category.name;
+                    } else if (product.category && product.category.data) {
+                        // Nested category data
+                        categoryId = product.category.data.id;
+                        categoryName = product.category.data.attributes?.name;
+                    }
+                    
+                    // Extract images
+                    const productImages = [];
+                    
+                    // Main product image
+                    if (product.product_image && product.product_image.url) {
+                        productImages.push({
+                            url: API_BASE_URL + product.product_image.url,
+                            alt: productName
+                        });
+                    } else if (product.product_image && product.product_image.data && product.product_image.data.attributes) {
+                        productImages.push({
+                            url: API_BASE_URL + product.product_image.data.attributes.url,
+                            alt: productName
+                        });
+                    }
+                    
+                    // Additional product media
+                    if (product.product_media && Array.isArray(product.product_media)) {
+                        product.product_media.forEach(media => {
+                            if (media.url) {
+                                productImages.push({
+                                    url: API_BASE_URL + media.url,
+                                    alt: productName
+                                });
+                            }
+                        });
+                    } else if (product.product_media && product.product_media.data) {
+                        product.product_media.data.forEach(media => {
+                            if (media.attributes && media.attributes.url) {
+                                productImages.push({
+                                    url: API_BASE_URL + media.attributes.url,
+                                    alt: productName
+                                });
+                            }
+                        });
+                    }
+                    
+                    // Update page title
+                    document.title = `${productName} - ${window.siteSettings?.name || 'Jojiz'}`;
+                    
+                    // Update breadcrumb
+                    $('.product-name').text(productName);
+                    
+                    if (categoryId && categoryName) {
+                        $('.category-link').attr('href', `category.html?id=${categoryId}`);
+                        $('.category-link').text(categoryName);
+                        $('.product-category a').text(categoryName);
+                        $('.product-category a').attr('href', `category.html?id=${categoryId}`);
+                    }
+                    
+                    // Update product details
+                    $('.product-title').text(productName);
+                    $('.product-description').html(productDescription);
+                    
+                    // Update product price
+                    if (productPrice) {
+                        $('.product-price .price').text(formatPrice(productPrice));
+                    } else {
+                        $('.product-price .price').text(window.translateText ? window.translateText('السعر عند الطلب') : 'السعر عند الطلب');
+                    }
+                    
+                    // Update product images
+                    if (productImages.length > 0) {
+                        // Set main image
+                        $('.main-image').html(`<img src="${productImages[0].url}" alt="${productImages[0].alt}" class="main-product-image">`);
+                        
+                        // Set thumbnail images
+                        const thumbnailsContainer = $('.thumbnail-images');
+                        thumbnailsContainer.empty();
+                        
+                        productImages.forEach((image, index) => {
+                            const isActive = index === 0 ? 'active' : '';
+                            thumbnailsContainer.append(`
+                                <div class="thumbnail ${isActive}" data-index="${index}">
+                                    <img src="${image.url}" alt="${image.alt}">
+                                </div>
+                            `);
+                        });
+                        
+                        // Add click event to thumbnails
+                        $('.thumbnail').on('click', function() {
+                            const index = $(this).data('index');
+                            $('.thumbnail').removeClass('active');
+                            $(this).addClass('active');
+                            $('.main-product-image').attr('src', productImages[index].url);
+                        });
+                    } else {
+                        // No images available
+                        const imageNotAvailableText = window.translateText ? window.translateText('صورة غير متوفرة') : 'صورة غير متوفرة';
+                        $('.main-image').html(`
+                            <div class="placeholder-image large">
+                                <i class="fas fa-tshirt"></i>
+                                <span>${imageNotAvailableText}</span>
+                            </div>
+                        `);
+                    }
+                    
+                    // Show product content
+                    $('.product-loading').hide();
+                    $('.product-content').show();
+                    
+                    // Load related products if category is available
+                    if (categoryId) {
+                        loadRelatedProducts(categoryId, documentId);
+                    }
+                } else {
+                    // Product not found
+                    const errorText = window.translateText ? window.translateText('عذراً، لم يتم العثور على المنتج.') : 'عذراً، لم يتم العثور على المنتج.';
+                    $('.product-loading').html(`<div class="error-message">${errorText}</div>`);
+                }
+            } catch (error) {
+                console.error('Error in loadProductDetails:', error);
+                const errorText = window.translateText ? window.translateText('عذراً، حدث خطأ أثناء تحميل تفاصيل المنتج. يرجى المحاولة مرة أخرى لاحقاً.') : 'عذراً، حدث خطأ أثناء تحميل تفاصيل المنتج. يرجى المحاولة مرة أخرى لاحقاً.';
+                $('.product-loading').html(`<div class="error-message">${errorText}</div>`);
+            }
+        }
+        
+        // Function to load related products
+        async function loadRelatedProducts(categoryId, currentProductId) {
+            const relatedProductsGrid = $('.related-products .products-grid');
+            
+            try {
+                // Fetch products for the same category
+                const result = await ContentService.getProductsByCategory(categoryId, { pageSize: 4 });
+                
+                if (result.success && result.data && result.data.length > 0) {
+                    // Filter out the current product - check both id and documentId
+                    const relatedProducts = result.data.filter(product => {
+                        const productId = product.documentId || product.id;
+                        const productIdStr = String(productId);
+                        const currentIdStr = String(currentProductId);
+                        return productIdStr !== currentIdStr;
+                    });
+                    
+                    if (relatedProducts.length > 0) {
+                        // Clear container
+                        relatedProductsGrid.empty();
+                        
+                        // Generate product items
+                        relatedProducts.slice(0, 4).forEach(product => {
+                            try {
+                                // Extract product data
+                                const productId = product.documentId || product.id;
+                                const productName = product.attributes?.product_name || product.product_name || 'منتج بدون اسم';
+                                
+                                // Get product image URL
+                                let imageUrl = '';
+                                
+                                // Handle different API response structures for images
+                                if (product.attributes?.product_image?.data) {
+                                    imageUrl = API_BASE_URL + product.attributes.product_image.data.attributes.url;
+                                } else if (product.product_image && product.product_image.url) {
+                                    imageUrl = API_BASE_URL + product.product_image.url;
+                                } else if (product.product_media && product.product_media.length > 0 && product.product_media[0].url) {
+                                    imageUrl = API_BASE_URL + product.product_media[0].url;
+                                }
+                                
+                                // Get product price
+                                let price = 'السعر عند الطلب';
+                                if (product.attributes?.product_price) {
+                                    price = formatPrice(product.attributes.product_price);
+                                } else if (product.product_price) {
+                                    price = formatPrice(product.product_price);
+                                }
+                                
+                                // Get image not available text based on current language
+                                const imageNotAvailableText = window.translateText ? window.translateText('صورة غير متوفرة') : 'صورة غير متوفرة';
+                                
+                                // Create product HTML
+                                const productHTML = `
+                                    <div class="product-item">
+                                        <a href="product.html?id=${productId}" class="product-link">
+                                            <div class="product-image">
+                                                ${imageUrl ? 
+                                                    `<img src="${imageUrl}" alt="${productName}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'placeholder-image\\'><i class=\\'fas fa-tshirt\\'></i><span>${imageNotAvailableText}</span></div>';">` : 
+                                                    `<div class="placeholder-image"><i class="fas fa-tshirt"></i><span>${imageNotAvailableText}</span></div>`
+                                                }
+                                                <div class="product-actions">
+                                                    <a href="product.html?id=${productId}" class="quick-view"><i class="fas fa-eye"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="product-details">
+                                                <h3>${productName}</h3>
+                                                <div class="price-container">
+                                                    <p class="price">${price}</p>
+                                                </div>
+                                                <div class="product-rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                `;
+                                
+                                relatedProductsGrid.append(productHTML);
+                            } catch (error) {
+                                console.error('Error processing related product:', error, product);
+                            }
+                        });
+                        
+                        // Show related products section
+                        $('.related-products').show();
+                        
+                        // Initialize product hover effects
+                        initializeProductHover();
+                    } else {
+                        // No related products
+                        $('.related-products').hide();
+                    }
+                } else {
+                    // No related products
+                    $('.related-products').hide();
+                }
+            } catch (error) {
+                console.error('Error in loadRelatedProducts:', error);
+                $('.related-products').hide();
+            }
+        }
+        
+        // Function to add product to cart
+        async function addToCart(productId, quantity = 1) {
+            // Use the CartService to add the item
+            const result = await CartService.addItem(productId, quantity);
+            
+            if (result.success) {
+                // Show success message
+                showNotification('تمت إضافة المنتج إلى السلة بنجاح', 'success');
+            } else {
+                // Show error message
+                showNotification(result.message || 'حدث خطأ أثناء إضافة المنتج إلى السلة', 'error');
+            }
+        }
+        
+        // Function to add product to wishlist
+        function addToWishlist(productId) {
+            // Here you would implement the actual wishlist functionality
+            // For now, we'll just show a notification
+            showNotification('تمت إضافة المنتج إلى المفضلة', 'success');
+        }
+        
+        // Function to show notification
+        function showNotification(message, type = 'info') {
+            // Create notification element if it doesn't exist
+            if (!$('.notification-container').length) {
+                $('body').append('<div class="notification-container"></div>');
+            }
+            
+            // Create notification
+            const notification = $(`
+                <div class="notification ${type}">
+                    <span class="message">${message}</span>
+                    <button class="close-notification"><i class="fas fa-times"></i></button>
+                </div>
+            `);
+            
+            // Add notification to container
+            $('.notification-container').append(notification);
+            
+            // Show notification
+            setTimeout(() => {
+                notification.addClass('show');
+            }, 10);
+            
+            // Remove notification after 3 seconds
+            setTimeout(() => {
+                notification.removeClass('show');
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 3000);
+            
+            // Handle close button
+            notification.find('.close-notification').on('click', function() {
+                notification.removeClass('show');
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            });
+        }
+        
+        // Function to open cart modal
+        function openCartModal() {
+            // Create cart modal if it doesn't exist
+            if (!$('.cart-modal').length) {
+                createCartModal();
+            }
+            
+            // Update cart items
+            updateCartItems();
+            
+            // Show modal
+            $('.cart-modal').addClass('active');
+        }
+        
+        // Function to create cart modal
+        function createCartModal() {
+            const cartModal = $(`
+                <div class="cart-modal">
+                    <div class="modal-overlay"></div>
+                    <div class="modal-content">
+                        <button class="close-modal"><i class="fas fa-times"></i></button>
+                        <div class="modal-body">
+                            <h2 class="modal-title">سلة التسوق</h2>
+                            <div class="cart-items">
+                                <!-- Cart items will be loaded here -->
+                            </div>
+                            <div class="cart-summary">
+                                <div class="cart-total">
+                                    <span>المجموع:</span>
+                                    <span class="total-amount">0.00 EGP</span>
+                                </div>
+                                <div class="cart-actions">
+                                    <button class="checkout-btn">إتمام الشراء</button>
+                                    <button class="continue-shopping-btn">مواصلة التسوق</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `);
+            
+            // Add to body
+            $('body').append(cartModal);
+            
+            // Handle close modal
+            cartModal.find('.close-modal, .modal-overlay, .continue-shopping-btn').on('click', function() {
+                closeCartModal();
+            });
+            
+            // Handle checkout button
+            cartModal.find('.checkout-btn').on('click', function() {
+                closeCartModal();
+                openCheckoutModal();
+            });
+        }
+        
+        // Function to update cart items
+        function updateCartItems() {
+            const cart = CartService.getCart();
+            const cartItemsContainer = $('.cart-items');
+            
+            // Clear container
+            cartItemsContainer.empty();
+            
+            if (cart.items.length === 0) {
+                // Show empty cart message
+                cartItemsContainer.html('<div class="empty-cart">سلة التسوق فارغة</div>');
+                $('.cart-total .total-amount').text('0.00 EGP');
+                return;
+            }
+            
+            // Add items to container
+            cart.items.forEach(item => {
+                const itemHTML = `
+                    <div class="cart-item" data-id="${item.productId}">
+                        <div class="item-image">
+                            ${item.image ? 
+                                `<img src="${item.image}" alt="${item.name}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'placeholder-image\\'><i class=\\'fas fa-tshirt\\'></i></div>';">` : 
+                                `<div class="placeholder-image"><i class="fas fa-tshirt"></i></div>`
+                            }
+                        </div>
+                        <div class="item-details">
+                            <h3 class="item-name">${item.name}</h3>
+                            <div class="item-price">${formatPrice(item.price)}</div>
+                            <div class="item-quantity">
+                                <button class="quantity-btn minus"><i class="fas fa-minus"></i></button>
+                                <input type="number" class="quantity-input" value="${item.quantity}" min="1">
+                                <button class="quantity-btn plus"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <button class="remove-item-btn"><i class="fas fa-trash"></i></button>
+                    </div>
+                `;
+                
+                cartItemsContainer.append(itemHTML);
+            });
+            
+            // Update total
+            $('.cart-total .total-amount').text(formatPrice(cart.total));
+            
+            // Handle quantity buttons
+            $('.cart-item .quantity-btn.minus').on('click', function() {
+                const input = $(this).siblings('.quantity-input');
+                const value = parseInt(input.val()) - 1;
+                if (value < 1) return;
+                
+                input.val(value);
+                
+                // Update quantity in cart
+                const productId = $(this).closest('.cart-item').data('id');
+                CartService.updateQuantity(productId, value);
+                
+                // Update total
+                $('.cart-total .total-amount').text(formatPrice(CartService.getCart().total));
+            });
+            
+            $('.cart-item .quantity-btn.plus').on('click', function() {
+                const input = $(this).siblings('.quantity-input');
+                const value = parseInt(input.val()) + 1;
+                
+                input.val(value);
+                
+                // Update quantity in cart
+                const productId = $(this).closest('.cart-item').data('id');
+                CartService.updateQuantity(productId, value);
+                
+                // Update total
+                $('.cart-total .total-amount').text(formatPrice(CartService.getCart().total));
+            });
+            
+            // Handle quantity input change
+            $('.cart-item .quantity-input').on('change', function() {
+                const value = parseInt($(this).val());
+                if (value < 1) {
+                    $(this).val(1);
+                    return;
+                }
+                
+                // Update quantity in cart
+                const productId = $(this).closest('.cart-item').data('id');
+                CartService.updateQuantity(productId, value);
+                
+                // Update total
+                $('.cart-total .total-amount').text(formatPrice(CartService.getCart().total));
+            });
+            
+            // Handle remove item button
+            $('.cart-item .remove-item-btn').on('click', function() {
+                const productId = $(this).closest('.cart-item').data('id');
+                
+                // Remove item from cart
+                CartService.removeItem(productId);
+                
+                // Update cart items
+                updateCartItems();
+            });
+        }
+        
+        // Function to close cart modal
+        function closeCartModal() {
+            $('.cart-modal').removeClass('active');
+        }
+        
+        // Function to open checkout modal
+        function openCheckoutModal() {
+            // Check if user is logged in
+            if (!AuthService.isLoggedIn()) {
+                // Show login modal
+                showNotification('يرجى تسجيل الدخول لإتمام عملية الشراء', 'info');
+                // Redirect to login page
+                window.location.href = 'login.html?redirect=checkout';
+                return;
+            }
+            
+            // Create checkout modal if it doesn't exist
+            if (!$('.checkout-modal').length) {
+                createCheckoutModal();
+            }
+            
+            // Check if user has address
+            checkUserAddress();
+            
+            // Update order summary
+            updateOrderSummary();
+            
+            // Show modal
+            $('.checkout-modal').addClass('active');
+        }
+        
+        // Function to create checkout modal
+        function createCheckoutModal() {
+            const checkoutModal = $(`
+                <div class="checkout-modal">
+                    <div class="modal-overlay"></div>
+                    <div class="modal-content">
+                        <button class="close-modal"><i class="fas fa-times"></i></button>
+                        <div class="modal-body">
+                            <h2 class="modal-title">إتمام الشراء</h2>
+                            
+                            <div class="checkout-steps">
+                                <div class="step address-step active">
+                                    <h3>العنوان</h3>
+                                    <div class="step-content">
+                                        <div class="address-form">
+                                            <div class="form-group">
+                                                <label for="address">العنوان</label>
+                                                <input type="text" id="address" class="form-input" placeholder="أدخل العنوان بالتفصيل">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>الموقع على الخريطة</label>
+                                                <div id="map" style="height: 300px;"></div>
+                                            </div>
+                                            <input type="hidden" id="latitude" value="">
+                                            <input type="hidden" id="longitude" value="">
+                                            <button class="save-address-btn">حفظ العنوان</button>
+                                        </div>
+                                        <div class="saved-address" style="display: none;">
+                                            <p class="address-text"></p>
+                                            <button class="change-address-btn">تغيير العنوان</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="step payment-step">
+                                    <h3>طريقة الدفع</h3>
+                                    <div class="step-content">
+                                        <div class="payment-methods">
+                                            <div class="payment-method">
+                                                <input type="radio" name="payment-method" id="cash-on-delivery" value="cash" checked>
+                                                <label for="cash-on-delivery">الدفع عند الاستلام</label>
+                                            </div>
+                                            <div class="payment-method">
+                                                <input type="radio" name="payment-method" id="credit-card" value="card">
+                                                <label for="credit-card">بطاقة ائتمان</label>
+                                            </div>
+                                        </div>
+                                        <button class="continue-to-summary-btn">متابعة</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="step summary-step">
+                                    <h3>ملخص الطلب</h3>
+                                    <div class="step-content">
+                                        <div class="order-items">
+                                            <!-- Order items will be loaded here -->
+                                        </div>
+                                        <div class="order-summary">
+                                            <div class="summary-row">
+                                                <span>المجموع الفرعي:</span>
+                                                <span class="subtotal-amount">0.00 EGP</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span>رسوم التوصيل:</span>
+                                                <span class="shipping-amount">0.00 EGP</span>
+                                            </div>
+                                            <div class="summary-row total">
+                                                <span>المجموع:</span>
+                                                <span class="total-amount">0.00 EGP</span>
+                                            </div>
+                                        </div>
+                                        <button class="place-order-btn">تأكيد الطلب</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `);
+            
+            // Add to body
+            $('body').append(checkoutModal);
+            
+            // Handle close modal
+            checkoutModal.find('.close-modal, .modal-overlay').on('click', function() {
+                closeCheckoutModal();
+            });
+            
+            // Handle save address button
+            checkoutModal.find('.save-address-btn').on('click', function() {
+                saveUserAddress();
+            });
+            
+            // Handle change address button
+            checkoutModal.find('.change-address-btn').on('click', function() {
+                $('.saved-address').hide();
+                $('.address-form').show();
+            });
+            
+            // Handle continue to summary button
+            checkoutModal.find('.continue-to-summary-btn').on('click', function() {
+                // Check if address is saved
+                if (!$('.saved-address').is(':visible')) {
+                    showNotification('يرجى حفظ العنوان أولاً', 'error');
+                    return;
+                }
+                
+                // Go to summary step
+                $('.address-step, .payment-step').removeClass('active');
+                $('.summary-step').addClass('active');
+            });
+            
+            // Handle place order button
+            checkoutModal.find('.place-order-btn').on('click', function() {
+                placeOrder();
+            });
+            
+            // Initialize map
+            initMap();
+        }
+        
+        // Function to check if user has address
+        async function checkUserAddress() {
+            const result = await CartService.getUserAddress();
+            
+            if (result.success) {
+                // User has address
+                $('.address-form').hide();
+                $('.saved-address').show();
+                $('.address-text').text(result.data.address);
+                
+                // Set latitude and longitude
+                $('#latitude').val(result.data.latitude);
+                $('#longitude').val(result.data.longitude);
+                
+                // Go to payment step
+                $('.address-step').removeClass('active');
+                $('.payment-step').addClass('active');
+            } else {
+                // User doesn't have address
+                $('.address-form').show();
+                $('.saved-address').hide();
+            }
+        }
+        
+        // Function to save user address
+        async function saveUserAddress() {
+            const address = $('#address').val();
+            const latitude = $('#latitude').val();
+            const longitude = $('#longitude').val();
+            
+            if (!address) {
+                showNotification('يرجى إدخال العنوان', 'error');
+                return;
+            }
+            
+            if (!latitude || !longitude) {
+                showNotification('يرجى تحديد الموقع على الخريطة', 'error');
+                return;
+            }
+            
+            // Save address
+            const result = await CartService.updateUserAddress(address, latitude, longitude);
+            
+            if (result.success) {
+                // Address saved successfully
+                showNotification('تم حفظ العنوان بنجاح', 'success');
+                
+                // Update UI
+                $('.address-form').hide();
+                $('.saved-address').show();
+                $('.address-text').text(address);
+                
+                // Go to payment step
+                $('.address-step').removeClass('active');
+                $('.payment-step').addClass('active');
+            } else {
+                // Error saving address
+                showNotification(result.message || 'حدث خطأ أثناء حفظ العنوان', 'error');
+            }
+        }
+        
+        // Function to update order summary
+        function updateOrderSummary() {
+            const cart = CartService.getCart();
+            const orderItemsContainer = $('.order-items');
+            
+            // Clear container
+            orderItemsContainer.empty();
+            
+            // Add items to container
+            cart.items.forEach(item => {
+                const itemHTML = `
+                    <div class="order-item">
+                        <div class="item-image">
+                            ${item.image ? 
+                                `<img src="${item.image}" alt="${item.name}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'placeholder-image\\'><i class=\\'fas fa-tshirt\\'></i></div>';">` : 
+                                `<div class="placeholder-image"><i class="fas fa-tshirt"></i></div>`
+                            }
+                        </div>
+                        <div class="item-details">
+                            <h3 class="item-name">${item.name}</h3>
+                            <div class="item-price">${formatPrice(item.price)}</div>
+                            <div class="item-quantity">الكمية: ${item.quantity}</div>
+                        </div>
+                        <div class="item-total">${formatPrice(item.price * item.quantity)}</div>
+                    </div>
+                `;
+                
+                orderItemsContainer.append(itemHTML);
+            });
+            
+            // Calculate shipping cost (fixed for now)
+            const shippingCost = 30;
+            
+            // Update summary
+            $('.subtotal-amount').text(formatPrice(cart.total));
+            $('.shipping-amount').text(formatPrice(shippingCost));
+            $('.total-amount').text(formatPrice(cart.total + shippingCost));
+        }
+        
+        // Function to place order
+        async function placeOrder() {
+            // Get payment method
+            const paymentMethod = $('input[name="payment-method"]:checked').val();
+            
+            // Get shipping address
+            const shippingAddress = $('.address-text').text();
+            
+            // Place order
+            const result = await CartService.createOrder(paymentMethod, shippingAddress);
+            
+            if (result.success) {
+                // Order placed successfully
+                showNotification('تم تأكيد الطلب بنجاح', 'success');
+                
+                // Close checkout modal
+                closeCheckoutModal();
+                
+                // Show order confirmation
+                showOrderConfirmation(result.data);
+            } else {
+                // Error placing order
+                showNotification(result.message || 'حدث خطأ أثناء تأكيد الطلب', 'error');
+            }
+        }
+        
+        // Function to show order confirmation
+        function showOrderConfirmation(orderData) {
+            // Create confirmation modal
+            const confirmationModal = $(`
+                <div class="confirmation-modal active">
+                    <div class="modal-overlay"></div>
+                    <div class="modal-content">
+                        <button class="close-modal"><i class="fas fa-times"></i></button>
+                        <div class="modal-body">
+                            <div class="confirmation-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h2 class="modal-title">تم تأكيد الطلب بنجاح</h2>
+                            <p class="confirmation-message">شكراً لك على طلبك. سيتم التواصل معك قريباً لتأكيد الطلب.</p>
+                            <div class="order-details">
+                                <div class="detail-row">
+                                    <span>رقم الطلب:</span>
+                                    <span>${orderData.id || 'غير متوفر'}</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span>المجموع:</span>
+                                    <span>${formatPrice(orderData.total || 0)}</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span>طريقة الدفع:</span>
+                                    <span>${orderData.payment_method === 'cash' ? 'الدفع عند الاستلام' : 'بطاقة ائتمان'}</span>
+                                </div>
+                            </div>
+                            <button class="continue-shopping-btn">مواصلة التسوق</button>
+                        </div>
+                    </div>
+                </div>
+            `);
+            
+            // Add to body
+            $('body').append(confirmationModal);
+            
+            // Handle close modal
+            confirmationModal.find('.close-modal, .modal-overlay, .continue-shopping-btn').on('click', function() {
+                confirmationModal.removeClass('active');
+                setTimeout(() => {
+                    confirmationModal.remove();
+                }, 300);
+            });
+        }
+        
+        // Function to close checkout modal
+        function closeCheckoutModal() {
+            $('.checkout-modal').removeClass('active');
+        }
+        
+        // Function to initialize map
+        function initMap() {
+            // Check if Google Maps API is loaded
+            if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
+                // Load Google Maps API
+                const script = document.createElement('script');
+                script.src = 'https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap';
+                script.async = true;
+                script.defer = true;
+                document.head.appendChild(script);
+                return;
+            }
+            
+            // Default location (Cairo, Egypt)
+            const defaultLocation = { lat: 30.0444, lng: 31.2357 };
+            
+            // Create map
+            const map = new google.maps.Map(document.getElementById('map'), {
+                center: defaultLocation,
+                zoom: 12
+            });
+            
+            // Create marker
+            const marker = new google.maps.Marker({
+                position: defaultLocation,
+                map: map,
+                draggable: true
+            });
+            
+            // Handle marker drag
+            marker.addListener('dragend', function() {
+                const position = marker.getPosition();
+                $('#latitude').val(position.lat());
+                $('#longitude').val(position.lng());
+                
+                // Get address from coordinates
+                getAddressFromCoordinates(position.lat(), position.lng());
+            });
+            
+            // Handle map click
+            map.addListener('click', function(event) {
+                marker.setPosition(event.latLng);
+                $('#latitude').val(event.latLng.lat());
+                $('#longitude').val(event.latLng.lng());
+                
+                // Get address from coordinates
+                getAddressFromCoordinates(event.latLng.lat(), event.latLng.lng());
+            });
+            
+            // Try to get user's current location
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        const userLocation = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        
+                        // Center map on user's location
+                        map.setCenter(userLocation);
+                        marker.setPosition(userLocation);
+                        
+                        // Set latitude and longitude
+                        $('#latitude').val(userLocation.lat);
+                        $('#longitude').val(userLocation.lng);
+                        
+                        // Get address from coordinates
+                        getAddressFromCoordinates(userLocation.lat, userLocation.lng);
+                    },
+                    function(error) {
+                        console.error('Error getting user location:', error);
+                    }
+                );
+            }
+        }
+        
+        // Function to get address from coordinates
+        function getAddressFromCoordinates(lat, lng) {
+            // Check if Google Maps API is loaded
+            if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
+                return;
+            }
+            
+            const geocoder = new google.maps.Geocoder();
+            const latlng = { lat: parseFloat(lat), lng: parseFloat(lng) };
+            
+            geocoder.geocode({ location: latlng }, function(results, status) {
+                if (status === 'OK' && results[0]) {
+                    $('#address').val(results[0].formatted_address);
+                } else {
+                    console.error('Geocoder failed due to:', status);
+                }
+            });
+        }
+        
+        // Helper function to format price
+        function formatPrice(price) {
+            if (!price) return 'السعر عند الطلب';
+            
+            return price.toLocaleString('ar-EG', {
+                style: 'currency',
+                currency: 'EGP',
+                minimumFractionDigits: 2
+            });
+        }
+    </script>
+</body>
+</html> 

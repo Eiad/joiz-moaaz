@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الفئات - Jojiz</title>
+    <link rel="stylesheet" href="categories.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="mobile-nav.css">
+</head>
+<body>
+    <!-- Mobile Navigation -->
+    <div class="mobile-header">
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <a href="/">
+                <img src="img/jojiz.png" alt="Jojiz Logo">
+            </a>
+        </div>
+    </div>
+    
+    <!-- Mobile Side Navigation -->
+    <div class="mobile-sidenav" id="mobileSidenav">
+        <div class="sidenav-header">
+            <button class="close-sidenav" id="closeSidenav">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sidenav-content">
+            <div class="sidenav-user">
+                <div class="user-info">
+                    <span>WELCOME</span>
+                    <a href="login.html" class="login-register" id="mobileAuthLink">LOGIN/REGISTER</a>
+                </div>
+            </div>
+            <div class="sidenav-links">
+                <a href="index.html" class="sidenav-link">
+                    <i class="fas fa-home"></i>
+                    <span>الصفحة الرئيسية</span>
+                </a>
+                <a href="products.html" class="sidenav-link">
+                    <i class="fas fa-store"></i>
+                    <span>المتجر</span>
+                </a>
+                
+                <a href="cart.html" class="sidenav-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>سلة التسوق</span>
+                </a>
+                <a href="#" class="sidenav-link lang-switch">
+                    <i class="fas fa-globe"></i>
+                    <span>تغيير اللغة</span>
+                </a>
+            </div>
+            <div class="sidenav-contact">
+                <p>HOTLINE 24/7</p>
+                <a href="tel:01067300073" class="phone">01067300073</a>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/201067300073" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Overlay for when sidenav is open -->
+    <div class="sidenav-overlay" id="sidenavOverlay"></div>
+    <!-- Top Navigation Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="left-section">
+                <span class="hotline">HOTLINE 24/7</span>
+                <a href="tel:01067300073" class="phone">01067300073</a>
+            </div>
+            <div class="right-section">
+                <div class="cart">
+                    <span id="cart-total">0.00EGP</span>
+                    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                </div>
+                <a href="#" class="language-switch">تغيير اللغة</a>
+                <div class="auth">
+                    <span>WELCOME</span>
+                    <a href="#" class="login-register">LOGIN/REGISTER</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="logo">
+                <a href="/">
+                    <img src="img/jojiz.png" alt="Jojiz Logo">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="lang-switch">ar<i class="fas fa-globe"></i></a>
+                <a href="products.html">المتجر</a>
+                <a href="index.html">الصفحة الرئيسية</a>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="بحث">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Categories Header -->
+    <section class="categories-header">
+        <div class="container">
+            <h1 class="page-title">تسوق حسب الفئة</h1>
+            <div class="breadcrumb">
+                <a href="/">الرئيسية</a>
+                <i class="fas fa-chevron-left"></i>
+                <span>الفئات</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Categories Grid -->
+    <section class="main-categories">
+        <div class="container">
+            <div class="categories-grid">
+                <!-- Category Card Template (repeat for each category) -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="img/soiree-dress.jpg" alt="فساتين سواريه">
+                        <div class="category-overlay">
+                            <div class="overlay-content">
+                                <span class="items-count">24 منتج</span>
+                                <a href="products.html" class="shop-now-btn">تسوق الآن</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <h3>فساتين سواريه</h3>
+                        <span class="category-description">تشكيلة مميزة من أحدث موديلات 2024</span>
+                    </div>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="img/cotton-dress.jpg" alt="فساتين قطن">
+                        <div class="category-overlay">
+                            <div class="overlay-content">
+                                <span class="items-count">18 منتج</span>
+                                <a href="products.html" class="shop-now-btn">تسوق الآن</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <h3>فساتين قطن</h3>
+                        <span class="category-description">ملابس جديدة ومميزة للأطفال</span>
+                    </div>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="img/eid-dress.jpg" alt="فساتين العيد">
+                        <div class="category-overlay">
+                            <div class="overlay-content">
+                                <span class="items-count">32 منتج</span>
+                                <a href="products.html" class="shop-now-btn">تسوق الآن</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <h3>فساتين العيد</h3>
+                        <span class="category-description">ملابس جديدة ومميزة لمناسبات العيد</span>
+                    </div>
+                </div>
+
+                <!-- Category 4 -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="img/casual-dress.jpg" alt="ملابس كاجوال">
+                        <div class="category-overlay">
+                            <div class="overlay-content">
+                                <span class="items-count">28 منتج</span>
+                                <a href="products.html" class="shop-now-btn">تسوق الآن</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <h3>ملابس كاجوال</h3>
+                        <span class="category-description">ملابس جديدة ومميزة للأطفال</span>
+                    </div>
+                </div>
+
+                <!-- Category 5 -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="img/accessories.jpg" alt="إكسسوارات">
+                        <div class="category-overlay">
+                            <div class="overlay-content">
+                                <span class="items-count">15 منتج</span>
+                                <a href="products.html" class="shop-now-btn">تسوق الآن</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <h3>إكسسوارات</h3>
+                        <span class="category-description">إكسسوارات جديدة ومميزة للأطفال</span>
+                    </div>
+                </div>
+
+                <!-- Category 6 -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="img/shoes.jpg" alt="أحذية">
+                        <div class="category-overlay">
+                            <div class="overlay-content">
+                                <span class="items-count">20 منتج</span>
+                                <a href="products.html" class="shop-now-btn">تسوق الآن</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-content">
+                        <h3>أحذية</h3>
+                        <span class="category-description">أحذية جديدة ومميزة للأطفال</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Button -->
+    <a href="#" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <script src="mobile-nav.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Check if user is logged in
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const currentUser = localStorage.getItem('currentUser');
+            const authLink = document.getElementById('authLink');
+            
+            if (isLoggedIn && currentUser) {
+                // User is logged in, update auth link
+                const userData = JSON.parse(localStorage.getItem('user_' + currentUser));
+                if (userData) {
+                    // Change LOGIN/REGISTER to LOGOUT
+                    authLink.textContent = 'LOGOUT (' + userData.name + ')';
+                    authLink.href = '#';
+                    authLink.onclick = function(e) {
+                        e.preventDefault();
+                        localStorage.removeItem('isLoggedIn');
+                        localStorage.removeItem('currentUser');
+                        window.location.reload();
+                    };
+                }
+            }
+        }
+        
+        // Run this when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            checkLoginStatus();
+        });
+        </script>
+</body>
+</html>

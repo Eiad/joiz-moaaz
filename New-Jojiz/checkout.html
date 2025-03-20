@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إتمام الطلب - Jojiz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="mobile-nav.css">
+</head>
+<body>
+    <!-- Mobile Navigation -->
+    <div class="mobile-header">
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <a href="/">
+                <img src="img/jojiz.png" alt="Jojiz Logo">
+            </a>
+        </div>
+    </div>
+    
+    <!-- Mobile Side Navigation -->
+    <div class="mobile-sidenav" id="mobileSidenav">
+        <div class="sidenav-header">
+            <button class="close-sidenav" id="closeSidenav">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sidenav-content">
+            <div class="sidenav-user">
+                <div class="user-info">
+                    <span>WELCOME</span>
+                    <a href="login.html" class="login-register" id="mobileAuthLink">LOGIN/REGISTER</a>
+                </div>
+            </div>
+            <div class="sidenav-links">
+                <a href="index.html" class="sidenav-link">
+                    <i class="fas fa-home"></i>
+                    <span>الصفحة الرئيسية</span>
+                </a>
+                <a href="products.html" class="sidenav-link">
+                    <i class="fas fa-store"></i>
+                    <span>المتجر</span>
+                </a>
+                
+                <a href="cart.html" class="sidenav-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>سلة التسوق</span>
+                </a>
+                <a href="#" class="sidenav-link lang-switch">
+                    <i class="fas fa-globe"></i>
+                    <span>تغيير اللغة</span>
+                </a>
+            </div>
+            <div class="sidenav-contact">
+                <p>HOTLINE 24/7</p>
+                <a href="tel:01067300073" class="phone">01067300073</a>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/201067300073" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Overlay for when sidenav is open -->
+    <div class="sidenav-overlay" id="sidenavOverlay"></div>
+    <!-- Top Navigation Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="left-section">
+                <span class="hotline">HOTLINE 24/7</span>
+                <a href="tel:01067300073" class="phone">01067300073</a>
+                <button class="heart-btn"><i class="fas fa-heart"></i></button>
+            </div>
+            <div class="right-section">
+                <div class="cart">
+                    <span id="cart-total">0.00EGP</span>
+                    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                </div>
+                <div class="auth">
+                    <span>WELCOME</span>
+                    <a href="login.html" class="login-register" id="authLink">LOGIN/REGISTER</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/jojiz.png" alt="Jojiz Logo">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="lang-switch">ar<i class="fas fa-globe"></i></a>
+                <a href="products.html">المتجر</a>
+                <a href="index.html">الصفحة الرئيسية</a>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="بحث">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Checkout Section -->
+    <section class="checkout-section">
+        <div class="container">
+            <h1 class="page-title">إتمام الطلب</h1>
+            
+            <div class="checkout-container">
+                <div class="checkout-form">
+                    <h3>معلومات الشحن</h3>
+                    <form id="checkout-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">الاسم الأول</label>
+                                <input type="text" id="first-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">الاسم الأخير</label>
+                                <input type="text" id="last-name" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">رقم الهاتف</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">العنوان</label>
+                            <input type="text" id="address" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">المدينة</label>
+                                <input type="text" id="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="postal-code">الرمز البريدي</label>
+                                <input type="text" id="postal-code">
+                            </div>
+                        </div>
+                        
+                        <h3>طريقة الدفع</h3>
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <input type="radio" id="cash-on-delivery" name="payment-method" value="cash" checked>
+                                <label for="cash-on-delivery">الدفع عند الاستلام</label>
+                            </div>
+                            
+                            <div class="payment-method">
+                                <input type="radio" id="credit-card" name="payment-method" value="card">
+                                <label for="credit-card">بطاقة ائتمان</label>
+                            </div>
+                        </div>
+                        
+                        <div class="credit-card-details" id="credit-card-details" style="display: none;">
+                            <div class="form-group">
+                                <label for="card-number">رقم البطاقة</label>
+                                <input type="text" id="card-number">
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="expiry-date">تاريخ الانتهاء</label>
+                                    <input type="text" id="expiry-date" placeholder="MM/YY">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="place-order-btn">تأكيد الطلب</button>
+                    </form>
+                </div>
+                
+                <div class="order-summary">
+                    <h3>ملخص الطلب</h3>
+                    <div id="checkout-items">
+                        <!-- Order items will be added here dynamically -->
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>المجموع الفرعي:</span>
+                        <span id="checkout-subtotal">0.00 جنيه</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>الشحن:</span>
+                        <span id="checkout-shipping">0.00 جنيه</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>الإجمالي:</span>
+                        <span id="checkout-total">0.00 جنيه</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/01067300073" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <script src="mobile-nav.js"></script>
+    <script src="checkout.js"></script>
+    <script>
+        // Check if user is logged in
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const currentUser = localStorage.getItem('currentUser');
+            const authLink = document.getElementById('authLink');
+            
+            if (isLoggedIn && currentUser) {
+                // User is logged in, update auth link
+                const userData = JSON.parse(localStorage.getItem('user_' + currentUser));
+                if (userData) {
+                    // Change LOGIN/REGISTER to LOGOUT
+                    authLink.textContent = 'LOGOUT (' + userData.name + ')';
+                    authLink.href = '#';
+                    authLink.onclick = function(e) {
+                        e.preventDefault();
+                        localStorage.removeItem('isLoggedIn');
+                        localStorage.removeItem('currentUser');
+                        window.location.reload();
+                    };
+                }
+            }
+        }
+        
+        // Run this when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            checkLoginStatus();
+        });
+        </script>
+</body>
+</html> 

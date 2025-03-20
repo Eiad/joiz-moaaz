@@ -1,0 +1,355 @@
+/* Authentication Styles */
+.auth-section {
+    padding: 50px 0;
+    background-color: var(--light-bg);
+}
+
+.auth-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+/* Auth Tabs */
+.auth-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.auth-tab {
+    flex: 1;
+    padding: 15px;
+    text-align: center;
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #777;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.auth-tab.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* Auth Forms */
+.auth-content {
+    padding: 30px;
+}
+
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+.auth-title {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.auth-subtitle {
+    font-size: 14px;
+    text-align: center;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+/* Social Login Buttons */
+.social-login {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.social-btn img, .social-btn i {
+    margin-left: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.social-btn span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.google-btn:hover {
+    background-color: #f1f1f1;
+}
+
+.facebook-btn {
+    background-color: #3b5998;
+    color: white;
+    border-color: #3b5998;
+}
+
+.facebook-btn:hover {
+    background-color: #2d4373;
+}
+
+/* Add CSS for the Google icon */
+.social-btn.google-btn i.fab.fa-google {
+    color: #DB4437;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+html[dir="rtl"] .social-btn.google-btn i.fab.fa-google {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+/* Divider */
+.divider {
+    position: relative;
+    text-align: center;
+    margin: 25px 0;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background-color: var(--border-color);
+}
+
+.divider span {
+    position: relative;
+    display: inline-block;
+    padding: 0 15px;
+    background-color: #fff;
+    font-size: 14px;
+    color: #777;
+}
+
+/* Form Fields */
+.auth-form-fields {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Password Field */
+.password-field {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #777;
+    cursor: pointer;
+}
+
+/* Form Options */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.remember-me, .terms-agree {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input, .terms-agree input {
+    margin-left: 8px;
+}
+
+.forgot-password {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Submit Button */
+.auth-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.auth-submit:hover {
+    background-color: var(--primary-color);
+    opacity: 0.9;
+}
+
+/* Auth Switch */
+.auth-switch {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #777;
+}
+
+.auth-switch a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+/* RTL Specific Styles */
+html[dir="rtl"] .social-btn img, 
+html[dir="rtl"] .social-btn i {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+html[dir="rtl"] .toggle-password {
+    left: auto;
+    right: 15px;
+}
+
+html[dir="rtl"] .remember-me input, 
+html[dir="rtl"] .terms-agree input {
+    margin-left: 0;
+    margin-right: 8px;
+}
+
+/* Responsive Styles */
+@media (max-width: 767.98px) {
+    .auth-container {
+        max-width: 100%;
+        margin: 0 15px;
+    }
+    
+    .auth-content {
+        padding: 20px;
+    }
+    
+    .auth-title {
+        font-size: 20px;
+    }
+    
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .auth-tab {
+        padding: 12px;
+        font-size: 14px;
+    }
+    
+    .auth-content {
+        padding: 15px;
+    }
+    
+    .social-btn {
+        padding: 10px;
+    }
+    
+    .social-btn span {
+        font-size: 12px;
+    }
+    
+    .form-group input {
+        padding: 10px;
+    }
+    
+    .auth-submit {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+/* Auth Messages */
+.auth-message {
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.auth-message-error {
+    background-color: #ffebee;
+    color: #d32f2f;
+    border: 1px solid #ffcdd2;
+}
+
+.auth-message-success {
+    background-color: #e8f5e9;
+    color: #388e3c;
+    border: 1px solid #c8e6c9;
+}
+
+.auth-message-info {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    border: 1px solid #bbdefb;
+} 

@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jojiz - E-commerce</title>
+    <link rel="stylesheet" href="css/style_rtl.css">
+    <link rel="stylesheet" href="css/responsive_rtl.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="top-header">
+            <div class="container">
+                <div class="backend-info">
+                    <div class="welcome">
+                        <span>BACKEND.WELCOME</span>
+                        <div class="user-auth-section">
+                            <a href="login.html" class="login-register auth-link">BACKEND.LOGIN/ BACKEND.REGISTER</a>
+                            <div class="user-info">
+                                <span class="username">مرحبا، <span class="user-name"></span></span>
+                                <a href="#" class="logout-btn">تسجيل الخروج</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-section">
+                        <a href="#" class="lang-switch">تغيير اللغة</a>
+                        <a href="#" class="cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>0.00EGP</span>
+                        </a>
+                        <a href="#" class="wishlist">
+                            <i class="fas fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hotline">
+                    <span>BACKEND.HOTLINE 24/7</span>
+                    <a href="tel:01067300073">01067300073</a>
+                </div>
+            </div>
+        </div>
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/jojiz.png" alt="Jojiz Logo">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#" class="lang-toggle">ar <img src="images/language.svg" alt="Language" class="lang-icon"></a></li>
+                        <li><a href="#">المتجر</a></li>
+                        <li><a href="#">الصفحة الرئيسية</a></li>
+                    </ul>
+                </nav>
+                <div class="search-bar">
+                    <form action="#" method="get">
+                        <input type="text" placeholder="بحث" class="search-input">
+                        <button type="submit" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                    <div class="language-dropdown">
+                        <span>اللغة</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div class="mobile-cart">
+                    <a href="#" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Banner Section -->
+    <section class="main-banner">
+        <div class="container">
+            <div class="banner-carousel">
+                <!-- Banner slides will be loaded dynamically -->
+            </div>
+            
+            <!-- Carousel Navigation -->
+            <div class="carousel-nav">
+                <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-dots">
+                    <!-- Dots will be generated dynamically -->
+                </div>
+                <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h4>الدعم الفني</h4>
+                        <p>مساعدة الخبراء في استكشاف الأخطاء وإصلاحها والاستفسارات.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h4>تتبع الطلبات والتحديثات</h4>
+                        <p>تتبع حالة طلبك بشكل مباشر في الوقت الفعلي.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h4>توصيل سريع</h4>
+                        <p>شحن سريع وموثوق إلى باب منزلك.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h4>دعم العملاء</h4>
+                        <p>اتصل بنا للحصول على دعم العملاء بسرعة وفعالية في أي وقت.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Popular Products Section -->
+    <section class="popular-products">
+        <div class="container">
+            <h2 class="section-title">الأكثر رواجا</h2>
+            <div class="tab-container">
+                <div class="tabs">
+                    <button class="tab-btn active">الكل</button>
+                </div>
+                <div class="tab-content">
+                    <div class="products-grid">
+                        <!-- Products will be loaded here -->
+                    </div>
+                    <div class="load-more">
+                        <button class="load-more-btn">المزيد</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monthly Offer Section -->
+    <section class="monthly-offer">
+        <div class="container">
+            <h2 class="section-title">عرض الشهر</h2>
+            <div class="offer-content">
+                <!-- Monthly offer content will be here -->
+            </div>
+            <div class="load-more">
+                <a href="#" class="more-link">عرض المزيد</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="featured-products">
+        <div class="container">
+            <h2 class="section-title">المنتجات المميزة</h2>
+            <div class="featured-grid">
+                <!-- Featured products will be here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">الفئات</h2>
+            <div class="categories-grid">
+                <!-- Categories will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#">الصفحة الرئيسية</a></li>
+                        <li><a href="#">المتجر</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
+                        <li><a href="terms.html">الشروط والأحكام</a></li>
+                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>اتصل بنا</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-home"></i> octuber</a></li>
+                        <li><a href="tel:01067300073"><i class="fas fa-phone"></i> 01067300073</a></li>
+                        <li><a href="mailto:jojiz@jojiz.com"><i class="fas fa-envelope"></i> jojiz@jojiz.com</a></li>
+                    </ul>
+                    <div class="social-links">
+                        <!-- Social media links will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>حقوق الطبع والنشر © 2025 Jojiz. جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="#" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Quick View Modal -->
+    <div class="quick-view-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="close-modal"><i class="fas fa-times"></i></button>
+            <div class="modal-body">
+                <div class="product-loading">
+                    جاري تحميل المنتج...
+                </div>
+                <div class="product-content" style="display: none;">
+                    <div class="product-gallery">
+                        <div class="main-image">
+                            <img src="" alt="Product Image">
+                        </div>
+                        <div class="thumbnail-images">
+                            <!-- Thumbnail images will be loaded here -->
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-title"></h2>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="product-price">
+                            <span class="price"></span>
+                        </div>
+                        <div class="product-description"></div>
+                        <div class="product-actions">
+                            <div class="quantity-control">
+                                <button class="quantity-btn minus"><i class="fas fa-minus"></i></button>
+                                <input type="number" class="quantity-input" value="1" min="1">
+                                <button class="quantity-btn plus"><i class="fas fa-plus"></i></button>
+                            </div>
+                            <button class="add-to-cart-btn" data-product-id=""><i class="fas fa-shopping-cart"></i> أضف إلى السلة</button>
+                            <button class="add-to-wishlist-btn" data-product-id=""><i class="fas fa-heart"></i></button>
+                        </div>
+                        <div class="product-meta">
+                            <div class="product-category">
+                                الفئة: <a href="#"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/language.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Check if user is logged in
+            if (AuthService.isLoggedIn()) {
+                // Get current user
+                const user = AuthService.getCurrentUser();
+                
+                // Show user info
+                $('.user-info').show();
+                $('.auth-link').hide();
+                $('.user-name').text(user.username);
+                
+                // Handle logout
+                $('.logout-btn').click(function(e) {
+                    e.preventDefault();
+                    AuthService.logout();
+                });
+            } else {
+                // Show login/register link
+                $('.user-info').hide();
+                $('.auth-link').show();
+            }
+            
+            // Handle image errors
+            $('img').on('error', function() {
+                $(this).addClass('error');
+            });
+            
+            // Define API_BASE_URL for use in scripts
+            const API_BASE_URL = 'https://adminjojiz.jojiz.net';
+            
+            // Load site settings first
+            loadSiteSettings().then(() => {
+                // Load other content after settings are loaded
+                loadBanners();
+                loadSpecialProducts();
+                loadPopularProducts();
+                loadMonthOffer();
+                loadCategories();
+                loadSocialMediaLinks();
+            });
+        });
+        
+        // Function to load banners from API
+        async function loadBanners() {
+            // Get current language
+            const currentLang = window.getCurrentLanguage ? window.getCurrentLanguage() : $('html').attr('lang') || 'ar';
+            
+            console.log('Loading banners for language:', currentLang);
+            
+            // Get loading text based on current language
+            const loadingText = window.translateText ? window.translateText('جاري تحميل البانرات...') : 'جاري تحميل البانرات...';
+            
+            // Show loading state
+            $('.banner-carousel').html(`<div class="banner-loading">${loadingText}</div>`);
+            
+            // Fetch banners from API
+            const result = await ContentService.getBanners();
+            
+            console.log('Banner API response:', result);
+            
+            if (result.success && result.data && result.data.length > 0) {
+                console.log('Banner data:', result.data);
+                
+                // Clear loading state
+                $('.banner-carousel').empty();
+                
+                let bannersAdded = 0;
+                
+                // Generate banner slides
+                result.data.forEach((banner, index) => {
+                    try {
+                        const isActive = bannersAdded === 0 ? 'active' : '';
+                        let imageUrl = '';
+                        
+                        // Try different possible data structures
+                        if (banner.attributes && banner.attributes.image && banner.attributes.image.data) {
+                            // New API structure
+                            imageUrl = API_BASE_URL + banner.attributes.image.data.attributes.url;
+                        } else if (banner.image && banner.image.url) {
+                            // Old API structure
+                            imageUrl = API_BASE_URL + banner.image.url;
+                        } else if (banner.attributes && banner.attributes.image && banner.attributes.image.url) {
+                            // Alternative structure
+                            imageUrl = API_BASE_URL + banner.attributes.image.url;
+                        } else {
+                            console.error('Unknown banner structure:', banner);
+                            return; // Skip this banner
+                        }
+                        
+                        console.log(`Banner ${index + 1} image URL:`, imageUrl);
+                        
+                        // Get image not available text based on current language
+                        const imageNotAvailableText = window.translateText ? window.translateText('صورة غير متوفرة') : 'صورة غير متوفرة';
+                        
+                        const slideHtml = `
+                            <div class="banner-slide ${isActive}">
+                                <div class="banner-content">
+                                    <div class="banner-image">
+                                        <img src="${imageUrl}" alt="Banner ${index + 1}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'placeholder-image\\'><i class=\\'fas fa-image\\'></i><span>${imageNotAvailableText}</span></div>';">
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        
+                        $('.banner-carousel').append(slideHtml);
+                        bannersAdded++;
+                    } catch (error) {
+                        console.error('Error processing banner:', error, banner);
+                    }
+                });
+                
+                // If no banners were added successfully, show fallback
+                if (bannersAdded === 0) {
+                    createFallbackBanner();
+                    return;
+                }
+                
+                // Generate dots
+                $('.carousel-dots').empty();
+                for (let i = 0; i < bannersAdded; i++) {
+                    const isActive = i === 0 ? 'active' : '';
+                    $('.carousel-dots').append(`<span class="dot ${isActive}" data-slide="${i}"></span>`);
+                }
+                
+                // Initialize carousel
+                initializeCarousel();
+            } else {
+                // Show error message
+                const errorText = window.translateText ? window.translateText('عذراً، لا يمكن تحميل البانرات. يرجى المحاولة مرة أخرى لاحقاً.') : 'عذراً، لا يمكن تحميل البانرات. يرجى المحاولة مرة أخرى لاحقاً.';
+                $('.banner-carousel').html(`<div class="banner-error">${errorText}</div>`);
+                
+                // Create a fallback banner if needed
+                if (!result.success || !result.data || result.data.length === 0) {
+                    createFallbackBanner();
+                }
+            }
+        }
+        
+        // Function to create a fallback banner
+        function createFallbackBanner() {
+            console.log('Creating fallback banner');
+            
+            // Get translated text
+            const welcomeText = window.translateText ? window.translateText('مرحباً بك في متجر جوجيز') : 'مرحباً بك في متجر جوجيز';
+            const shopText = window.translateText ? window.translateText('تسوق أحدث المنتجات بأفضل الأسعار') : 'تسوق أحدث المنتجات بأفضل الأسعار';
+            
+            const fallbackHtml = `
+                <div class="banner-slide active">
+                    <div class="banner-content">
+                        <div class="banner-image">
+                            <div style="background-color: #f8f9fa; height: 300px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px;">
+                                <div>
+                                    <h2 style="color: #333; margin-bottom: 10px;">${welcomeText}</h2>
+                                    <p style="color: #666;">${shopText}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Clear any existing content
+            $('.banner-carousel').empty();
+            $('.banner-carousel').html(fallbackHtml);
+            
+            // Add a single dot for the fallback banner
+            $('.carousel-dots').empty();
+            $('.carousel-dots').html('<span class="dot active" data-slide="0"></span>');
+            
+            // Initialize carousel
+            initializeCarousel();
+        }
+        
+        // Function to initialize carousel
+        function initializeCarousel() {
+            let currentSlide = 0;
+            const slides = $('.banner-slide');
+            const dots = $('.dot');
+            const totalSlides = slides.length;
+            const isRTL = $('html').attr('dir') === 'rtl';
+            
+            // Auto slide change
+            let slideInterval = setInterval(nextSlide, 5000);
+            
+            // Next slide function
+            function nextSlide() {
+                goToSlide((currentSlide + 1) % totalSlides);
+            }
+            
+            // Previous slide function
+            function prevSlide() {
+                goToSlide((currentSlide - 1 + totalSlides) % totalSlides);
+            }
+            
+            // Go to specific slide
+            function goToSlide(n) {
+                slides.removeClass('active');
+                dots.removeClass('active');
+                
+                $(slides[n]).addClass('active');
+                $(dots[n]).addClass('active');
+                
+                currentSlide = n;
+                
+                // Reset the interval
+                clearInterval(slideInterval);
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+            
+            // Click events for navigation - handle RTL direction
+            $('.carousel-next').off('click').on('click', function() {
+                if (isRTL) {
+                    prevSlide();
+                } else {
+                    nextSlide();
+                }
+            });
+            
+            $('.carousel-prev').off('click').on('click', function() {
+                if (isRTL) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            });
+            
+            // Dot navigation
+            $('.dot').off('click').on('click', function() {
+                const slideIndex = $(this).data('slide');
+                goToSlide(slideIndex);
+            });
+            
+            // Pause carousel on hover
+            $('.banner-carousel').off('mouseenter mouseleave').hover(
+                function() {
+                    clearInterval(slideInterval);
+                },
+                function() {
+                    slideInterval = setInterval(nextSlide, 5000);
+                }
+            );
+            
+            // Custom events for carousel navigation
+            $(document).off('carousel:next carousel:prev');
+            $(document).on('carousel:next', function() {
+                nextSlide();
+            });
+            
+            $(document).on('carousel:prev', function() {
+                prevSlide();
+            });
+            
+            // Listen for carousel direction change events
+            $(document).off('carouselDirectionChanged').on('carouselDirectionChanged', function(e, isRTL) {
+                // Update RTL state
+                isRTL = isRTL;
+            });
+        }
+        
+        // Function to open quick view modal
+        async function openQuickViewModal(productId) {
+            // Show modal
+            $('.quick-view-modal').addClass('active');
+            $('.product-loading').show();
+            $('.product-content').hide();
+            
+            try {
+                // Fetch product details
+                const result = await ContentService.getProductDetails(productId);
+                
+                console.log('Quick view product details:', result);
+                
+                if (result.success && result.data) {
+                    const product = result.data;
+                    
+                    // Extract product data
+                    const productName = product.product_name || 'منتج بدون اسم';
+                    const productDescription = product.product_description || '';
+                    const productPrice = product.product_price;
+                    
+                    // Store the document ID for future reference
+                    const documentId = product.documentId || product.id;
+                    
+                    // Set product IDs on buttons
+                    $('.quick-view-modal .add-to-cart-btn').data('product-id', documentId);
+                    $('.quick-view-modal .add-to-wishlist-btn').data('product-id', documentId);
+                    
+                    // Extract category
+                    let categoryId, categoryName;
+                    
+                    if (product.category) {
+                        // Direct category object
+                        categoryId = product.category.id || product.category.documentId;
+                        categoryName = product.category.name;
+                    } else if (product.category && product.category.data) {
+                        // Nested category data
+                        categoryId = product.category.data.id;
+                        categoryName = product.category.data.attributes?.name;
+                    }
+                    
+                    // Extract images
+                    const productImages = [];
+                    
+                    // Main product image
+                    if (product.product_image && product.product_image.url) {
+                        productImages.push({
+                            url: API_BASE_URL + product.product_image.url,
+                            alt: productName
+                        });
+                    } else if (product.product_image && product.product_image.data && product.product_image.data.attributes) {
+                        productImages.push({
+                            url: API_BASE_URL + product.product_image.data.attributes.url,
+                            alt: productName
+                        });
+                    }
+                    
+                    // Additional product media
+                    if (product.product_media && Array.isArray(product.product_media)) {
+                        product.product_media.forEach(media => {
+                            if (media.url) {
+                                productImages.push({
+                                    url: API_BASE_URL + media.url,
+                                    alt: productName
+                                });
+                            }
+                        });
+                    } else if (product.product_media && product.product_media.data) {
+                        product.product_media.data.forEach(media => {
+                            if (media.attributes && media.attributes.url) {
+                                productImages.push({
+                                    url: API_BASE_URL + media.attributes.url,
+                                    alt: productName
+                                });
+                            }
+                        });
+                    }
+                    
+                    // Update modal content
+                    $('.quick-view-modal .product-title').text(productName);
+                    $('.quick-view-modal .product-description').html(productDescription);
+                    
+                    // Update product price
+                    if (productPrice) {
+                        $('.quick-view-modal .price').text(formatPrice(productPrice));
+                    } else {
+                        $('.quick-view-modal .price').text(window.translateText ? window.translateText('السعر عند الطلب') : 'السعر عند الطلب');
+                    }
+                    
+                    // Update category
+                    if (categoryId && categoryName) {
+                        $('.quick-view-modal .product-category a').text(categoryName);
+                        $('.quick-view-modal .product-category a').attr('href', `category.html?id=${categoryId}`);
+                    }
+                    
+                    // Update product images
+                    if (productImages.length > 0) {
+                        // Set main image
+                        $('.quick-view-modal .main-image img').attr('src', productImages[0].url);
+                        $('.quick-view-modal .main-image img').attr('alt', productImages[0].alt);
+                        
+                        // Generate thumbnails
+                        const thumbnailsContainer = $('.quick-view-modal .thumbnail-images');
+                        thumbnailsContainer.empty();
+                        
+                        productImages.forEach((image, index) => {
+                            const thumbnailHTML = `
+                                <div class="thumbnail${index === 0 ? ' active' : ''}">
+                                    <img src="${image.url}" alt="${image.alt}">
+                                </div>
+                            `;
+                            thumbnailsContainer.append(thumbnailHTML);
+                        });
+                        
+                        // Handle thumbnail click
+                        $('.quick-view-modal .thumbnail').click(function() {
+                            const index = $(this).index();
+                            $('.quick-view-modal .thumbnail').removeClass('active');
+                            $(this).addClass('active');
+                            $('.quick-view-modal .main-image img').attr('src', productImages[index].url);
+                            $('.quick-view-modal .main-image img').attr('alt', productImages[index].alt);
+                        });
+                    }
+                    
+                    // Show product content
+                    $('.product-loading').hide();
+                    $('.product-content').show();
+                } else {
+                    // Show error message
+                    $('.product-loading').text('عذراً، لا يمكن تحميل المنتج.');
+                }
+            } catch (error) {
+                console.error('Error loading product for quick view:', error);
+                $('.product-loading').text('عذراً، حدث خطأ أثناء تحميل المنتج.');
+            }
+        }
+        
+        // Function to close quick view modal
+        function closeQuickViewModal() {
+            $('.quick-view-modal').removeClass('active');
+        }
+        
+        // Handle close modal button click
+        $('.close-modal, .modal-overlay').click(function() {
+            closeQuickViewModal();
+        });
+        
+        // Handle quantity buttons in modal
+        $('.quick-view-modal .quantity-btn.minus').on('click', function() {
+            const input = $('.quick-view-modal .quantity-input');
+            const value = parseInt(input.val()) - 1;
+            input.val(value < 1 ? 1 : value);
+        });
+        
+        $('.quick-view-modal .quantity-btn.plus').on('click', function() {
+            const input = $('.quick-view-modal .quantity-input');
+            const value = parseInt(input.val()) + 1;
+            input.val(value);
+        });
+        
+        // Function to add product to cart
+        function addToCart(productId, quantity = 1) {
+            // Here you would implement the actual cart functionality
+            // For now, we'll just show an alert
+            alert(`تمت إضافة المنتج (${productId}) إلى السلة بكمية ${quantity}`);
+        }
+        
+        // Function to add product to wishlist
+        function addToWishlist(productId) {
+            // Here you would implement the actual wishlist functionality
+            // For now, we'll just show an alert
+            alert(`تمت إضافة المنتج (${productId}) إلى المفضلة`);
+        }
+        
+        // Handle add to cart button click in modal
+        $('.quick-view-modal .add-to-cart-btn').on('click', function() {
+            const productId = $(this).data('product-id');
+            const quantity = parseInt($('.quick-view-modal .quantity-input').val());
+            addToCart(productId, quantity);
+            closeQuickViewModal();
+        });
+        
+        // Handle add to wishlist button click in modal
+        $('.quick-view-modal .add-to-wishlist-btn').on('click', function() {
+            const productId = $(this).data('product-id');
+            addToWishlist(productId);
+        });
+    </script>
+</body>
+</html>

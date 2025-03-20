@@ -1,0 +1,189 @@
+/* Page Styles */
+.page-header {
+    background-color: var(--primary-color);
+    padding: 40px 0;
+    color: white;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.breadcrumb {
+    font-size: 14px;
+}
+
+.breadcrumb a {
+    color: white;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb .separator {
+    margin: 0 10px;
+}
+
+.breadcrumb .current {
+    opacity: 0.8;
+}
+
+.page-content {
+    padding-bottom: 60px;
+}
+
+.content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 30px;
+}
+
+.last-updated {
+    text-align: right;
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+html[dir="rtl"] .last-updated {
+    text-align: left;
+}
+
+.content-section {
+    margin-bottom: 30px;
+}
+
+.content-section h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.content-section p {
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+.content-section ul {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+html[dir="ltr"] .content-section ul {
+    padding-left: 0;
+    padding-right: 20px;
+}
+
+.content-section ul li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 15px;
+}
+
+html[dir="ltr"] .content-section ul li {
+    padding-left: 0;
+    padding-right: 15px;
+}
+
+.content-section ul li::before {
+    content: '•';
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+}
+
+html[dir="ltr"] .content-section ul li::before {
+    left: auto;
+    right: 0;
+}
+
+.content-section a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.content-section a:hover {
+    text-decoration: underline;
+}
+
+.contact-info {
+    list-style: none;
+    padding: 0 !important;
+    margin-top: 20px;
+}
+
+.contact-info li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 !important;
+}
+
+.contact-info li::before {
+    display: none !important;
+}
+
+.contact-info li i {
+    color: var(--primary-color);
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+html[dir="ltr"] .contact-info li i {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 767.98px) {
+    .page-header {
+        padding: 30px 0;
+    }
+    
+    .page-title {
+        font-size: 28px;
+    }
+    
+    .content-wrapper {
+        padding: 20px;
+        margin: 0 15px;
+    }
+    
+    .content-section h2 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .page-header {
+        padding: 20px 0;
+    }
+    
+    .page-title {
+        font-size: 24px;
+    }
+    
+    .content-wrapper {
+        padding: 15px;
+    }
+    
+    .content-section h2 {
+        font-size: 18px;
+    }
+    
+    .content-section p, .content-section li {
+        font-size: 14px;
+    }
+} 

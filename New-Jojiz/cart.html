@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلة التسوق - Jojiz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="mobile-nav.css">
+</head>
+<body>
+    <!-- Mobile Navigation -->
+    <div class="mobile-header">
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <a href="/">
+                <img src="img/jojiz.png" alt="Jojiz Logo">
+            </a>
+        </div>
+    </div>
+    
+    <!-- Mobile Side Navigation -->
+    <div class="mobile-sidenav" id="mobileSidenav">
+        <div class="sidenav-header">
+            <button class="close-sidenav" id="closeSidenav">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sidenav-content">
+            <div class="sidenav-user">
+                <div class="user-info">
+                    <span>WELCOME</span>
+                    <a href="login.html" class="login-register" id="mobileAuthLink">LOGIN/REGISTER</a>
+                </div>
+            </div>
+            <div class="sidenav-links">
+                <a href="index.html" class="sidenav-link">
+                    <i class="fas fa-home"></i>
+                    <span>الصفحة الرئيسية</span>
+                </a>
+                <a href="products.html" class="sidenav-link">
+                    <i class="fas fa-store"></i>
+                    <span>المتجر</span>
+                </a>
+                
+                <a href="cart.html" class="sidenav-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>سلة التسوق</span>
+                </a>
+                <a href="#" class="sidenav-link lang-switch">
+                    <i class="fas fa-globe"></i>
+                    <span>تغيير اللغة</span>
+                </a>
+            </div>
+            <div class="sidenav-contact">
+                <p>HOTLINE 24/7</p>
+                <a href="tel:01067300073" class="phone">01067300073</a>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/201067300073" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Overlay for when sidenav is open -->
+    <div class="sidenav-overlay" id="sidenavOverlay"></div>
+    <!-- Top Navigation Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="left-section">
+                <span class="hotline">HOTLINE 24/7</span>
+                <a href="tel:01067300073" class="phone">01067300073</a>
+                <button class="heart-btn"><i class="fas fa-heart"></i></button>
+            </div>
+            <div class="right-section">
+                <div class="cart">
+                    <span id="cart-total">0.00EGP</span>
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <a href="#" class="language-switch">تغيير اللغة</a>
+                <div class="auth">
+                    <span>WELCOME</span>
+                    <a href="login.html" class="login-register" id="authLink">LOGIN/REGISTER</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/jojiz.png" alt="Jojiz Logo">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="lang-switch">ar<i class="fas fa-globe"></i></a>
+                <a href="products.html">المتجر</a>
+                <a href="index.html">الصفحة الرئيسية</a>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="بحث">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Section -->
+    <section class="cart-section">
+        <div class="container">
+            <h1 class="page-title">سلة التسوق</h1>
+            
+            <div class="cart-container">
+                <div class="cart-items" id="cart-items">
+                    <!-- Cart items will be added here dynamically -->
+                    <div class="empty-cart-message" id="empty-cart-message">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>سلة التسوق فارغة</p>
+                        <a href="index.html" class="continue-shopping">متابعة التسوق</a>
+                    </div>
+                </div>
+                
+                <div class="cart-summary">
+                    <h3>ملخص الطلب</h3>
+                    <div class="summary-row">
+                        <span>المجموع الفرعي:</span>
+                        <span id="subtotal">0.00 جنيه</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>الشحن:</span>
+                        <span id="shipping">0.00 جنيه</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>الإجمالي:</span>
+                        <span id="total">0.00 جنيه</span>
+                    </div>
+                    <div class="coupon-code">
+                        <input type="text" placeholder="كود الخصم">
+                        <button>تطبيق</button>
+                    </div>
+                    <a href="checkout.html" class="checkout-btn" id="checkout-btn">
+                        متابعة الدفع
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/01067300073" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <script src="mobile-nav.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        // Check if user is logged in
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const currentUser = localStorage.getItem('currentUser');
+            const authLink = document.getElementById('authLink');
+            
+            if (isLoggedIn && currentUser) {
+                // User is logged in, update auth link
+                const userData = JSON.parse(localStorage.getItem('user_' + currentUser));
+                if (userData) {
+                    // Change LOGIN/REGISTER to LOGOUT
+                    authLink.textContent = 'LOGOUT (' + userData.name + ')';
+                    authLink.href = '#';
+                    authLink.onclick = function(e) {
+                        e.preventDefault();
+                        localStorage.removeItem('isLoggedIn');
+                        localStorage.removeItem('currentUser');
+                        window.location.reload();
+                    };
+                }
+            }
+        }
+        
+        // Run this when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            checkLoginStatus();
+        });
+        </script>
+</body>
+</html>
