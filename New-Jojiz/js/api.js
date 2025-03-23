@@ -70,5 +70,68 @@ const ContentService = {
             console.error('Error fetching popular products:', error);
             return { success: false, message: 'Network error. Please try again.', data: null };
         }
+    },
+
+    // Get categories
+    getCategories: async (locale = null) => {
+        try {
+            // Use provided locale or get current locale
+            const currentLocale = locale || ContentService.getCurrentLocale();
+            console.log(`Fetching categories: locale=${currentLocale}`);
+            
+            const url = `${API_BASE_URL}/api/categories?populate=*&locale=${currentLocale}`;
+            console.log('Categories API URL:', url);
+            
+            const response = await fetch(url);
+            const data = await response.json();
+            
+            console.log('Raw categories API response:', data);
+            
+            if (data.error) {
+                console.error('Categories API returned error:', data.error);
+                return { success: false, message: data.error.message, data: null };
+            }
+            
+            return { 
+                success: true, 
+                data: data.data || [],
+                meta: data.meta || null
+            };
+        } catch (error) {
+            console.error('Error fetching categories:', error);
+            return { success: false, message: 'Network error. Please try again.', data: null };
+        }
+    },
+
+    // Get month offer
+    getMonthOffer: async (locale = null) => {
+        try {
+            // Use provided locale or get current locale
+            const currentLocale = locale || ContentService.getCurrentLocale();
+            console.log(`Fetching month offer: locale=${currentLocale}`);
+            
+            const url = `${API_BASE_URL}/api/month-offer?populate[products][populate]=*&locale=${currentLocale}`;
+            console.log('Month Offer API URL:', url);
+            
+            const response = await fetch(url);
+            const data = await response.json();
+            
+            console.log('Raw month offer API response:', data);
+            
+            if (data.error) {
+                console.error('Month offer API returned error:', data.error);
+                return { success: false, message: data.error.message, data: null };
+            }
+            
+            // Return the exact structure from the API
+            return { 
+                success: true, 
+                data: data.data || {},
+                meta: data.meta || null
+            };
+        } catch (error) {
+            console.error('Error fetching month offer:', error);
+            return { success: false, message: 'Network error. Please try again.', data: null };
+        }
     }
 }; 

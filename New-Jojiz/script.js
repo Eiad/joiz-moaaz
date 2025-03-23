@@ -8,38 +8,48 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentSlide = 0;
     
     // Function to show a specific slide
-    function showSlide(index) {
-        // Hide all slides
+    function showSlide(n) {
+        // Check if slides exist
+        if (!slides || slides.length === 0) return;
+        
+        // Reset current slide
+        currentSlide = n;
+        
+        // Handle wrapping
+        if (currentSlide >= slides.length) currentSlide = 0;
+        if (currentSlide < 0) currentSlide = slides.length - 1;
+        
+        // Hide all slides first
         slides.forEach(slide => {
-            slide.classList.remove('active');
+            if (slide && slide.classList) {
+                slide.classList.remove('active');
+            }
         });
         
         // Remove active class from all dots
         dots.forEach(dot => {
-            dot.classList.remove('active');
+            if (dot && dot.classList) {
+                dot.classList.remove('active');
+            }
         });
         
-        // Show the current slide and activate its dot
-        slides[index].classList.add('active');
-        dots[index].classList.add('active');
+        // Show current slide and dot
+        if (slides[currentSlide] && slides[currentSlide].classList) {
+            slides[currentSlide].classList.add('active');
+        }
+        if (dots[currentSlide] && dots[currentSlide].classList) {
+            dots[currentSlide].classList.add('active');
+        }
     }
     
-    // Next slide function
+    // Function to move to next slide
     function nextSlide() {
-        currentSlide++;
-        if (currentSlide >= slides.length) {
-            currentSlide = 0;
-        }
-        showSlide(currentSlide);
+        showSlide(currentSlide + 1);
     }
     
-    // Previous slide function
+    // Function to move to previous slide
     function prevSlide() {
-        currentSlide--;
-        if (currentSlide < 0) {
-            currentSlide = slides.length - 1;
-        }
-        showSlide(currentSlide);
+        showSlide(currentSlide - 1);
     }
     
     // Event listeners for buttons
@@ -48,10 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Event listeners for dots
     dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            currentSlide = index;
-            showSlide(currentSlide);
-        });
+        if (dot) {
+            dot.addEventListener('click', () => showSlide(index));
+        }
     });
     
     // Auto slide every 5 seconds

@@ -176,35 +176,7 @@
     <div class="container">
         <h2 class="section-title">الفئات</h2>
         <div class="categories-grid">
-            <a href="category.html" class="category-item">
-                <div class="category-image">
-                    <img src="img/soiree-dress.jpg" alt="فساتين سواريه">
-                </div>
-                <!-- <div class="category-icon">
-                    <i class="fas fa-female"></i>
-                </div> -->
-                <h3 class="category-title">فساتين سواريه</h3>
-            </a>
-            
-            <a href="category.html" class="category-item">
-                <div class="category-image">
-                    <img src="img/cotton-dress.jpg" alt="فساتين قطن">
-                </div>
-                <!-- <div class="category-icon">
-                    <i class="fas fa-tshirt"></i>
-                </div> -->
-                <h3 class="category-title">فساتين قطن</h3>
-            </a>
-            
-            <a href="category.html" class="category-item">
-                <div class="category-image">
-                    <img src="img/eid-dress.jpg" alt="فساتين العيد">
-                </div>
-                <!-- <div class="category-icon">
-                    <i class="fas fa-gift"></i>
-                </div> -->
-                <h3 class="category-title">فساتين العيد</h3>
-            </a>
+            <!-- Categories will be loaded dynamically -->
         </div>
     </div>
 </section>
@@ -351,6 +323,19 @@
     </div>
 </section>
 
+    <!-- Monthly Offer Section -->
+    <section class="monthly-offer">
+        <div class="container">
+            <h2 class="section-title">عرض الشهر</h2>
+            <div class="offer-content">
+                <!-- Monthly offer content will be here -->
+            </div>
+            <div class="load-more">
+                <a href="#" class="more-link">عرض المزيد</a>
+            </div>
+        </div>
+    </section>
+
 <!-- Featured Products Section -->
 <section class="featured-products">
     <div class="container">
@@ -370,7 +355,10 @@
                 <div class="featured-image">
                     <img src="img/featured1.jpg" alt="منتج مميز">
                     <div class="featured-actions">
-                        <button class="action-btn" onclick="addToCart(event)">
+                        <button class="action-btn" onclick="addToCartFromFeatured(event, this)"
+                            data-product-id="${productId}"
+                            data-product-name="${productName}"
+                            data-product-price="${productPrice}">
                             <i class="fas fa-shopping-cart"></i>
                         </button>
                         <button class="action-btn product-view-btn" onclick="viewProduct(event)">
@@ -400,7 +388,10 @@
                 <div class="featured-image">
                     <img src="img/featured2.jpg" alt="منتج مميز">
                     <div class="featured-actions">
-                        <button class="action-btn" onclick="addToCart(event)">
+                        <button class="action-btn" onclick="addToCartFromFeatured(event, this)"
+                            data-product-id="${productId}"
+                            data-product-name="${productName}"
+                            data-product-price="${productPrice}">
                             <i class="fas fa-shopping-cart"></i>
                         </button>
                         <button class="action-btn product-view-btn" onclick="viewProduct(event)">
@@ -431,7 +422,10 @@
                 <div class="featured-image">
                     <img src="img/featured3.jpg" alt="منتج مميز">
                     <div class="featured-actions">
-                        <button class="action-btn" onclick="addToCart(event)">
+                        <button class="action-btn" onclick="addToCartFromFeatured(event, this)"
+                            data-product-id="${productId}"
+                            data-product-name="${productName}"
+                            data-product-price="${productPrice}">
                             <i class="fas fa-shopping-cart"></i>
                         </button>
                         <button class="action-btn product-view-btn" onclick="viewProduct(event)">
@@ -460,7 +454,10 @@
                 <div class="featured-image">
                     <img src="img/featured4.jpg" alt="منتج مميز">
                     <div class="featured-actions">
-                        <button class="action-btn" onclick="addToCart(event)">
+                        <button class="action-btn" onclick="addToCartFromFeatured(event, this)"
+                            data-product-id="${productId}"
+                            data-product-name="${productName}"
+                            data-product-price="${productPrice}">
                             <i class="fas fa-shopping-cart"></i>
                         </button>
                         <button class="action-btn product-view-btn" onclick="viewProduct(event)">
@@ -513,14 +510,11 @@
                 <h2 id="modalProductTitle"></h2>
                 <div class="product-modal-price">
                     <span id="modalCurrentPrice" class="current-price"></span>
-                    <span id="modalOldPrice" class="old-price"></span>
                 </div>
                 <div class="product-modal-rating">
                     <span id="modalRatingStars"></span>
                     <span id="modalRatingCount" class="rating-count"></span>
                 </div>
-                <div id="modalAvailability" class="product-availability"></div>
-                <p id="modalDescription" class="product-description"></p>
                 <div class="product-modal-actions">
                     <div class="quantity-selector">
                         <button class="quantity-btn minus">-</button>
@@ -531,9 +525,30 @@
                         <i class="fas fa-shopping-cart"></i>
                         إضافة إلى السلة
                     </button>
-                   
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick View Modal -->
+<div class="quick-view-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <button class="close"><i class="fas fa-times"></i></button>
+        <div class="modal-body">
+            <!-- Content will be inserted here dynamically -->
+        </div>
+    </div>
+</div>
+
+<div class="notification-container"></div>
+
+<div class="quick-view-modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-body">
+            <!-- Modal content will be inserted here dynamically -->
         </div>
     </div>
 </div>
@@ -542,9 +557,12 @@
 <script src="js/api.js"></script>
 <script src="js/banner.js"></script>
 <script src="js/popular-products.js"></script>
+<script src="js/categories.js"></script>
+<script src="js/month-offer.js"></script>
 <script src="script.js"></script>
 <script src="auth.js"></script>
 <script src="mobile-nav.js"></script>
+<script src="js/notifications.js"></script>
 
 <script>
 // Check if user is logged in
