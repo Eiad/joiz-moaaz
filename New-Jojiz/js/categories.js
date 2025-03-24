@@ -63,7 +63,7 @@ async function loadCategories() {
                     
                     // Create category card HTML
                     const categoryHtml = `
-                        <a href="category.html?id=${categoryId}" class="category-item">
+                        <a href="products.html?categoryid=${categoryId}" class="category-item">
                             <div class="category-image">
                                 ${imageUrl ? 
                                     `<img src="${imageUrl}" alt="${categoryName}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'placeholder-image\\'><i class=\\'fas fa-folder\\'></i><span>${imageNotAvailableText}</span></div>';">` : 

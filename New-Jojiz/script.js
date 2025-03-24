@@ -788,3 +788,88 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 });
+
+// Override add to cart functions for featured products
+window.originalAddToCartFromFeatured = window.addToCartFromFeatured;
+window.addToCartFromFeatured = function(event, button) {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    if (!isLoggedIn) {
+        event.preventDefault();
+        alert('Please log in to add items to your cart');
+        window.location.href = 'login.html';
+        return false;
+    }
+    
+    // Call original function if it exists
+    if (typeof window.originalAddToCartFromFeatured === 'function') {
+        return window.originalAddToCartFromFeatured(event, button);
+    }
+};
+
+// Override add to cart functions for popular products
+window.originalAddToCartFromPopular = window.addToCartFromPopular;
+window.addToCartFromPopular = function(event, button) {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    if (!isLoggedIn) {
+        event.preventDefault();
+        alert('Please log in to add items to your cart');
+        window.location.href = 'login.html';
+        return false;
+    }
+    
+    // Call original function if it exists
+    if (typeof window.originalAddToCartFromPopular === 'function') {
+        return window.originalAddToCartFromPopular(event, button);
+    }
+};
+
+// Override add to cart functions for categories
+window.originalAddToCartFromCategory = window.addToCartFromCategory;
+window.addToCartFromCategory = function(event, button) {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    if (!isLoggedIn) {
+        event.preventDefault();
+        alert('Please log in to add items to your cart');
+        window.location.href = 'login.html';
+        return false;
+    }
+    
+    // Call original function if it exists
+    if (typeof window.originalAddToCartFromCategory === 'function') {
+        return window.originalAddToCartFromCategory(event, button);
+    }
+};
+
+// Override add to cart functions for monthly offers
+window.originalAddToCartFromOffer = window.addToCartFromOffer;
+window.addToCartFromOffer = function(event, button) {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    if (!isLoggedIn) {
+        event.preventDefault();
+        alert('Please log in to add items to your cart');
+        window.location.href = 'login.html';
+        return false;
+    }
+    
+    // Call original function if it exists
+    if (typeof window.originalAddToCartFromOffer === 'function') {
+        return window.originalAddToCartFromOffer(event, button);
+    }
+};
+
+// General add to cart function for modals and quick view
+window.originalAddToCartGeneral = window.addToCartGeneral;
+window.addToCartGeneral = function(event, productId, quantity) {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    if (!isLoggedIn) {
+        event?.preventDefault();
+        alert('Please log in to add items to your cart');
+        window.location.href = 'login.html';
+        return false;
+    }
+    
+    // Call original function if it exists
+    if (typeof window.originalAddToCartGeneral === 'function') {
+        return window.originalAddToCartGeneral(event, productId, quantity);
+    }
+};
